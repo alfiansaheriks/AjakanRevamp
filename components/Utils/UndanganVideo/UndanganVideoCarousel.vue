@@ -12,45 +12,38 @@ const setActiveCategory = (categoryId: number) => {
     refresh();
 };
 
-const props = defineProps({
-    filter: {
-        type: String,
-    }
-});
-// Fetch data dari API
+// Fetch data from the API
 const { data: undangan, pending, refresh } = useFetch(() =>
-    `https://ajakan.me/api/guest/themes?type=${props.filter}&limit=${limit}&page=${currentPage.value}`
+    `https://ajakan.me/api/guest/themes?type=video&limit=${limit}&page=${currentPage.value}`
 );
 
-const dataUndangan = computed(() => (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || []);
-const subThemes = computed(() => (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes || []);
-const popularThemes = computed(() => (undangan.value as { data: { popular_themes_id: any[] } })?.data.popular_themes_id || []);
-
-// Watch untuk state pending
 watch(pending, (newPending) => {
+    console.log('pending:', newPending);
     loading.value = newPending;
 });
 
-watch(() => props.filter, () => {
-    currentPage.value = 1;
-    activeCategory.value = null;
-    refresh();
+watch(undangan, (newUndangan) => {
+    console.log('undangan:', newUndangan);
 });
 
-// Function untuk mendapatkan nama sub theme berdasarkan id
-const getSubThemeName = (subThemeId: number) => {
-    const subTheme = subThemes.value.find((sub) => sub.id === subThemeId);
-    return subTheme ? subTheme.name : 'Unknown Sub Theme';
-};
+const dataUndangan = computed(() => {
+    console.log('undangan.value:', undangan.value);
+    return (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || [];
+});
+
+const subThemes = computed(() => {
+    console.log('subThemes:', (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes);
+    return (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes || [];
+});
 
 // Filtered data undangan berdasarkan activeCategory
 const filteredDataUndangan = computed(() => {
     let filteredData = dataUndangan.value;
+    console.log('activeCategory:', activeCategory.value);
     if (activeCategory.value) {
-        filteredData = filteredData.filter(item => item.sub_theme === activeCategory.value);
-    } else if (activeCategory.value === 0) {
-        filteredData = filteredData.filter(item => popularThemes.value.includes(item.id));
+        filteredData = filteredData.filter(item => item.category === activeCategory.value);
     }
+    console.log('filteredData:', filteredData);
     return filteredData.slice(0, limit); // Apply limit after filtering
 });
 
@@ -74,43 +67,38 @@ const changePage = (page: number) => {
             <p>Loading...</p>
         </div>
         <div v-else class="flex flex-col">
-            <!-- Category Filter -->
-            <div v-if="props.filter === 'wedding'" class="mb-10 flex justify-between items-center">
+            <div class="mb-4 flex justify-between items-center">
                 <div>&#8203;</div>
-                <div class="flex overflow-x-auto space-x-2 w-64 lg:w-full lg:justify-center">
-                    <button
-                        v-for="subTheme in subThemes" :key="subTheme.id"
-                        @click="setActiveCategory(subTheme.id)"
+                <div class="flex overflow-x-auto space-x-2 w-64 lg:w-full lg:justify-center mx-4">
+                    <button v-for="subTheme in subThemes" :key="subTheme.id" @click="setActiveCategory(subTheme.id)"
                         :class="{
                             'bg-[#0191D8] text-white text-xs': activeCategory === subTheme.id,
                             'bg-transparent border border-[#0191D8] text-[#0191D8] text-xs': activeCategory !== subTheme.id
-                        }"
-                        class="px-4 py-2 rounded-lg whitespace-nowrap">
+                        }" class="px-4 py-2 rounded-lg whitespace-nowrap">
                         {{ subTheme.name }}
                     </button>
                 </div>
                 <div>&#8203;</div>
             </div>
-            <!-- End Category Filter -->
-
-            <!-- Undangan Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 lg:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4 lg:px-28">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full">
-                    <NuxtLink :to="`https://ajakan.me/theme/preview/${undangan.url}`" class="block bg-transparent w-full rounded-none">
-                        <NuxtImg :src="undangan.image" alt="Article Image" class="w-full h-[308px] object-cover rounded-xl" />
-                        <div class="mt-2">
-                            <p class="text-base text-black my-1">{{ getSubThemeName(undangan.sub_theme) }}</p>
-                            <h3 class="text-lg font-semibold mb-2">{{ undangan.name }}</h3>
-                            <button class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full p-2">
+                    <NuxtLink to="/" class="block bg-transparent min-w-full rounded-none">
+                        <NuxtImg :src="undangan.image" alt="Article Image"
+                            class="w-full h-[350px] object-cover rounded-xl" />
+                        <div class="py-2">
+                            <p class="text-base text-black">{{ undangan.category_name }}</p>
+                            <h3 class="text-lg font-semibold py-2">{{ undangan.title }}</h3>
+                            <button
+                                class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />
                                 Preview
                             </button>
                         </div>
                     </NuxtLink>
+
                 </div>
             </div>
-            <!-- Pagination -->
-            <div class="flex justify-start items-center mt-8 px-20" v-if="totalPages > 1">
+            <div class="flex justify-start items-center mt-8 px-4 lg:px-24" v-if="totalPages > 1">
                 <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
                     class="px-4 py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:previous-outline" class="text-3xl" />
@@ -126,6 +114,11 @@ const changePage = (page: number) => {
 
 <style lang="scss" scoped>
 /* Adjust the styles as needed */
+.max-w-xs {
+    max-width: 30rem;
+    /* Adjust the max width */
+}
+
 .max-h-48 {
     max-height: 15rem;
     /* Adjust the max height */

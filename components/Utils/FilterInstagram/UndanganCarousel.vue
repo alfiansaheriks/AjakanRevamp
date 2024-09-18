@@ -1,127 +1,51 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
 
-const props = defineProps({
-    totalArticles: {
-        type: Number,
-        default: 12 // Nilai default jika tidak diberikan
-    }
-});
-
-const articles = ref([
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 1.',
-        image: 'https://picsum.photos/200/300?random=1',
-        slug: 'article-1'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 2.',
-        image: 'https://picsum.photos/200/300?random=2',
-        slug: 'article-2'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 3.',
-        image: 'https://picsum.photos/200/300?random=3',
-        slug: 'article-3'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 4.',
-        image: 'https://picsum.photos/200/300?random=4',
-        slug: 'article-4'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 5.',
-        image: 'https://picsum.photos/200/300?random=5',
-        slug: 'article-5'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 6.',
-        image: 'https://picsum.photos/200/300?random=6',
-        slug: 'article-6'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 7.',
-        image: 'https://picsum.photos/200/300?random=7',
-        slug: 'article-7'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 8.',
-        image: 'https://picsum.photos/200/300?random=8',
-        slug: 'article-8'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 9.',
-        image: 'https://picsum.photos/200/300?random=9',
-        slug: 'article-9'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 10.',
-        image: 'https://picsum.photos/200/300?random=10',
-        slug: 'article-10'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 11.',
-        image: 'https://picsum.photos/200/300?random=11',
-        slug: 'article-11'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 12.',
-        image: 'https://picsum.photos/200/300?random=12',
-        slug: 'article-12'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 13.',
-        image: 'https://picsum.photos/200/300?random=13',
-        slug: 'article-13'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 14.',
-        image: 'https://picsum.photos/200/300?random=14',
-        slug: 'article-14'
-    },
-    {
-        title: 'Rosy Brown',
-        excerpt: 'This is the excerpt for article 15.',
-        image: 'https://picsum.photos/200/300?random=15',
-        slug: 'article-15'
-    }
-    // Add more articles as needed
-]);
+import { ref, computed, watch } from 'vue';
 
 const currentPage = ref(1);
+const limit = 12;
+const loading = ref(false);
+const type = 'filterig';
 
-const paginatedArticles = computed(() => {
-    const start = (currentPage.value - 1) * props.totalArticles;
-    const end = start + props.totalArticles;
-    return articles.value.slice(start, end);
+const { data: response, pending, refresh } = useFetch(() =>
+    `https://ajakan.me/api/guest/themes?type=${type}&limit=${limit}&page=${currentPage.value}`
+);
+
+
+const articles = computed(() => (response.value as { data: { themes: { data: any[] } } })?.data.themes.data || []);
+
+const totalPages = computed(() => Math.ceil((response.value as { data?: { themes?: { last_page?: number } } })?.data?.themes?.last_page ?? 0 / limit));
+
+watch(pending, (newPending) => {
+    loading.value = newPending;
 });
+
+watch(currentPage, () => {
+    refresh();
+});
+
+const changePage = (page: number) => {
+    if (page > 0 && page <= totalPages.value) {
+        currentPage.value = page;
+    }
+};
+
 </script>
 
 <template>
     <div class="relative px-2">
-        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2">
-            <div v-for="item in paginatedArticles" :key="item.slug" class="w-full max-w-xs mx-auto">
-                <NuxtLink :to="`/articles/${item.slug}`" class="block bg-transparent w-full rounded-none">
+        <div v-if="loading" class="flex justify-center items-center h-48">
+            <p>Loading...</p>
+        </div>
+        <div v-else class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 px-4 lg:px-28">
+            <div v-for="item in articles" :key="item.id" class="w-full mx-auto">
+                <NuxtLink to="" class="block bg-transparent w-full rounded-none">
                     <NuxtImg :src="item.image" alt="Article Image"
-                        class="w-full h-96 object-cover rounded-xl" />
-                    <div class="p-3">
-                        <p class="text-sm text-[#B7B7B7]">Tema Elegant</p>
-                        <h3 class="text-md font-semibold py-2">{{ item.title }}</h3>
-                        <button class="bg-[#0191D8] text-white text-sm lg:text-base font-normal rounded-lg focus:outline-none w-full py-2">
+                        class="w-full h-[600px] object-cover rounded-xl" />
+                    <div class="py-3">
+                        <p class="text-md text-black">Filter Instagram</p>
+                        <h3 class="text-lg font-semibold">{{ item.title }}</h3>
+                        <button class="bg-[#0191D8] text-white text-sm lg:text-base font-normal rounded-lg focus:outline-none w-full py-2 mt-1">
                             <Icon name="icon-park-outline:preview-open" class="text-sm lg:text-lg text-white" />
                             Preview
                             </button>
@@ -129,17 +53,17 @@ const paginatedArticles = computed(() => {
                 </NuxtLink>
             </div>
         </div>
-        <div class="flex justify-start mt-4 px-6">
-            <UButton @click="currentPage > 1 && currentPage--"
-                class="px-4 py-2 mx-2 bg-transparent shadow-none hover:bg-transparent rounded">
-                <Icon name="carbon:previous-outline" class="text-4xl text-black" />
-            </UButton>
-            <UButton @click="currentPage++"
-                class="px-4 py-2 mx-2 bg-transparent shadow-none hover:bg-transparent rounded">
-                <Icon name="carbon:next-outline" class="text-4xl text-black" />
-            </UButton>
-        </div>
     </div>
+    <div class="flex justify-start items-center mt-8 px-4 lg:px-28" v-if="totalPages > 1">
+                <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
+                    class="py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
+                    <Icon name="carbon:previous-outline" class="text-3xl" />
+                </button>
+                <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
+                    class="px-2 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                    <Icon name="carbon:next-outline" class="text-3xl" />
+                </button>
+            </div>
 </template>
 
 <style scoped>

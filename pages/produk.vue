@@ -6,6 +6,12 @@ definePageMeta({
     layout: 'page',
 });
 
+useSeoMeta({
+    title: 'Paket Bisnis Undangan Digital | Ajakan',
+    description: 'Paket Bisnis Undangan Digital | Ajakan',
+    keywords: 'ajakan.me, ajakan, undangan, digital, undangan digital',
+})
+
 </script>
 
 <template>

@@ -8,14 +8,14 @@ const setActiveCategory = (category: string) => {
 };
 
 const categories = [
-    { name: 'Undangan Pernikahan', total: 2 },
-    { name: 'Undangan Khitanan', total: 2 },
-    { name: 'Undangan Aqiqah', total: 2 },
-    { name: 'Undangan Wisuda', total: 2 },
-    { name: 'Undangan Birthday', total: 2 },
-    { name: 'Undangan Berbuka', total: 2 },
-    { name: 'Undangan Natal', total: 2 },
-    { name: 'Undangan Idul Fitri', total: 2 },
+    { name: 'Undangan Pernikahan', total: 2, type: 'wedding' },
+    { name: 'Undangan Khitanan', total: 2, type: 'khitanan' },
+    { name: 'Undangan Aqiqah', total: 2, type: 'aqiqah' },
+    { name: 'Undangan Wisuda', total: 2, type: 'wisuda' },
+    { name: 'Undangan Birthday', total: 2, type: 'birthday' },
+    { name: 'Undangan Berbuka', total: 2, type: 'bukber' },
+    { name: 'Undangan Natal', total: 2, type: 'natal' },
+    { name: 'Undangan Idul Fitri', total: 2, type: 'idul_fitri' },
 ];
 
 const emit = defineEmits(['filter-change']);

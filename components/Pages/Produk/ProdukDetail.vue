@@ -19,16 +19,23 @@ onMounted(() => {
         <!-- Undangan Digital -->
         <div class="invitation-section flex flex-col lg:flex-row md:flex-row items-center my-12">
             <!-- Text Section -->
-            <div class="text-section lg:w-1/2 px-4">
+            <div class="text-section w-full" data-aos="fade-right">
                 <h2 class="text-4xl font-semibold">
-                    Undangan <span class="text-[#0191D8]">Digital</span>
+                    Undangan <span class="text-black lg:text-[#0191D8]">Digital</span>
                 </h2>
-                <p class="my-4">
+                <p v-if="!isMobile" class="my-4">
                     Sebuah produk revolusioner yang mengubah cara kita mengundang dan merayakan
                     peristiwa-peristiwa istimewa.
                 </p>
+                <p v-else class="my-4">
+                    Sebuah produk revolusioner yang mengubah cara kita mengundang dan merayakan peristiwa-peristiwa
+                    istimewa. Undangan digital terdiri dari <span class="font-semibold">undangan pernikahan, undangan
+                        khitanan, undangan aqiqah,
+                        undangan wisuda, undangan birthday, undangan natal, undangan buka bersama, undangan idul
+                        fitri.</span>
+                </p>
                 <!-- Daftar Undangan -->
-                <ul class="grid grid-cols-2 gap-x-4 gap-y-2 mb-4 custom-list-style">
+                <ul v-if="!isMobile" class="grid grid-cols-2 mb-4 custom-list-style">
                     <li>Undangan Pernikahan</li>
                     <li>Undangan Khitanan</li>
                     <li>Undangan Aqiqah</li>
@@ -38,17 +45,16 @@ onMounted(() => {
                     <li>Undangan Buka Bersama</li>
                     <li>Undangan Idul Fitri</li>
                 </ul>
-                <button class="btn-primary">Selengkapnya</button>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <!-- Image Section -->
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-left">
                 <!-- Shape Circle -->
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/hpdigital1.png" alt="Undangan Digital 1" class="phone-image" />
-                <NuxtImg v-if="!isMobile" src="/image/hpdigital2.png" alt="Undangan Digital 2"
-                    class="phone-image second-phone" />
+                <NuxtImg v-if="!isMobile" src="/image/Group 633.png" alt="Undangan Digital 1"
+                    class="w-full scale-150 mt-10 object-cover" />
                 <NuxtImg v-else src="/image/undangandigital-mobile.png" alt="Undangan Digital"
                     class="phone-image-mobile" />
                 <NuxtImg v-if="!isMobile" src="/image/titikbirudetailproduk.png" alt="Undangan Digital 2"
@@ -58,35 +64,39 @@ onMounted(() => {
 
         <!-- Undangan Video -->
         <div class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
-            <div class="text-section lg:w-1/2 px-4">
+            <div class="text-section lg:w-1/2 lg:px-4">
                 <h2 class="text-4xl font-semibold">
-                    Undangan <span class="text-[#0191D8]">Video</span>
+                    Undangan <span class="text-black lg:text-[#0191D8]">Video</span>
                 </h2>
-                <p class="my-4">Era sosial media sekarang sudah sangat umum dengan yang namanya "Undangan Video".</p>
-                <button class="btn-primary">Selengkapnya</button>
+                <p v-if="!isMobile" class="my-4">Era sosial media sekarang sudah sangat umum dengan yang namanya
+                    "Undangan Video", yang
+                    memberikan sentuhan modern pada undangan digital.</p>
+                <p v-else class="my-4">Era sosial media sekarang sudah sangat umum dengan yang namanya "Undangan Video",
+                    yang memberikan sentuhan modern pada undangan digital. </p>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/undanganvideodetail.png" alt="Undangan Video 1"
-                    class="phone-image-uvideo" />
-                <NuxtImg v-if="!isMobile" src="/image/undanganvideodetail.png" alt="Undangan Video 2"
-                    class="phone-image-uvideo second-phone-uvideo" />
+                <NuxtImg v-if="!isMobile" src="/image/Group 634.png" alt="Undangan Video 1"
+                    class="scale-150 z-10 md:w-[500px] w-[400px] h-[300px] lg:h-auto absolute -top-10" />
+                <!-- <NuxtImg v-if="!isMobile" src="/image/undanganvideodetail.png" alt="Undangan Video 2"
+                    class="lg:scale-150 md:w-[800px] w-[500px] relative lg:top-10 top-44 -left-20" /> -->
                 <NuxtImg v-else src="/image/undanganvideo-mobile.png" alt="Undangan Video" class="" />
             </div>
         </div>
 
         <!-- Undangan Save The Date Mobile -->
         <div v-if="isMobile" class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
-            <div class="text-section lg:w-1/2 px-4">
+            <div class="text-section lg:w-1/2">
                 <h2 class="text-4xl font-semibold">
-                    Filter <span class="text-[#0191D8]">Instagram</span>
+                    Undangan <span class="text-black">Save The Date</span>
                 </h2>
                 <p class="my-4">Bagi kamu yang terbiasa menyebarkan informasi event atau workshop melalui poster saja,
                     sudah saatnya kamu menggunakan website yang super simple, elegant dan modern melalui “Undangan Save
                     The Date”.</p>
-                <button class="btn-primary">Selengkapnya</button>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
                 <!-- Shape Circle -->
@@ -102,28 +112,25 @@ onMounted(() => {
 
         <!-- Filter Instagram -->
         <div class="invitation-section flex flex-col lg:flex-row items-center my-12">
-            <div class="text-section lg:w-1/2 px-4">
+            <div class="text-section lg:w-1/2">
                 <h2 class="text-4xl font-semibold">
-                    <span class="text-[#0191D8]">Filter Instagram</span>
+                    <span class="text-black lg:text-[#0191D8]">Filter Instagram</span>
                 </h2>
                 <p class="my-4">
                     Momen spesial dapat diabadikan dalam video indah yang dapat dibagikan kepada semua
                     orang, dan filter Instagram khusus menciptakan kesan yang tak terlupakan untuk memeriahkan momen
                     tersebut.
                 </p>
-                <button class="btn-primary">Selengkapnya</button>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
                 <div class="shape-circle absolute"></div>
                 <!-- Images with Gradient -->
                 <div class="relative">
-                    <NuxtImg v-if="!isMobile" src="/image/hpfilter2.png" alt="Filter Instagram 1"
-                        class="filter-phone-image" />
-                    <NuxtImg v-if="!isMobile" src="/image/hpfilter1.png" alt="Filter Instagram 2"
-                        class="filter-phone-image filter-second-phone" />
-                    <!-- <NuxtImg v-else src="/image/hpfilter2.png" alt="Filter Instagram" class="filter-phone-image" /> -->
-                    <!-- Gradient Overlay -->
-                    <div class="gradient-overlay"></div>
+                    <NuxtImg v-if="!isMobile" src="/image/Group 635.png" alt="Filter Instagram 1"
+                        class="filter-phone-image scale-150" />
+                    <NuxtImg v-else src="/image/Group 635.png" alt="Filter Instagram 1"
+                        class="rounded-lg relative w-full scale-150 mt-10" />
                 </div>
             </div>
         </div>
@@ -132,16 +139,19 @@ onMounted(() => {
         <div v-if="!isMobile" class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
             <div class="text-section lg:w-1/2 px-4">
                 <h2 class="text-4xl font-semibold">
-                    Undangan <span class="text-[#0191D8]">Save The Date</span>
+                    Undangan <span class="text-black lg:text-[#0191D8]">Save The Date</span>
                 </h2>
                 <p class="my-4">Bagi kamu yang terbiasa menyebarkan informasi event atau workshop melalui poster saja,
                     sudah saatnya kamu menggunakan website yang super simple, elegant dan modern melalui “Undangan Save
                     The Date”.</p>
-                <button class="btn-primary">Selengkapnya</button>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
+                <div v-if="!isMobile"
+                    class="shape-circle absolute left-1 bg-gradient-to-r from-transparent to-[#84D2F9]">
+                </div>
                 <!-- Images -->
                 <NuxtImg v-if="!isMobile" src="/image/savethedatedetail.png" alt="Undangan Save The Date 1"
                     class="tab-image-savethedate" />
@@ -152,22 +162,25 @@ onMounted(() => {
             </div>
         </div>
 
-        <div class="invitation-section flex flex-col lg:flex-row items-center md:my-12">
+        <div class="invitation-section flex flex-col lg:flex-row items-center md:my-12 my-12">
             <div class="text-section lg:w-1/2">
-                <h2 class="text-3xl font-bold text-[#0191D8]">Undangan 3D</h2>
-                <p class="my-4">Sebuah produk revolusioner yang mengubah cara kita mengundang dan merayakan
-                    peristiwa-peristiwa istimewa.</p>
-                <button class="btn-primary">Selengkapnya</button>
+                <h2 class="text-3xl font-bold text-black lg:text-[#0191D8]">Undangan 3D</h2>
+                <p class="my-4">Undangan pernikahan 3D dibuat dengan teknologi yang canggih, undangan ini memberikan
+                    pengalaman visual yang menakjubkan kepada para undangan. Dengan dimensi tambahan, seperti tekstur,
+                    kedalaman, dan pergerakan, undangan 3D menciptakan kesan yang lebih hidup dan berkesan daripada
+                    undangan tradisional.</p>
+                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-72 lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative lg:mt-0">
                 <!-- Shape Circle -->
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/hp3d1.png" alt="Undangan 3D 1" class="phone-3d-image" />
-                <NuxtImg v-if="!isMobile" src="/image/hp3d2.png" alt="Undangan 3D 2"
-                    class="phone-3d-image second-3d-phone" />
-                <NuxtImg v-else src="/image/undangan3d-mobile.png" alt="Undangan 3D" />
+                <NuxtImg v-if="!isMobile" src="/image/Group 636.png" alt="Undangan 3D 1"
+                    class="absolute w-[1000px] -bottom-[80%] scale-150 z-0" />
+                <!-- <NuxtImg v-if="!isMobile" src="/image/hp3d2.png" alt="Undangan 3D 2"
+                    class="phone-3d-image second-3d-phone" /> -->
+                <NuxtImg v-else src="/image/undangan3d-mobile.png" alt="Undangan 3D" class="relative -bottom-24" />
             </div>
         </div>
     </section>
@@ -175,20 +188,20 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .main-container {
-    @apply flex flex-col items-center px-6 py-12;
-    background-color: #f5f9ff;
+    @apply flex flex-col items-center w-full py-12 overflow-hidden;
+    background-color: #f5f5f5;
 }
 
 .invitation-section {
-    @apply w-full max-w-7xl;
+    @apply w-full lg:px-8;
 }
 
 .text-section h2 {
-    @apply leading-snug;
+    @apply leading-tight;
 }
 
 .btn-primary {
-    @apply bg-[#0191D8] text-white px-6 py-2 rounded-md shadow hover:bg-blue-600;
+    @apply bg-[#0191D8] text-white px-6 py-2 shadow hover:bg-blue-600;
 }
 
 .image-section {
@@ -212,8 +225,9 @@ onMounted(() => {
 
 .second-phone {
     position: absolute;
-    margin-left: 60%;
+    margin-right: -5%;
     bottom: 15%;
+    width: 100%;
     // transform: rotate(10deg)
 }
 
@@ -272,13 +286,14 @@ onMounted(() => {
     @apply rounded-lg z-20;
     width: 62.5rem;
     position: relative;
+    margin-right: 60px;
     /* Posisi relatif untuk overlay */
 }
 
 .filter-second-phone {
     @apply absolute;
     width: 100%;
-    margin-left: 25%;
+    margin-right: -10%;
     bottom: 15%;
 
 }
@@ -295,26 +310,32 @@ onMounted(() => {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
+
 .custom-list-style {
-  list-style: none; /* Remove default bullet points */
+    list-style: none;
+    /* Remove default bullet points */
 }
 
 .custom-list-style li {
-  position: relative;
-  padding-left: 1.5rem; /* Space for the custom bullet */
-  margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+    /* Space for the custom bullet */
+    margin-bottom: 0.5rem;
 }
 
 .custom-list-style li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.25rem; /* Adjust based on the size of the text */
-  width: 1rem;
-  height: 1rem;
-  border: 4px solid #0191D8; /* Tailwind blue-500 color */
-  border-radius: 50%;
-  background-color: transparent; /* Make it a hollow circle */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    /* Adjust based on the size of the text */
+    width: 1rem;
+    height: 1rem;
+    border: 4px solid #0191D8;
+    /* Tailwind blue-500 color */
+    border-radius: 50%;
+    background-color: transparent;
+    /* Make it a hollow circle */
 }
 
 

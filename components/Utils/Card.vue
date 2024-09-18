@@ -35,17 +35,13 @@ onUnmounted(() => {
 <template>
     <div class="scrollable-container">
         <div :class="cardStyle">
-            <!-- Shadow Icon -->
-            <div v-if="!isMobile" class="absolute -bottom-1 -right-1 z-0 opacity-20">
-                <Icon :name="iconName" size="10rem" class="text-white" />
-            </div>
             <div class="flex flex-col items-start text-left relative z-10">
                 <div :class="bgIconStyle">
                     <Icon :name="iconName" size="2rem" :class="iconColor"/>
                 </div>
                 <div class="flex flex-col items-start">
                     <h1 :class="titleStyle">{{ title }}</h1>
-                    <p :class="pStyle">
+                    <p class="leading-tight" :class="pStyle">
                         <span :class="subtitleStyle">{{ subtitle }}</span> {{ description }}
                     </p>
                 </div>

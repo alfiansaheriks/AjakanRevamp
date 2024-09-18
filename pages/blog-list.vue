@@ -7,6 +7,12 @@ definePageMeta({
     layout: 'page',
 });
 
+useSeoMeta({
+    title: 'Blog | Ajakan',
+    description: 'Blog Page',
+    keywords: 'ajakan, ajakanme, ajakan.me, join partner, partner',
+})
+
 const searchQuery = ref('');
 const isMobile = ref(false);
 
@@ -28,8 +34,8 @@ onMounted(() => {
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
         <section id="section1" class="flex-1 flex flex-col justify-center relative px-4">
-            <div class="flex-1 flex flex-col justify-start items-center lg:mt-36">
-                <h1 class="text-48 font-normal text-center text-black max-w-[1000px]">
+            <div class="flex-1 flex flex-col justify-start items-center mt-36 lg:mt-36">
+                <h1 class="text-4xl lg:text-48 font-normal text-center text-black max-w-[1000px]">
                     Temukan berbagai <span class="text-[#0191D8] font-semibold">informasi yang kamu butuhkan</span> di
                     sini
                 </h1>

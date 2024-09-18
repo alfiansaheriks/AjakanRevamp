@@ -29,7 +29,7 @@ onUnmounted(() => {
 </script>
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
-        <div class="flex-1 flex flex-col justify-start items-center py-20">
+        <div class="flex-1 flex flex-col justify-start items-center py-20 lg:py-44">
             <h1 class="text-4xl text-center">Filter <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
             <p class="text-center text-[#989898] max-w-[800px] py-4"> Pilih desain sesuai tema pernikahanmu, tambahkan
                 foto dan cerita cinta kamu, lalu kirim undangan dengan cepat melalui platform digital yang <strong
@@ -50,8 +50,7 @@ onUnmounted(() => {
                         class="w-full h-12 pl-12 pr-4 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri Tema" />
                 </div>
-                <UButton class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10"
-                    label="Cari" />
+                <button class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
             </div>
             <div class="py-10">
                 <UtilsFilterInstagramUndanganCarousel  />

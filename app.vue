@@ -1,6 +1,6 @@
 <template>
   <NuxtLoadingIndicator color="red" :throttle="0" />
-  <div>
+  <div class="overflow-hidden">
     <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />

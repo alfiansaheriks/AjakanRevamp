@@ -4,7 +4,7 @@ import { ref, computed, watch } from 'vue';
 const activeCategory = ref<number | null>(null);
 const loading = ref(true);
 const currentPage = ref(1);
-const limit = 9;
+const limit = 12;
 
 const setActiveCategory = (categoryId: number) => {
     activeCategory.value = categoryId;
@@ -12,45 +12,45 @@ const setActiveCategory = (categoryId: number) => {
     refresh();
 };
 
-const props = defineProps({
-    filter: {
-        type: String,
-    }
-});
-// Fetch data dari API
+// Fetch data from the API
 const { data: undangan, pending, refresh } = useFetch(() =>
-    `https://ajakan.me/api/guest/themes?type=${props.filter}&limit=${limit}&page=${currentPage.value}`
+    `https://ajakan.me/api/guest/themes?type=video_3d&limit=${limit}&page=${currentPage.value}`
 );
 
-const dataUndangan = computed(() => (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || []);
-const subThemes = computed(() => (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes || []);
-const popularThemes = computed(() => (undangan.value as { data: { popular_themes_id: any[] } })?.data.popular_themes_id || []);
-
-// Watch untuk state pending
 watch(pending, (newPending) => {
+    // console.log('pending:', newPending);
     loading.value = newPending;
 });
 
-watch(() => props.filter, () => {
-    currentPage.value = 1;
-    activeCategory.value = null;
-    refresh();
+watch(undangan, (newUndangan) => {
+    // console.log('undangan:', newUndangan);
 });
 
-// Function untuk mendapatkan nama sub theme berdasarkan id
-const getSubThemeName = (subThemeId: number) => {
-    const subTheme = subThemes.value.find((sub) => sub.id === subThemeId);
-    return subTheme ? subTheme.name : 'Unknown Sub Theme';
-};
+const dataUndangan = computed(() => {
+    // console.log('undangan.value:', undangan.value);
+    return (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || [];
+});
+
+const subThemes = computed(() => {
+    // console.log('subThemes:', (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes);
+    return (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes.map(subTheme => {
+        // Replace "Undangan 3D " (note the space after 3D) with an empty string
+        return {
+            ...subTheme,
+            name: subTheme.name.replace('Undangan 3D ', '')
+        };
+    }) || [];
+});
+
 
 // Filtered data undangan berdasarkan activeCategory
 const filteredDataUndangan = computed(() => {
     let filteredData = dataUndangan.value;
+    // console.log('activeCategory:', activeCategory.value);
     if (activeCategory.value) {
-        filteredData = filteredData.filter(item => item.sub_theme === activeCategory.value);
-    } else if (activeCategory.value === 0) {
-        filteredData = filteredData.filter(item => popularThemes.value.includes(item.id));
+        filteredData = filteredData.filter(item => item.category === activeCategory.value);
     }
+    // console.log('filteredData:', filteredData);
     return filteredData.slice(0, limit); // Apply limit after filtering
 });
 
@@ -74,10 +74,9 @@ const changePage = (page: number) => {
             <p>Loading...</p>
         </div>
         <div v-else class="flex flex-col">
-            <!-- Category Filter -->
-            <div v-if="props.filter === 'wedding'" class="mb-10 flex justify-between items-center">
+            <div class="mb-4 flex justify-between items-center">
                 <div>&#8203;</div>
-                <div class="flex overflow-x-auto space-x-2 w-64 lg:w-full lg:justify-center">
+                <div class="flex overflow-x-auto space-x-2 w-64 lg:w-full lg:justify-center mx-4">
                     <button
                         v-for="subTheme in subThemes" :key="subTheme.id"
                         @click="setActiveCategory(subTheme.id)"
@@ -91,17 +90,16 @@ const changePage = (page: number) => {
                 </div>
                 <div>&#8203;</div>
             </div>
-            <!-- End Category Filter -->
-
-            <!-- Undangan Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 lg:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-4 lg:px-28">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full">
-                    <NuxtLink :to="`https://ajakan.me/theme/preview/${undangan.url}`" class="block bg-transparent w-full rounded-none">
-                        <NuxtImg :src="undangan.image" alt="Article Image" class="w-full h-[308px] object-cover rounded-xl" />
-                        <div class="mt-2">
-                            <p class="text-base text-black my-1">{{ getSubThemeName(undangan.sub_theme) }}</p>
-                            <h3 class="text-lg font-semibold mb-2">{{ undangan.name }}</h3>
-                            <button class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full p-2">
+                    <NuxtLink to="/" class="block bg-transparent w-full rounded-none">
+                        <NuxtImg :src="undangan.image" alt="Article Image"
+                            class="w-full h-[310px] object-cover rounded-xl" />
+                        <div class="py-2">
+                            <p class="text-md text-black">{{ undangan.category_name }}</p>
+                            <h3 class="text-xl font-semibold py-2">{{ undangan.title }}</h3>
+                            <button
+                                class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />
                                 Preview
                             </button>
@@ -110,13 +108,13 @@ const changePage = (page: number) => {
                 </div>
             </div>
             <!-- Pagination -->
-            <div class="flex justify-start items-center mt-8 px-20" v-if="totalPages > 1">
+            <div class="flex justify-start items-center mt-8 px-4 lg:px-24" v-if="totalPages > 1">
                 <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
                     class="px-4 py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:previous-outline" class="text-3xl" />
                 </button>
                 <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
-                    class="px-4 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>
@@ -126,6 +124,11 @@ const changePage = (page: number) => {
 
 <style lang="scss" scoped>
 /* Adjust the styles as needed */
+.max-w-xs {
+    max-width: 30rem;
+    /* Adjust the max width */
+}
+
 .max-h-48 {
     max-height: 15rem;
     /* Adjust the max height */

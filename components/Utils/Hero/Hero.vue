@@ -1,13 +1,13 @@
 <template>
-  <section class="hero-section">
-    <div class="text-content">
+  <section class="hero-section z-20" data-aos="fade-in">
+    <div class="text-content px-16" data-aos="fade-up">
       <h1>
-        <span class="text-black md:text-[#0191D8]">Hanya dengan</span> <strong>bekerja dari rumah dan tanpa perlu
+        <span class="text-black md:text-[#0191D8] text-4xl">Hanya dengan</span> <strong>bekerja dari rumah dan tanpa perlu
         melakukan kustomisasi website,</strong>  <span class="text-white md:text-[#0191D8]">kamu bisa bisnis undangan digital</span>
       </h1>
-      <div class="buttons">
-        <UButton label="Bergabung Sekarang" class="primary-button"/>
-        <UButton label="Free Trial" class="secondary-button" />
+      <div class="flex flex-row gap-2 justify-center py-4 mt-5">
+        <button class="bg-[#0191D8] p-3 w-[200px] text-white text-base border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung Sekarang</button>  
+        <button class="bg-transparent p-3 w-[200px] border border-[#0191D8] text-[#0191D8] text-base font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free Trial</button>
       </div>
     </div>
   </section>
@@ -18,19 +18,16 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 12px;
-  background: url('assets/img/image/HeroBgTry.png') center center / cover no-repeat;
+  background: url('/images/HeroSection.png') center center / cover no-repeat;
   width: 100%;
-  height: 100vh;
+  height: 1400px;
   color: white;
 }
 
 .text-content {
-  max-width: 800px;
+  max-width: 1300px;
   background: transparent;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 220px;
   text-align: center;
 }
 
@@ -41,12 +38,13 @@
 
 .buttons {
   margin-top: 20px;
+  margin-right: 20px;
 }
 
 .primary-button,
 .secondary-button {
   padding: 10px 20px;
-  margin: 5px;
+  margin: 10px;
   border-radius: 5px;
   cursor: pointer;
   border: none;
