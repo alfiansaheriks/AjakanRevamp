@@ -116,13 +116,13 @@ const toggleAnswer = (index: number): void => {
                         <span class="font-semibold text-[#0191D8]">Jadikan Bisnis Kamu Lebih Mudah dan Sukses</span>
                     </h1>
                 </div>
-                <div class="flex flex-col items-center lg:max-w-[700px]">
+                <div class="flex flex-col items-center lg:max-w-[700px] mt-5">
                     <p class="text-base lg:text-lg text-center text-[#1A1A1A]">Hanya dengan bekerja dari rumah dan tanpa
                         perlu
                         melakukan kustomisasi website, <span class="font-semibold">kamu bisa bisnis undangan
                             digital</span></p>
                 </div>
-                <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-24">
+                <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
                     <UButton class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</UButton>
                     <Icon name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
@@ -145,8 +145,8 @@ const toggleAnswer = (index: number): void => {
                         class="scale-100 w-10 h-auto object-contain" />
                 </div>
                 <div
-                    class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#0191D8] rounded-3xl w-full py-4">
-                    <div class="w-full lg:w-full px-4 lg:px-8">
+                    class="flex flex-col lg:flex-row items-center justify-center bg-[#0191D8] rounded-3xl w-[1113px] h-[576px] py-4">
+                    <div class="w-full lg:w-full px-4 lg:px-[74px]">
                         <div class="flex flex-col items-start justify-center py-10 min-h-auto">
                             <h2 class="text-xl lg:text-4xl font-semibold text-[#fff]">Mau Sukses Hasilkan<br /> Jutaan
                                 Rupiah
@@ -163,9 +163,9 @@ const toggleAnswer = (index: number): void => {
                     <div class="w-full lg:w-full mt-4 lg:mt-0">
                         <div class="relative right-14">
                             <img src="/images/woman-smartphone.png" alt="Card Image"
-                                class="w-full h-full object-cover rounded-xl" />
+                                class="w-[978px] h-[568px] object-cover rounded-xl" />
                             <div
-                                class="absolute w-[50%] h-[30%] left-[30%] top-[70%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
+                                class="absolute w-[70%] h-[30%] left-[25%] top-[70%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
                             </div>
                         </div>
                     </div>
@@ -279,7 +279,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Phone Image for Desktop -->
-                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-50%] z-0" data-aos="fade-up">
+                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-25%] z-0" data-aos="fade-up">
                         <img src="/images/phone-join-desktop.png" alt="Card Image"
                             class="w-auto h-full object-cover rounded-3xl" />
                     </div>
@@ -292,14 +292,14 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
 
-        <section id="section5" class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh)] relative">
+        <section id="section5" class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh)] relative mt-20">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-semibold">Yang Kami Sediakan untuk Kamu</h2>
             </div>
             <UtilsJoinPartnerCardCarousel />
         </section>
         <section id="section6"
-            class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10">
+            class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10 mt-20">
             <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]" data-aos="fade">
                 <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span> Terbaik
                     untuk Kamu</h2>
@@ -361,7 +361,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
          <section id="faq-section"
-            class="py-10 bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-68px)] lg:mt-20">
+            class="py-10 bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-68px)] lg:mt-[105px]">
             <div class="w-full mx-auto px-4 lg:px-28 text-lg lg:text-base" data-aos="fade">
                 <h2 class="text-3xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1">
@@ -388,7 +388,7 @@ const toggleAnswer = (index: number): void => {
                 </div>
             </div>
         </section>
-        <section id="reminder-section" class="py-10 bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center">
+        <section id="reminder-section" class="py-10 bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:mb-32 lg:mt-[105px]">
             <div class="flex-1 flex justify-center items-center px-4">
                 <div
                     class="flex flex-col lg:flex-col lg:w-[84vw] lg:h-[40vh] justify-center items-center bg-[#0191D8] px-[7%] rounded-3xl py-[7%]" data-aos="fade">

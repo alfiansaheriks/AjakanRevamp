@@ -112,7 +112,7 @@ onMounted(() => {
 
         <!-- Filter Instagram -->
         <div class="invitation-section flex flex-col lg:flex-row items-center my-12">
-            <div class="text-section lg:w-1/2" data-aos="fade-right">
+            <div class="text-section lg:w-1/2 lg:max-w-[545px]" data-aos="fade-right">
                 <h2 class="text-4xl font-semibold">
                     <span class="text-black lg:text-[#0191D8]">Filter Instagram</span>
                 </h2>
@@ -193,7 +193,7 @@ onMounted(() => {
 }
 
 .invitation-section {
-    @apply w-full lg:px-8;
+    @apply w-full lg:px-24;
 }
 
 .text-section h2 {

@@ -31,28 +31,30 @@ onUnmounted(() => {
 <template>
     <section id="section1" class="hero-section flex flex-col min-h-[1000px] relative bg-[#F7FAFC]" data-aos="fade-left">
         <!-- Text Section -->
-        <div class="text-container flex flex-col px-2 py-8 lg:py-28 md:px-8 lg:px-24" data-aos="fade-right" data-aos-delay="300">
+        <div class="text-container flex flex-col px-2 py-8 lg:py-28 md:px-8 lg:px-28 lg:min-w-[639px] lg:min-h-[168px]"
+            data-aos="fade-right" data-aos-delay="300">
             <h1 class="text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-normal text-black">
                 Tersedia Untuk Kamu dan
                 <span class="text-[#0191D8] font-bold">Kami Membuat Produk Khusus Untukmu</span>
             </h1>
-            <p class="leading-tight lg:leading-tight text-sm sm:text-sm md:text-base lg:text-lg text-black mt-4">
+            <p class="leading-tight lg:leading-tight text-sm sm:text-sm md:text-base lg:text-lg text-black mt-5">
                 Tersedia berbagai macam produk yang memiliki beragam fitur dan keunggulan yang sesuai dengan kebutuhan
                 dan preferensi customer kamu.
             </p>
         </div>
 
-        <!-- Arrow Icon -->
-        <div class="arrow-container flex items-center justify-center w-full">
-            <Icon name="mdi:arrow-down-drop-circle" class="text-sky-300 text-4xl cursor-pointer" />
+        <!-- Centered Arrow Icon -->
+        <div class="arrow-wrapper flex items-center justify-center flex-grow mb-5">
+            <div class="arrow-container flex items-center justify-center w-10 h-10 bg-[#dff4ff] rounded-full">
+                <Icon name="lets-icons:arrow-drop-down" class="text-[#0191d8] text-4xl cursor-pointer" />
+            </div>
         </div>
 
         <!-- Cards Section -->
-        <div v-if="!isMobile" class="cards-container mt-auto px-4 md:px-8 lg:px-24">
+        <div v-if="!isMobile" class="cards-container mt-auto px-4 md:px-8 lg:px-28">
             <div v-for="(card, index) in cards" :key="index"
                 :class="['card overflow-hidden', card.class.includes('save-the-date') ? 'save-the-date-card' : '', 'bg-[#0191D8] text-white rounded-3xl shadow-lg lg:px-16 md:overflow-x-hidden md:h-auto relative']"
-                :data-aos="'fade-up'"
-                :data-aos-delay="index * 100">
+                :data-aos="'fade-up'" :data-aos-delay="index * 100">
                 <h3 class="text-lg font-normal text-center max-w-[150px] md:max-w-[170px]" v-html="card.title"></h3>
                 <img :src="card.image" :alt="card.title" :class="card.class" />
                 <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
@@ -65,9 +67,7 @@ onUnmounted(() => {
                     'card flex-shrink-0 w-4/5 bg-[#0191D8] text-white rounded-3xl shadow-lg relative',
                     card.class.includes('save-the-date') ? 'save-the-date-card' : '',
                     'sm:mr-4 sm:mt-20 sm:scroll-snap-start'
-                ]" style="scrollbar-width: none;"
-                :data-aos="'fade-up'"
-                :data-aos-delay="index * 100">
+                ]" style="scrollbar-width: none;" :data-aos="'fade-up'" :data-aos-delay="index * 100">
                     <h3 :class="[
                         'text-lg font-normal text-center max-w-[150px] md:max-w-[170px]',
                         card.title.toLowerCase() === 'undangan save the date' ? '' : ''
@@ -122,8 +122,6 @@ onUnmounted(() => {
 }
 
 .arrow-container {
-    margin-top: 10rem;
-    margin-bottom: 2rem;
 
     @media (max-width: 639px) {
         margin-top: 37rem;
@@ -134,8 +132,8 @@ onUnmounted(() => {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     padding: 1rem 0;
-    padding-left: 6rem;
-    padding-right: 6rem;
+    padding-left: 7rem;
+    padding-right: 7rem;
     gap: 1.5rem;
     scroll-snap-type: x mandatory;
     scroll-padding: 1rem;

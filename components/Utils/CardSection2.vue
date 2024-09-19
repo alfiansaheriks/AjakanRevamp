@@ -107,7 +107,7 @@ onUnmounted(() => {
 
 <template>
     <div>
-        <div v-if="isMobile" class="carousel-container flex overflow-x-auto gap-2 w-full overflow-hidden">
+        <div v-if="isMobile" class="carousel-container flex overflow-x-auto gap-6 w-full overflow-hidden">
             <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full max-w-xs">
                 <UtilsCard
                     :cardStyle="card.cardStyle"

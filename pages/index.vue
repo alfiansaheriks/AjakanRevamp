@@ -158,7 +158,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section v-else id="section1"
-            class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1300px] py-20"
+            class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-[76px] min-h-[1400px]"
             style="background-image: url('/images/HeroMobile1.png');" data-aos="fade-right" data-aos-delay="100">
             <!-- Arrow icon -->
             <div @click="scrollToSection('section2')"
@@ -167,7 +167,7 @@ const toggleAnswer = (index: number): void => {
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 py-10 mb-20">
-                <div class="max-w-[550px]" data-aos="fade-left" data-aos-delay="100">
+                <div class="min-w-[380px]" data-aos="fade-left" data-aos-delay="100">
                     <h1 class="text-xl lg:text-4xl">
                         Platform <b class="text-sky-400">B2B</b><span class="font-semibold"> Paket<h1
                                 class="text-xl lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
@@ -179,10 +179,10 @@ const toggleAnswer = (index: number): void => {
                     </div>
                     <div class="flex justify-start gap-4 mt-4">
                         <button
-                            class="bg-[#0191D8] p-2 lg:p-3 lg:w-[200px] text-white text-xs border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
+                            class="bg-[#0191D8] p-2 lg:p-3 w-[188px] text-white text-xs border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
                             Sekarang</button>
                         <button
-                            class="bg-transparent lg:p-3 lg:w-[200px] w-[100px] border border-[#0191D8] text-[#0191D8] text-xs font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
+                            class="bg-transparent lg:p-3 lg:w-[200px] w-[188px] border border-[#0191D8] text-[#0191D8] text-xs font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
                             Trial</button>
                     </div>
                 </div>
@@ -193,7 +193,7 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section3"
             class="bg-[#E7F7FF] lg:bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center py-4">
-            <div class="md:flex md:flex-row md:justify-between md:items-center w-full px-5 lg:px-28">
+            <div class="md:flex md:flex-row md:justify-between md:items-center w-full px-5 lg:px-28 min-h-[800px]">
                 <UtilsCardSection3 />
             </div>
         </section>
@@ -231,7 +231,7 @@ const toggleAnswer = (index: number): void => {
                 </div>
 
                 <!-- Right Side: Text -->
-                <div class="w-full sm:w-5/12 px-5 py-10" data-aos="fade-left">
+                <div class="w-full sm:w-5/12 px-5 py-10 mt-[91px]" data-aos="fade-left">
                     <h2 class="text-xl lg:text-4xl font-semibold mb-4">Estimasi <span
                             class="text-[#0191D8]">Keuntungan</span> yang
                         akan Kamu Dapatkan</h2>
@@ -249,11 +249,15 @@ const toggleAnswer = (index: number): void => {
         </section>
 
         <section id="section5"
-            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)]">
-            <div class="text-center py-12">
-                <h2 class="text-2xl lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)] mt-[99px] lg:mt-0">
+            <div class="text-center mb-[47px] lg:py-10">
+                <h2 v-if="isLargeScreen" class="text-[32px] lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
                         Usaha</span> Terbaik
                     <br />untuk Kamu
+                </h2>
+                <h2 v-else class="text-[32px] lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                        Usaha</span> Terbaik untuk
+                    <br /> Kamu
                 </h2>
             </div>
             <div class="flex justify-center gap-2 w-full px-5 lg:px-28">
@@ -261,7 +265,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section id="section6"
-            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center lg:min-h-[550px] px-5 lg:px-0 mt-32">
+            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center lg:min-h-[550px] px-5 lg:px-0 lg:mt-32">
             <!-- Title -->
             <div class="text-center mt-10 mb-10">
                 <h2 class="text-3xl md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
@@ -300,7 +304,7 @@ const toggleAnswer = (index: number): void => {
         <section v-else id="section7"
             class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center">
             <div class="flex flex-col lg:flex-row justify-between w-full lg:mt-10 px-5 lg:px-28">
-                <div class="text-center mb-8 py-12">
+                <div class="text-center mb-8 py-12 ">
                     <h2 class="text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span>
                         Terbaik
                         untuk Kamu</h2>
@@ -308,7 +312,7 @@ const toggleAnswer = (index: number): void => {
                 <div data-aos="fade-left">
                     <NuxtImg src="/image/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
                 </div>
-                <div class="mb-4 mt-4" data-aos="fade-right">
+                <div class="mb-4 mt-4 max-w-[367px]" data-aos="fade-right">
                     <h1 class="text-3xl max-w-[600px]">Peluang yang Menjanjikan untuk <span
                             class="text-[#0191D8]">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-2">
@@ -378,14 +382,14 @@ const toggleAnswer = (index: number): void => {
         <section id="faq-section"
             class="py-10 bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-68px)] lg:mt-20">
             <div class="w-full mx-auto px-5 lg:px-28 text-lg lg:text-base" data-aos="fade-in">
-                <h2 class="text-4xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
+                <h2 class="text-[32px] lg:text-4xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 mt-8">
-                    <Ucard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-2xl px-12 py-4">
+                    <Ucard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-2xl px-4 lg:px-12 py-4">
                         <div class="flex justify-between items-center">
-                            <h3 v-if="faq.showAnswer" class="lg:text-xl font-semibold text-black">{{ faq.question
+                            <h3 v-if="faq.showAnswer" class="text-base lg:text-xl font-semibold text-black">{{ faq.question
                                 }}
                             </h3>
-                            <h3 v-else="faq.showAnswer" class="lg:text-lg font-semibold text-black">{{ faq.question }}
+                            <h3 v-else="faq.showAnswer" class="text-base lg:text-lg font-semibold text-black">{{ faq.question }}
                             </h3>
                             <button @click="toggleAnswer(index)"
                                 class="p-4 w-4 h-4 lg:w-8 lg:h-8 flex items-center justify-center rounded-full bg-[#0191D8] focus:outline-none">
@@ -406,7 +410,7 @@ const toggleAnswer = (index: number): void => {
         <section id="article-section"
             class="bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-250px)] px-5 mt-10">
             <div class="w-full">
-                <h2 class="text-3xl font-semibold text-center mb-8">Blog</h2>
+                <h2 class="text-3xl font-semibold lg:text-center mb-8">Blog</h2>
                 <UtilsArticleCarousel />
                 <!-- <div v-if="isLargeScreen"
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-10 blur-80 absolute right-0 bg-gradient-to-r from-[#84D2F9] to-transparent mt-6">
