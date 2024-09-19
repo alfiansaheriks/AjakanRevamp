@@ -104,7 +104,7 @@ const toggleAnswer = (index: number): void => {
 
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
-        <section id="section1" class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4">
+        <section id="section1" class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4" data-aos="fade-up">
             <div class="flex-1 flex flex-col justify-center items-end left-3/4">
                 <div
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] lg:mt-96">
@@ -138,7 +138,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section id="section2"
-            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20">
+            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20" data-aos="fade-up">
             <div v-if="!isMobile" class="flex-1 flex flex-col lg:flex-row justify-between gap-8 mt-8">
                 <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-start px-2">
                     <img src="/images/titik-join1.png" alt="Dot Design"
@@ -215,12 +215,12 @@ const toggleAnswer = (index: number): void => {
                 <div
                     class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#f8f9fd] w-full lg:py-4">
                     <div class="w-full lg:w-1/2">
-                        <div v-if="!isMobile" class="relative aspect-h-3">
+                        <div v-if="!isMobile" class="relative aspect-h-3" data-aos="fade-right">
                             <img src="/images/join-partner-2.png" alt="Card Image"
                                 class="w-full h-full object-cover" />
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 lg:px-20">
+                    <div class="w-full lg:w-1/2 lg:px-20" data-aos="fade-left">
                         <div class="flex flex-col items-start justify-center">
                             <h2 v-if="!isMobile" class="text-xl lg:text-4xl font-semibold text-[#000]">Manfaat Memiliki
                                 Bisnis
@@ -253,7 +253,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Image for Mobile -->
-                    <div class="w-full lg:w-1/2 lg:order-2">
+                    <div class="w-full lg:w-1/2 lg:order-2" data-aos="fade-up">
                         <div v-if="isMobile" class="">
                             <img src="/images/join-phone-1.png" alt="Phone Join Image"
                                 class="w-full h-full object-cover rounded-3xl" />
@@ -261,7 +261,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Text Content -->
-                    <div class="w-full lg:w-1/2 lg:px-24 px-4 z-10">
+                    <div class="w-full lg:w-1/2 lg:px-24 px-4 z-10" data-aos="fade-right">
                         <div class="flex flex-col items-start justify-center lg:px-4">
                             <h2 class="text-xl lg:text-4xl font-semibold text-black lg:text-[#fff] max-w-[500px]">
                                 <span class="text-[#0191D8] lg:text-white">Estimasi</span> Keuntungan yang akan Kamu
@@ -279,7 +279,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Phone Image for Desktop -->
-                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-50%] z-0">
+                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-50%] z-0" data-aos="fade-up">
                         <img src="/images/phone-join-desktop.png" alt="Card Image"
                             class="w-auto h-full object-cover rounded-3xl" />
                     </div>
@@ -300,11 +300,11 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section6"
             class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10">
-            <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]">
+            <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]" data-aos="fade">
                 <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span> Terbaik
                     untuk Kamu</h2>
             </div>
-            <div class="px-2">
+            <div class="px-2" data-aos="fade">
                 <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
                     Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website. Berapa
                     biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. <b>Namun, di sini kami
@@ -325,7 +325,7 @@ const toggleAnswer = (index: number): void => {
         <section v-if="!isMobile" id="section7"
             class="bg-image flex-1 flex flex-col justify-center items-start min-h-[100vh]">
             <div class="flex-1 flex flex-col justify-center items-start">
-                <div class="flex flex-col items-start lg:w-full px-4 lg:px-28">
+                <div class="flex flex-col items-start lg:w-full px-4 lg:px-28" data-aos="fade-right">
                     <h2 class="text-40 font-bold text-white">
                         <span class="text-40 font-normal">Yakin tidak ingin </span>bergabung<br />sekarang juga dan
                         memanfaatkan<br />kesempatan istimewa yang<br />tersedia?
@@ -362,7 +362,7 @@ const toggleAnswer = (index: number): void => {
         </section>
          <section id="faq-section"
             class="py-10 bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-68px)] lg:mt-20">
-            <div class="w-full mx-auto px-4 lg:px-28 text-lg lg:text-base">
+            <div class="w-full mx-auto px-4 lg:px-28 text-lg lg:text-base" data-aos="fade">
                 <h2 class="text-3xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1">
                     <Ucard v-for="(faq, index) in faqs" :key="index"
@@ -391,7 +391,7 @@ const toggleAnswer = (index: number): void => {
         <section id="reminder-section" class="py-10 bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center">
             <div class="flex-1 flex justify-center items-center px-4">
                 <div
-                    class="flex flex-col lg:flex-col lg:w-[84vw] lg:h-[40vh] justify-center items-center bg-[#0191D8] px-[7%] rounded-3xl py-[7%]">
+                    class="flex flex-col lg:flex-col lg:w-[84vw] lg:h-[40vh] justify-center items-center bg-[#0191D8] px-[7%] rounded-3xl py-[7%]" data-aos="fade">
                     <div class="flex-1 flex flex-col justify-center items-center">
                         <h2 class="text-white text-lg lg:text-40 text-center font-semibold mb-4">Informasi Penting</h2>
                         <p class="text-white text-sm lg:text-base text-center">Keberhasilan, testimonial, bonus, dan

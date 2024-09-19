@@ -76,7 +76,7 @@ const cards = ref([
 
 
 <template>
-    <div data-aos="fade-right" class="max-w-[1200px] mb-4 py-10 mr-10">
+    <div data-aos="fade-right" data-aos-delay="300" class="max-w-[1200px] mb-4 py-10 mr-10">
         <h1 class="lg:text-5xl text-3xl text-[#0191D8] font-semibold">
             Apa <span class="text-black">Keuntungan </span> Bergabung Bersama Ajakan?
         </h1>
@@ -86,7 +86,7 @@ const cards = ref([
         </div>
     </div>
     <div v-if="isMobile" class="flex overflow-x-auto gap-2">
-        <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-[calc(100%-40px)]" data-aos="fade-up">
+        <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-[calc(100%-40px)]" data-aos="fade-up" data-aos-delay="300">
             <UtilsCardBenefit :cardStyle="card.cardStyle" :cardIconStyle="card.cardIconStyle" :iconName="card.iconName"
                 :iconColor="card.iconColor" :iconSize="card.iconSize" :titleStyle="card.titleStyle" :title="card.title"
                 :pStyle="card.pStyle" :subtitleStyle="card.subtitleStyle" :subtitle="card.subtitle"
@@ -95,7 +95,7 @@ const cards = ref([
     </div>
 
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
-        <UtilsCardBenefit v-for="(card, index) in cards" :key="index" class="card-container leading-tight" data-aos="fade-left"
+        <UtilsCardBenefit v-for="(card, index) in cards" :key="index" class="card-container leading-tight" data-aos="fade-left" data-aos-delay="300"
             :cardStyle="card.cardStyle" :cardIconStyle="card.cardIconStyle" :iconName="card.iconName"
             :iconColor="card.iconColor" :iconSize="card.iconSize" :titleStyle="card.titleStyle" :title="card.title"
             :pStyle="card.pStyle" :subtitleStyle="card.subtitleStyle" :subtitle="card.subtitle"

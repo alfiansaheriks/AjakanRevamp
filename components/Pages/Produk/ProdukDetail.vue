@@ -48,7 +48,7 @@ onMounted(() => {
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
             <!-- Image Section -->
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-left">
+            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
@@ -64,7 +64,7 @@ onMounted(() => {
 
         <!-- Undangan Video -->
         <div class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
-            <div class="text-section lg:w-1/2 lg:px-4">
+            <div class="text-section lg:w-1/2 lg:px-4" data-aos="fade-left">
                 <h2 class="text-4xl font-semibold">
                     Undangan <span class="text-black lg:text-[#0191D8]">Video</span>
                 </h2>
@@ -75,7 +75,7 @@ onMounted(() => {
                     yang memberikan sentuhan modern pada undangan digital. </p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
                 <!-- Images -->
@@ -112,7 +112,7 @@ onMounted(() => {
 
         <!-- Filter Instagram -->
         <div class="invitation-section flex flex-col lg:flex-row items-center my-12">
-            <div class="text-section lg:w-1/2">
+            <div class="text-section lg:w-1/2" data-aos="fade-right">
                 <h2 class="text-4xl font-semibold">
                     <span class="text-black lg:text-[#0191D8]">Filter Instagram</span>
                 </h2>
@@ -123,7 +123,7 @@ onMounted(() => {
                 </p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <div class="shape-circle absolute"></div>
                 <!-- Images with Gradient -->
                 <div class="relative">
@@ -137,7 +137,7 @@ onMounted(() => {
 
         <!-- Undangan Save The Date -->
         <div v-if="!isMobile" class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
-            <div class="text-section lg:w-1/2 px-4">
+            <div class="text-section lg:w-1/2 px-4" data-aos="fade-left">
                 <h2 class="text-4xl font-semibold">
                     Undangan <span class="text-black lg:text-[#0191D8]">Save The Date</span>
                 </h2>
@@ -146,7 +146,7 @@ onMounted(() => {
                     The Date”.</p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
-            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
                 <div v-if="!isMobile"
@@ -163,7 +163,7 @@ onMounted(() => {
         </div>
 
         <div class="invitation-section flex flex-col lg:flex-row items-center md:my-12 my-12">
-            <div class="text-section lg:w-1/2">
+            <div class="text-section lg:w-1/2" data-aos="fade-right">
                 <h2 class="text-3xl font-bold text-black lg:text-[#0191D8]">Undangan 3D</h2>
                 <p class="my-4">Undangan pernikahan 3D dibuat dengan teknologi yang canggih, undangan ini memberikan
                     pengalaman visual yang menakjubkan kepada para undangan. Dengan dimensi tambahan, seperti tekstur,
@@ -171,7 +171,7 @@ onMounted(() => {
                     undangan tradisional.</p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
-            <div class="image-section lg:w-1/2 flex justify-center relative lg:mt-0">
+            <div class="image-section lg:w-1/2 flex justify-center relative lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>

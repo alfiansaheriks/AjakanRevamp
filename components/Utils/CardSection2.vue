@@ -1,10 +1,8 @@
 <script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import 'animate.css';
-
 interface ApiResponse {
     data: {
-        total_visitor: number;
+        total_visitor: string | number;
         total_order: number;
         total_mitra: number;
         total_theme: number;
@@ -14,6 +12,28 @@ interface ApiResponse {
 const { data: stats } = await useFetch<ApiResponse>('https://ajakan.me/api/guest/statistic');
 const stat = stats.value?.data;
 
+// Fungsi untuk memformat angka menjadi 'Juta+' jika mencapai jutaan
+function formatToJutaPlus(value: string | number): string {
+  // Jika value berupa string, hapus tanda titik dan konversi menjadi angka
+  if (typeof value === 'string') {
+    value = Number(value.replace(/\./g, ''));
+  }
+
+  if (value >= 1_000_000) {
+    const juta = (value / 1_000_000).toFixed(0); // Menambahkan satu angka desimal
+    return `${juta} Juta+`;
+  }
+
+  return value.toLocaleString(); // Memformat angka kecil dengan koma
+}
+
+console.log('Total Visitor Unformatted: ', stat?.total_visitor);
+
+// Memformat angka total visitor
+const totalVisitorFormatted = stat ? formatToJutaPlus(stat.total_visitor) : '0';
+
+console.log('Total Visitor Formatted: ', totalVisitorFormatted);
+
 const cards = ref([
     {
         cardStyle: "relative flex flex-col w-full h-96 lg:h-auto p-6 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
@@ -21,7 +41,7 @@ const cards = ref([
         bgIconStyle: "w-16 h-16 flex items-center justify-center bg-[#0191D8] rounded-xl mb-10 group-hover:bg-[white]",
         iconColor: "text-white group-hover:text-[#0191D8]",
         titleStyle: "text-48 font-bold text-black group-hover:text-white",
-        title: stat?.total_visitor,
+        title: totalVisitorFormatted,
         pStyle: "text-16 text-black group-hover:text-white",
         subtitleStyle: "font-bold",
         subtitle: "Tamu undangan",
@@ -101,7 +121,7 @@ onUnmounted(() => {
                     :subtitle="card.subtitle"
                     :description="card.description"
                     :data-aos="'fade-up'"
-                    :data-aos-delay="index * 100"
+                    :data-aos-delay="index * 300"
                 />
             </div>
         </div>
@@ -120,7 +140,7 @@ onUnmounted(() => {
                 :subtitle="card.subtitle"
                 :description="card.description"
                 :data-aos="'fade-up'"
-                :data-aos-delay="index * 100"
+                :data-aos-delay="index * 300"
             />
         </div>
     </div>

@@ -129,36 +129,22 @@ onUnmounted(() => {
 <template>
     <div class="px-4">
         <div v-if="isMobile" class="carousel-container flex overflow-x-auto">
-            <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full">
-                <UtilsJoinPartnerBaseCard
-                    :cardStyle="card.cardStyle"
-                    :iconName="card.iconName"
-                    :bgIconStyle="card.bgIconStyle"
-                    :iconColor="card.iconColor"
-                    :titleStyle="card.titleStyle"
-                    :title="card.title"
-                    :pStyle="card.pStyle"
-                    :subtitleStyle="card.subtitleStyle"
-                    :subtitle="card.subtitle"
-                    :description="card.description"
-                />
+            <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full" :data-aos="'fade-up'"
+                :data-aos-delay="index * 100">
+                <UtilsJoinPartnerBaseCard :cardStyle="card.cardStyle" :iconName="card.iconName"
+                    :bgIconStyle="card.bgIconStyle" :iconColor="card.iconColor" :titleStyle="card.titleStyle"
+                    :title="card.title" :pStyle="card.pStyle" :subtitleStyle="card.subtitleStyle"
+                    :subtitle="card.subtitle" :description="card.description" />
             </div>
         </div>
-        <div v-else class="grid-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 lg:px-24 leading-tight">
-            <UtilsJoinPartnerBaseCard
-                v-for="(card, index) in cards"
-                :key="index"
-                :cardStyle="card.cardStyle"
-                :iconName="card.iconName"
-                :bgIconStyle="card.bgIconStyle"
-                :iconColor="card.iconColor"
-                :titleStyle="card.titleStyle"
-                :title="card.title"
-                :pStyle="card.pStyle"
-                :subtitleStyle="card.subtitleStyle"
-                :subtitle="card.subtitle"
-                :description="card.description"
-            />
+        <div v-else
+            class="grid-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 lg:px-24 leading-tight overflow-hidden" >
+            <UtilsJoinPartnerBaseCard v-for="(card, index) in cards" :key="index" :cardStyle="card.cardStyle"
+                :data-aos="'fade-up'"
+                :data-aos-delay="index * 100"
+                :iconName="card.iconName" :bgIconStyle="card.bgIconStyle" :iconColor="card.iconColor"
+                :titleStyle="card.titleStyle" :title="card.title" :pStyle="card.pStyle"
+                :subtitleStyle="card.subtitleStyle" :subtitle="card.subtitle" :description="card.description" />
         </div>
     </div>
 </template>
@@ -168,7 +154,7 @@ onUnmounted(() => {
     scroll-snap-type: x mandatory;
 }
 
-.carousel-container > div {
+.carousel-container>div {
     scroll-snap-align: start;
 }
 
@@ -177,7 +163,7 @@ onUnmounted(() => {
     scroll-snap-type: x mandatory;
 }
 
-.grid-container > div {
+.grid-container>div {
     scroll-snap-align: start;
 }
 </style>

@@ -25,7 +25,7 @@ const products = ref<Product[]>([]);
     :key="index" 
     class="relative p-6 rounded-2xl shadow-md w-full z-10 overflow-hidden flex flex-col h-full"
     :data-aos="'fade-up'"
-    :data-aos-delay="index * 100"
+    :data-aos-delay="index * 300"
   >
     <div class="absolute inset-0 bg-white" style="height: 50%"></div>
     <div class="absolute inset-0 bg-[#DFF4FF]" style="height: 50%; top: 50%"></div>

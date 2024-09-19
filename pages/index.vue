@@ -123,7 +123,7 @@ const toggleAnswer = (index: number): void => {
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
         <!-- First Section with a transition background -->
         <section v-if="isLargeScreen" id="section1"
-            class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1300px] animate__animated animate__fadeInRight"
+            class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1150px] animate__animated animate__fadeInRight"
             style="background-image: url('/images/HeroSection1.png');">
             <!-- Arrow icon -->
             <div @click="scrollToSection('section2')"
@@ -131,23 +131,24 @@ const toggleAnswer = (index: number): void => {
                 <Icon name="mdi:arrow-down-drop-circle" class="text-sky-300 text-5xl cursor-pointer" />
             </div>
 
-            <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 py-20 mb-20">
+            <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 mt-24 mb-20">
                 <div class="max-w-[800px] mt-20 px-4 animate__animated animate__fadeInLeft custom-delay-500ms">
-                    <h1 class="text-xl lg:leading-10 lg:text-5xl mb-7">
-                        Platform <b class="text-sky-400">B2B</b><span class="font-semibold"> Paket<h1
-                                class="text-xl lg:text-5xl font-semibold"> Bisnis Undangan Digital</h1></span>
+                    <h1 class="text-5xl font-semibold text-black max-md:text-4xl">
+                        <span>Platform</span>
+                        <span class="font-bold text-[#0191D8]"> B2B</span> Paket<br />
+                        Bisnis Undangan Digital
                     </h1>
-                    <div class="text-md lg:leading-tight lg:text-lg lg:mt-2 mt-4 lg:max-w-[700px]">
+                    <div class="text-md lg:leading-tight lg:text-lg lg:mt-5 mt-5 lg:max-w-[632px]">
                         Mulai bisnis undangan digital dengan brand dan website milik kamu sendiri. Dengan dukungan
                         kami,
                         kamu dapat membangun bisnis sendiri dan menghasilkan pendapatan sampingan yang menjanjikan
                     </div>
-                    <div class="flex justify-start gap-4 mt-7">
+                    <div class="flex justify-start gap-4 mt-12">
                         <button
-                            class="bg-[#0191D8] p-2 lg:p-3 lg:w-[200px] text-white text-md border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
+                            class="bg-[#0191D8] p-2 lg:p-3 lg:w-[248px] text-white text-xl border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
                             Sekarang</button>
                         <button
-                            class="bg-transparent lg:p-3 lg:w-[200px] w-[100px] border border-[#0191D8] text-[#0191D8] text-md font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
+                            class="bg-transparent lg:p-3 lg:w-[248px] w-[100px] border border-[#0191D8] text-[#0191D8] text-xl font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
                             Trial</button>
                     </div>
                 </div>
@@ -158,7 +159,7 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section v-else id="section1"
             class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1300px] py-20"
-            style="background-image: url('/images/HeroMobile1.png');" data-aos="fade-right">
+            style="background-image: url('/images/HeroMobile1.png');" data-aos="fade-right" data-aos-delay="100">
             <!-- Arrow icon -->
             <div @click="scrollToSection('section2')"
                 class="absolute top-[60%] z-20 flex items-center justify-center w-full">
@@ -166,7 +167,7 @@ const toggleAnswer = (index: number): void => {
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 py-10 mb-20">
-                <div class="max-w-[550px]" data-aos="fade-left">
+                <div class="max-w-[550px]" data-aos="fade-left" data-aos-delay="100">
                     <h1 class="text-xl lg:text-4xl">
                         Platform <b class="text-sky-400">B2B</b><span class="font-semibold"> Paket<h1
                                 class="text-xl lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
@@ -198,7 +199,7 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section v-if="isLargeScreen" id="section4"
             class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center"
-            style="background-image: url('/images/HeroSection3.png'); background-color: #F5F5F5;" data-aos="fade-right">
+            style="background-image: url('/images/HeroSection3.png'); background-color: #F5F5F5;" data-aos="fade-right" data-aos-delay="300">
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28">
                 <div class="flex justify-center w-full sm:w-6/12 h-full">
                     <!-- Empty container, background image will fill the section -->
@@ -213,7 +214,8 @@ const toggleAnswer = (index: number): void => {
                         Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 - Rp300.000
                         tergantung
                         fiturnya. Namun, di Ajakan, mitra kami sering menjualnya sekitar Rp100.000. <span
-                            class="lg:leading-tight text-base lg:text-lg lg:text-[#0191D8] font-semibold">Dengan menjual hanya 2 undangan
+                            class="lg:leading-tight text-base lg:text-lg lg:text-[#0191D8] font-semibold">Dengan menjual
+                            hanya 2 undangan
                             per
                             hari, dengan margin keuntungan Rp100.000, Anda bisa menghasilkan Rp6.000.000 dalam 30
                             hari.</span>
@@ -221,7 +223,8 @@ const toggleAnswer = (index: number): void => {
                 </div>
             </div>
         </section>
-        <section v-else id="section4" class="flex-1 flex flex-col justify-center items-center min-h-[100vh]" data-aos="fade-right">
+        <section v-else id="section4" class="flex-1 flex flex-col justify-center items-center min-h-[100vh]"
+            data-aos="fade-right">
             <div class="flex flex-col sm:flex-row justify-between items-center w-full">
                 <div class="flex justify-center w-full sm:w-6/12 h-full">
                     <NuxtImg src="/image/HpMobileSection4.png" alt="Hero Section 3" class="w-full h-full mt-2" />
@@ -248,19 +251,21 @@ const toggleAnswer = (index: number): void => {
         <section id="section5"
             class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)]">
             <div class="text-center py-12">
-                <h2 class="text-2xl lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span> Terbaik
-                    <br/>untuk Kamu</h2>
+                <h2 class="text-2xl lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                        Usaha</span> Terbaik
+                    <br />untuk Kamu
+                </h2>
             </div>
-                <div class="flex justify-center gap-2 w-full px-5 lg:px-28">
-                    <UtilsCardPackage />
-                </div>
+            <div class="flex justify-center gap-2 w-full px-5 lg:px-28">
+                <UtilsCardPackage />
+            </div>
         </section>
         <section id="section6"
             class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center lg:min-h-[550px] px-5 lg:px-0 mt-32">
             <!-- Title -->
             <div class="text-center mt-10 mb-10">
                 <h2 class="text-3xl md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
-                        class="text-[#0191D8]">aset <br/>berharga bagi kami</span>
+                        class="text-[#0191D8]">aset <br />berharga bagi kami</span>
                 </h2>
             </div>
             <div class="flex flex-1 w-full gap-8 mx-auto">
@@ -269,12 +274,11 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section v-if="isLargeScreen" id="section7"
             class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center"
-            style="background-image: url('/images/HeroSection7.png'); background-color: #f8f9fd;"
-            data-aos="fade-left">
+            style="background-image: url('/images/HeroSection7.png'); background-color: #f8f9fd;" data-aos="fade-left">
             <div class="flex flex-col lg:flex-row justify-between w-full px-5 lg:px-28" data-aos="fade-right">
                 <div class="mb-4">
-                    <h1 class="text-3xl font-semibold max-w-[600px] lg:max-w-[500px]">Peluang yang Menjanjikan untuk <span
-                            class="text-[#0191D8]">Bisnis Kamu</span></h1>
+                    <h1 class="text-3xl font-semibold max-w-[600px] lg:max-w-[545px]">Peluang yang Menjanjikan untuk
+                        <span class="text-[#0191D8]">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-6">
                         <p class="max-w-[600px] lg:max-w-[550px] leading-tight">
                             Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan
@@ -325,7 +329,8 @@ const toggleAnswer = (index: number): void => {
                 </div>
             </div>
         </section>
-        <section v-if="isLargeScreen" id="award-section" class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center mt-8" data-aos="fade">
+        <section v-if="isLargeScreen" id="award-section"
+            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center mt-8" data-aos="fade">
             <div class="flex flex-col justify-center items-center w-full px-28">
                 <div class="flex flex-col sm:flex-row justify-between items-center w-full  mx-auto gap-8">
                     <div class="flex flex-col bg-white px-36 py-11 rounded-xl w-full">
@@ -339,7 +344,8 @@ const toggleAnswer = (index: number): void => {
                             Desember 2021 dan <strong>Website of The Year 2021</strong> pada ajang Indonesia Website
                             Awards (IWA).
                         </p><br />
-                        <p class="leading-tight text-center text-base">Indonesia Website Awards (IWA), adalah sebuah ajang
+                        <p class="leading-tight text-center text-base">Indonesia Website Awards (IWA), adalah sebuah
+                            ajang
                             penghargaan website
                             terbaik yang didedikasikan khusus bagi para pelaku Usaha Kecil Menengah (UKM) Digital di
                             Indonesia sebagai bentuk dukungan akan perkembangan ekonomi digital di Indonesia.</p>
@@ -374,8 +380,7 @@ const toggleAnswer = (index: number): void => {
             <div class="w-full mx-auto px-5 lg:px-28 text-lg lg:text-base" data-aos="fade-in">
                 <h2 class="text-4xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 mt-8">
-                    <Ucard v-for="(faq, index) in faqs" :key="index"
-                        class="bg-white rounded-2xl px-12 py-4">
+                    <Ucard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-2xl px-12 py-4">
                         <div class="flex justify-between items-center">
                             <h3 v-if="faq.showAnswer" class="lg:text-xl font-semibold text-black">{{ faq.question
                                 }}
@@ -392,7 +397,8 @@ const toggleAnswer = (index: number): void => {
                                 </span>
                             </button>
                         </div>
-                        <p v-if="faq.showAnswer" class="leading-tight text-16 text-[#545454] mt-2" v-html="faq.answer"></p>
+                        <p v-if="faq.showAnswer" class="leading-tight text-16 text-[#545454] mt-2" v-html="faq.answer">
+                        </p>
                     </Ucard>
                 </div>
             </div>
@@ -422,6 +428,6 @@ const toggleAnswer = (index: number): void => {
 
 <style scoped>
 .custom-delay-500ms {
-  animation-delay: 0.5s;
+    animation-delay: 0.5s;
 }
 </style>

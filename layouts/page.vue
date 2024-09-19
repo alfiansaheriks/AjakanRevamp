@@ -234,7 +234,7 @@ const menus = ref([
             <NuxtLink to="/" class="text-sm">Ticket Event</NuxtLink><br />
           </div>
         </div>
-        <div class="md:flex flex-col md:grid md:grid-cols-4 gap-44">
+        <div class="md:flex flex-col md:grid lg:grid-cols-3 gap-44">
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Kontak</h1>
             <Icon name="mdi:instagram" class="bg-[#0191D8] mr-2" size="3vh" />
