@@ -145,10 +145,10 @@ const toggleAnswer = (index: number): void => {
                     </div>
                     <div class="flex justify-start gap-4 mt-12">
                         <button
-                            class="bg-[#0191D8] p-2 lg:p-3 lg:w-[248px] text-white text-xl border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
+                            class="bg-[#0191D8] p-2 lg:p-3 lg:w-[248px] text-white text-md border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
                             Sekarang</button>
                         <button
-                            class="bg-transparent lg:p-3 lg:w-[248px] w-[100px] border border-[#0191D8] text-[#0191D8] text-xl font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
+                            class="bg-transparent lg:p-3 lg:w-[248px] w-[100px] border border-[#0191D8] text-[#0191D8] text-md font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
                             Trial</button>
                     </div>
                 </div>
