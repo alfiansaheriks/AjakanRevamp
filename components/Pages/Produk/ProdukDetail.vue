@@ -53,11 +53,11 @@ onMounted(() => {
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/Group 633.png" alt="Undangan Digital 1"
+                <img v-if="!isMobile" src="~/assets/img/image/group-633.png" alt="Undangan Digital 1"
                     class="w-full scale-150 mt-10 object-cover" />
-                <NuxtImg v-else src="/image/undangandigital-mobile.png" alt="Undangan Digital"
+                <img v-else src="~/assets/img/image/undangandigital-mobile.png" alt="Undangan Digital"
                     class="phone-image-mobile" />
-                <NuxtImg v-if="!isMobile" src="/image/titikbirudetailproduk.png" alt="Undangan Digital 2"
+                <img v-if="!isMobile" src="~/assets/img/image/titikbirudetailproduk.png" alt="Undangan Digital 2"
                     class="titik-biru" />
             </div>
         </div>
@@ -79,11 +79,11 @@ onMounted(() => {
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/Group 634.png" alt="Undangan Video 1"
+                <img v-if="!isMobile" src="~/assets/img/image/group-634.png" alt="Undangan Video 1"
                     class="scale-150 z-10 md:w-[500px] w-[400px] h-[300px] lg:h-auto absolute -top-10" />
-                <!-- <NuxtImg v-if="!isMobile" src="/image/undanganvideodetail.png" alt="Undangan Video 2"
+                <!-- <img v-if="!isMobile" src="~/assets/img/image/undanganvideodetail.png" alt="Undangan Video 2"
                     class="lg:scale-150 md:w-[800px] w-[500px] relative lg:top-10 top-44 -left-20" /> -->
-                <NuxtImg v-else src="/image/undanganvideo-mobile.png" alt="Undangan Video" class="" />
+                <img v-else src="~/assets/img/image/undanganvideo-mobile.png" alt="Undangan Video" class="" />
             </div>
         </div>
 
@@ -102,11 +102,11 @@ onMounted(() => {
                 <!-- Shape Circle -->
                 <div class="shape-circle absolute"></div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/savethedatedetail.png" alt="Undangan Save The Date 1"
+                <img v-if="!isMobile" src="~/assets/img/image/savethedatedetail.png" alt="Undangan Save The Date 1"
                     class="tab-image-savethedate" />
-                <NuxtImg v-if="!isMobile" src="/image/titikbirusavethedate.png" alt="Undangan Save The Date 2"
+                <img v-if="!isMobile" src="~/assets/img/image/titikbirusavethedate.png" alt="Undangan Save The Date 2"
                     class="tab-image-savethedate second-tab-savethedate" />
-                <NuxtImg v-else src="/image/savethedatedetail.png" alt="Undangan Save The Date" class="" />
+                <img v-else src="~/assets/img/image/savethedatedetail.png" alt="Undangan Save The Date" class="" />
             </div>
         </div>
 
@@ -127,9 +127,9 @@ onMounted(() => {
                 <div class="shape-circle absolute"></div>
                 <!-- Images with Gradient -->
                 <div class="relative">
-                    <NuxtImg v-if="!isMobile" src="/image/Group 635.png" alt="Filter Instagram 1"
+                    <img v-if="!isMobile" src="~/assets/img/image/group-635.png" alt="Filter Instagram 1"
                         class="filter-phone-image scale-150" />
-                    <NuxtImg v-else src="/image/Group 635.png" alt="Filter Instagram 1"
+                    <img v-else src="~/assets/img/image/group-635.png" alt="Filter Instagram 1"
                         class="rounded-lg relative w-full scale-150 mt-10" />
                 </div>
             </div>
@@ -153,11 +153,11 @@ onMounted(() => {
                     class="shape-circle absolute left-1 bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/savethedatedetail.png" alt="Undangan Save The Date 1"
+                <img v-if="!isMobile" src="~/assets/img/image/savethedatedetail.png" alt="Undangan Save The Date 1"
                     class="tab-image-savethedate" />
-                <NuxtImg v-if="!isMobile" src="/image/titikbirusavethedate.png" alt="Undangan Save The Date 2"
+                <img v-if="!isMobile" src="~/assets/img/image/titikbirusavethedate.png" alt="Undangan Save The Date 2"
                     class="tab-image-savethedate second-tab-savethedate" />
-                <NuxtImg v-else src="/image/savethedatedetail.png" alt="Undangan Save The Date"
+                <img v-else src="~/assets/img/image/savethedatedetail.png" alt="Undangan Save The Date"
                     class="tab-image-savethedate" />
             </div>
         </div>
@@ -176,11 +176,11 @@ onMounted(() => {
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <NuxtImg v-if="!isMobile" src="/image/Group 636.png" alt="Undangan 3D 1"
+                <img v-if="!isMobile" src="~/assets/img/image/group-636.png" alt="Undangan 3D 1"
                     class="absolute w-[1000px] -bottom-[80%] scale-150 z-0" />
-                <!-- <NuxtImg v-if="!isMobile" src="/image/hp3d2.png" alt="Undangan 3D 2"
+                <!-- <img v-if="!isMobile" src="~/assets/img/image/hp3d2.png" alt="Undangan 3D 2"
                     class="phone-3d-image second-3d-phone" /> -->
-                <NuxtImg v-else src="/image/undangan3d-mobile.png" alt="Undangan 3D" class="relative -bottom-24" />
+                <img v-else src="~/assets/img/image/undangan3d-mobile.png" alt="Undangan 3D" class="relative -bottom-24" />
             </div>
         </div>
     </section>
@@ -387,7 +387,7 @@ onMounted(() => {
 
     .titik-biru {
         position: absolute;
-        top: 50px;
+        top: 350px;
         right: 10px;
         width: 50px;
         height: 50px;

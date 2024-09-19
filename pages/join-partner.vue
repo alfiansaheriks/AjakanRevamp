@@ -141,7 +141,7 @@ const toggleAnswer = (index: number): void => {
             class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20">
             <div v-if="!isMobile" class="flex-1 flex flex-col lg:flex-row justify-between gap-8 mt-8">
                 <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-start px-2">
-                    <NuxtImg src="/image/titik-join1.png" alt="Dot Design"
+                    <img src="/images/titik-join1.png" alt="Dot Design"
                         class="scale-100 w-10 h-auto object-contain" />
                 </div>
                 <div
@@ -162,7 +162,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
                     <div class="w-full lg:w-full mt-4 lg:mt-0">
                         <div class="relative right-14">
-                            <NuxtImg src="/image/woman-smartphone.png" alt="Card Image"
+                            <img src="/images/woman-smartphone.png" alt="Card Image"
                                 class="w-full h-full object-cover rounded-xl" />
                             <div
                                 class="absolute w-[50%] h-[30%] left-[30%] top-[70%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
@@ -172,7 +172,7 @@ const toggleAnswer = (index: number): void => {
 
                 </div>
                 <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-center px-2">
-                    <NuxtImg src="/image/titik-join1.png" alt="Dot Design"
+                    <img src="/images/titik-join1.png" alt="Dot Design"
                         class="scale-50 w-20 h-auto object-contain" />
                 </div>
             </div>
@@ -198,7 +198,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
                     <div class="w-full lg:w-full mt-4 lg:mt-0">
                         <div class="relative aspect-w-4 aspect-h-3">
-                            <NuxtImg src="/image/woman-smartphone.png" alt="Card Image"
+                            <img src="/images/woman-smartphone.png" alt="Card Image"
                                 class="w-full h-full object-cover rounded-xl" />
                             <div
                                 class="absolute h-[50%] top-[50%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
@@ -216,7 +216,7 @@ const toggleAnswer = (index: number): void => {
                     class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#f8f9fd] w-full lg:py-4">
                     <div class="w-full lg:w-1/2">
                         <div v-if="!isMobile" class="relative aspect-h-3">
-                            <NuxtImg src="/image/join-partner-2.png" alt="Card Image"
+                            <img src="/images/join-partner-2.png" alt="Card Image"
                                 class="w-full h-full object-cover" />
                         </div>
                     </div>
@@ -249,13 +249,13 @@ const toggleAnswer = (index: number): void => {
                     class="flex flex-col lg:flex-row lg:h-1/2 items-start justify-center md:bg-[#0191D8] w-full py-20 relative">
                     <!-- Dot Design on Desktop (Top Left) -->
                     <div v-if="!isMobile" class="absolute top-0 lg:left-5 lg:top-[10%]">
-                        <NuxtImg src="/image/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
+                        <img src="/images/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
                     </div>
 
                     <!-- Image for Mobile -->
                     <div class="w-full lg:w-1/2 lg:order-2">
                         <div v-if="isMobile" class="">
-                            <NuxtImg src="/image/join-phone-1.png" alt="Phone Join Image"
+                            <img src="/images/join-phone-1.png" alt="Phone Join Image"
                                 class="w-full h-full object-cover rounded-3xl" />
                         </div>
                     </div>
@@ -280,13 +280,13 @@ const toggleAnswer = (index: number): void => {
 
                     <!-- Phone Image for Desktop -->
                     <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-50%] z-0">
-                        <NuxtImg src="/image/phone-join-desktop.png" alt="Card Image"
+                        <img src="/images/phone-join-desktop.png" alt="Card Image"
                             class="w-auto h-full object-cover rounded-3xl" />
                     </div>
 
                     <!-- Bottom Dot Design on Desktop (Right of Phone Image) -->
                     <div v-if="!isMobile" class="absolute right-[2%] bottom-[10%]">
-                        <NuxtImg src="/image/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
+                        <img src="/images/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
                     </div>
                 </div>
             </div>

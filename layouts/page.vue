@@ -73,7 +73,7 @@ const menus = ref([
       <header v-if="scrolled"
         class="z-30 fixed top-0 w-full bg-white shadow-lg h-16 flex items-center justify-between transition-colors duration-300">
         <NuxtLink to="/" class="font-bold text-lg ml-32">
-          <NuxtImg src="/image/LogoAjakan.png" alt="Ajakan Logo" class="scale-150 mt-2" />
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 mt-2" />
         </NuxtLink>
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4 p-4">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
@@ -104,7 +104,7 @@ const menus = ref([
       <header v-else
         class="z-30 fixed top-0 w-full bg-transparent h-24 flex items-center justify-between transition-colors duration-300">
         <NuxtLink to="/" class="font-bold text-lg ml-32">
-          <NuxtImg src="/image/LogoAjakan.png" alt="Ajakan Logo" class="scale-150" />
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75" />
         </NuxtLink>
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
@@ -135,7 +135,7 @@ const menus = ref([
       <!-- Mobile Header -->
       <header v-if="isMobile" class="z-30 fixed top-0 w-full bg-white h-16 flex items-center justify-between px-4">
         <NuxtLink to="/" class="font-bold text-lg">
-          <NuxtImg src="/image/LogoAjakan.png" alt="Ajakan Logo" class="scale-110" />
+          <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75" />
         </NuxtLink>
         <button @click="toggleMenu" class="text-xl">
           <Icon :name="isMenuOpen ? 'mdi:close' : 'ion:menu'" />
@@ -174,7 +174,7 @@ const menus = ref([
       <PagesContainer class="flex-1 flex flex-col gap-8">
         <!-- Mobile Layout -->
         <div class="flex flex-col gap-4 md:hidden">
-          <NuxtImg src="/image/LogoAjakan.png" alt="Ajakan Logo" class="w-16 h-16" />
+          <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="w-16 h-16" />
           <div class="max-w-[350px]">
             <h1 class="font-bold mb-2">Tentang Kami</h1>
             <p class="text-sm">
@@ -260,21 +260,21 @@ const menus = ref([
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Pembayaran</h1>
             <div class="flex gap-1 max-w-[350px]">
-              <NuxtImg src="/logo/visa.png" alt="visa logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/bni.png" alt="bni logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/mandiri.png" alt="mandiri logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/bca.png" alt="bca logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/bri.png" alt="bri logo" class="w-auto object-contain" />
+              <img src="/logos/visa.png" alt="visa logo" class="w-auto object-contain" />
+              <img src="/logos/bni.png" alt="bni logo" class="w-auto object-contain" />
+              <img src="/logos/mandiri.png" alt="mandiri logo" class="w-auto object-contain" />
+              <img src="/logos/bca.png" alt="bca logo" class="w-auto object-contain" />
+              <img src="/logos/bri.png" alt="bri logo" class="w-auto object-contain" />
             </div>
             <div class="flex gap-5 max-w-[350px]">
-              <NuxtImg src="/logo/permatabank.png" alt="visa logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/dana.png" alt="dana logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/ovo.png" alt="ovo logo" class="w-auto object-contain" />
+              <img src="/logos/permatabank.png" alt="visa logo" class="w-auto object-contain" />
+              <img src="/logos/dana.png" alt="dana logo" class="w-auto object-contain" />
+              <img src="/logos/ovo.png" alt="ovo logo" class="w-auto object-contain" />
             </div>
             <div class="flex gap-1 max-w-[350px]">
-              <NuxtImg src="/logo/gopay.png" alt="visa logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/linkaja.png" alt="bni logo" class="w-auto object-contain" />
-              <NuxtImg src="/logo/atmbersama.png" alt="mandiri logo" class="w-auto object-contain" />
+              <img src="/logos/gopay.png" alt="visa logo" class="w-auto object-contain" />
+              <img src="/logos/linkaja.png" alt="bni logo" class="w-auto object-contain" />
+              <img src="/logos/atmbersama.png" alt="mandiri logo" class="w-auto object-contain" />
             </div>
           </div>
           <div class="max-w-[350px] mt-4">

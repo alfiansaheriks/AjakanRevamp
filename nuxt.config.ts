@@ -1,5 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true, // Jika Anda menggunakan server-side rendering
+  buildDir: '.nuxt',
   app: {
     head: {
       link: [
@@ -39,7 +41,7 @@ export default defineNuxtConfig({
     shortname: "test-hy70l60dd1",
   },
   image: {
-    dir: 'assets/img'
+    dir: 'assets/img',
   },
   aos: {
     // Global settings:

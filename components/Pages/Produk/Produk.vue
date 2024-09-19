@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 
 const cards = ref([
-    { title: 'Undangan<br/>Digital', image: '/image/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
-    { title: 'Undangan<br/>Video', image: '/image/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
-    { title: 'Undangan Save The Date', image: '/image/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 rounded-md mb-4 lg:scale-125 mt-2' },
-    { title: 'Filter<br/>Instagram', image: '/image/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2' },
-    { title: 'Undangan<br/>3D', image: '/image/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150  lg:scale-125 mt-2' }
+    { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
+    { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
+    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 rounded-md mb-4 lg:scale-125 mt-2' },
+    { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2' },
+    { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150  lg:scale-125 mt-2' }
 ]);
 
 const isMobile = ref(false);
@@ -54,7 +54,7 @@ onUnmounted(() => {
                 :data-aos="'fade-up'"
                 :data-aos-delay="index * 100">
                 <h3 class="text-lg font-normal text-center max-w-[150px] md:max-w-[170px]" v-html="card.title"></h3>
-                <NuxtImg :src="card.image" :alt="card.title" :class="card.class" />
+                <img :src="card.image" :alt="card.title" :class="card.class" />
                 <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
             </div>
         </div>
@@ -73,7 +73,7 @@ onUnmounted(() => {
                         card.title.toLowerCase() === 'undangan save the date' ? '' : ''
                     ]" v-html="card.title"></h3>
 
-                    <NuxtImg :src="card.image" :alt="card.title" :class="card.class" />
+                    <img :src="card.image" :alt="card.title" :class="card.class" />
                     <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
                 </div>
             </div>

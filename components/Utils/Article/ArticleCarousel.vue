@@ -22,13 +22,13 @@ const { data: response, error, refresh } = useFetch(() => {
     if (activeCategory.value && activeCategory.value !== 'All') {
         apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit}&category=${activeCategory.value}`;
     }
-    console.log('Fetching data from:', apiUrl); // Debugging
+    // console.log('Fetching data from:', apiUrl); // Debugging
     return apiUrl;
 });
 
 // Categories and Blogs Data
 const blogs = computed(() => {
-    console.log('Response data:', response.value); // Debugging
+    // console.log('Response data:', response.value); // Debugging
     return (response.value as { data: { blogs: { data: any[] } } })?.data?.blogs.data.map((blog: any) => ({
         ...blog,
         image: `https://picsum.photos/800/600?random=${blog.id}`
@@ -56,7 +56,7 @@ watch(response, () => {
 });
 
 watch(activeCategory, () => {
-    console.log('Active category changed:', activeCategory.value); // Debugging
+    // console.log('Active category changed:', activeCategory.value); // Debugging
     loading.value = true;
     refresh();
 });

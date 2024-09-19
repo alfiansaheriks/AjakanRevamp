@@ -331,7 +331,7 @@ const toggleAnswer = (index: number): void => {
                     <div class="flex flex-col bg-white px-36 py-11 rounded-xl w-full">
                         <div class="flex justify-center items-center mb-4">
                             <!-- Logo Placeholder -->
-                            <NuxtImg src="/image/awardlogo.png" alt="Logo Ajakan" class="w-40 h-full lg:w-40" />
+                            <img src="/images/awardlogo.png" alt="Award Logo" class="w-40 h-full lg:w-40" />
                         </div>
                         <h2 class="text-4xl font-bold text-center mb-6">Penghargaan</h2>
                         <p class="leading-tight text-center text-base mb-1">Ajakan berhasil meraih penghargaan
@@ -353,7 +353,7 @@ const toggleAnswer = (index: number): void => {
                     <div class="flex flex-col bg-white p-4 rounded-xl w-full">
                         <div class="flex justify-center items-center mb-4">
                             <!-- Logo Placeholder -->
-                            <NuxtImg src="/image/awardlogo.png" alt="Logo Ajakan" class="w-40 h-full lg:w-40" />
+                            <img src="/images/awardlogo.png" alt="Award Logo" class="w-40 h-full lg:w-40" />
                         </div>
                         <h2 class="text-2xl font-bold text-center mb-2">Penghargaan</h2>
                         <p class="text-center text-sm lg:text-base mb-1">Ajakan berhasil meraih penghargaan
