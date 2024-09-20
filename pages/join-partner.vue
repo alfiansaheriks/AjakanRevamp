@@ -104,13 +104,15 @@ const toggleAnswer = (index: number): void => {
 
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
-        <section id="section1" class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4" data-aos="fade-up">
+        <section id="section1"
+            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-6 lg:px-4"
+            data-aos="fade-up">
             <div class="flex-1 flex flex-col justify-center items-end left-3/4">
                 <div
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] lg:mt-96">
                 </div>
             </div>
-            <div class="flex-1 flex flex-col justify-center items-center mt-0 lg:mt-52">
+            <div v-if="!isMobile" class="flex-1 flex flex-col justify-center items-center mt-20 lg:mt-52">
                 <div class="flex flex-col items-center max-w-[800px]">
                     <h1 class="text-2xl lg:text-5xl font-normal text-center text-[#1A1A1A]">Bergabunglah Bersama Kami,
                         <span class="font-semibold text-[#0191D8]">Jadikan Bisnis Kamu Lebih Mudah dan Sukses</span>
@@ -123,7 +125,25 @@ const toggleAnswer = (index: number): void => {
                             digital</span></p>
                 </div>
                 <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
-                    <UButton class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</UButton>
+                    <button class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
+                    <Icon name="mdi:arrow-down-drop-circle"
+                        class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
+                </div>
+            </div>
+            <div v-else class="flex-1 flex flex-col justify-center items-center mt-32">
+                <div class="flex flex-col items-center w-[350px]">
+                    <h1 class="text-[29px] font-normal text-center text-[#1A1A1A]">Bergabunglah Bersama Kami,
+                        <span class="font-semibold text-[#0191D8]">Jadikan Bisnis Kamu Lebih Mudah dan Sukses</span>
+                    </h1>
+                </div>
+                <div class="flex flex-col items-center w-[350px] mt-5">
+                    <p class="text-base lg:text-lg text-center text-[#1A1A1A]">Hanya dengan bekerja dari rumah dan tanpa
+                        perlu
+                        melakukan kustomisasi website, <span class="font-semibold">kamu bisa bisnis undangan
+                            digital</span></p>
+                </div>
+                <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
+                    <button class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
                     <Icon name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
@@ -138,11 +158,11 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section id="section2"
-            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20" data-aos="fade-up">
+            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20"
+            data-aos="fade-up">
             <div v-if="!isMobile" class="flex-1 flex flex-col lg:flex-row justify-between gap-8 mt-8">
                 <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-start px-2">
-                    <img src="/images/titik-join1.png" alt="Dot Design"
-                        class="scale-100 w-10 h-auto object-contain" />
+                    <img src="/images/titik-join1.png" alt="Dot Design" class="scale-100 w-10 h-auto object-contain" />
                 </div>
                 <div
                     class="flex flex-col lg:flex-row items-center justify-center bg-[#0191D8] rounded-3xl w-[1113px] h-[576px] py-4">
@@ -172,8 +192,7 @@ const toggleAnswer = (index: number): void => {
 
                 </div>
                 <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-center px-2">
-                    <img src="/images/titik-join1.png" alt="Dot Design"
-                        class="scale-50 w-20 h-auto object-contain" />
+                    <img src="/images/titik-join1.png" alt="Dot Design" class="scale-50 w-20 h-auto object-contain" />
                 </div>
             </div>
 
@@ -212,12 +231,10 @@ const toggleAnswer = (index: number): void => {
         <section id="section3"
             class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh-68px)] relative px-4 py-10 lg:mt-2">
             <div class="flex-1 flex justify-between">
-                <div
-                    class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#f8f9fd] w-full lg:py-4">
+                <div class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#f8f9fd] w-full lg:py-4">
                     <div class="w-full lg:w-1/2">
                         <div v-if="!isMobile" class="relative aspect-h-3" data-aos="fade-right">
-                            <img src="/images/join-partner-2.png" alt="Card Image"
-                                class="w-full h-full object-cover" />
+                            <img src="/images/join-partner-2.png" alt="Card Image" class="w-full h-full object-cover" />
                         </div>
                     </div>
                     <div class="w-full lg:w-1/2 lg:px-20" data-aos="fade-left">
@@ -226,11 +243,13 @@ const toggleAnswer = (index: number): void => {
                                 Bisnis
                                 <br />Undangan Digital?
                             </h2>
-                            <h2 v-else class="text-xl lg:text-4xl font-semibold text-[#000]"><span
+                            <h2 v-else class="text-[29px] w-[350px] lg:text-4xl font-semibold text-[#000]"><span
                                     class="text-[#0191D8]">Manfaat</span> Memiliki Bisnis
                                 <br />Undangan Digital?
                             </h2>
-                            <p class="leading-tight lg:leading-tight text-base lg:text-base text-[#000] mt-8">Kamu bisa
+                            <p
+                                class="leading-tight lg:leading-tight text-sm w-[350px] lg:w-full lg:text-base text-[#000] mt-8">
+                                Kamu bisa
                                 mendapatkan penghasilan
                                 tambahan jutaan rupiah dengan menjadi penyedia undangan melalui media sosial seperti
                                 Facebook, WhatsApp, dan Instagram. Bisnis ini terus berkembang karena hampir semua orang
@@ -263,23 +282,40 @@ const toggleAnswer = (index: number): void => {
                     <!-- Text Content -->
                     <div class="w-full lg:w-1/2 lg:px-24 px-4 z-10" data-aos="fade-right">
                         <div class="flex flex-col items-start justify-center lg:px-4">
-                            <h2 class="text-xl lg:text-4xl font-semibold text-black lg:text-[#fff] max-w-[500px]">
+                            <h2 v-if="!isMobile"
+                                class="text-xl lg:text-4xl w-[545px] font-semibold text-black lg:text-[#fff] max-w-[500px]">
                                 <span class="text-[#0191D8] lg:text-white">Estimasi</span> Keuntungan yang akan Kamu
                                 Dapatkan
                             </h2>
-                            <p class="leading-tight lg:leading-tight text-base lg:text-base text-black lg:text-[#fff] mt-8">
+                            <h2 v-else
+                                class="text-[29px] w-[370px] h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px]">
+                                <span class="text-[#0191D8] lg:text-white">Estimasi</span> Keuntungan yang akan Kamu
+                                Dapatkan
+                            </h2>
+                            <p v-if="!isMobile"
+                                class="leading-tight lg:leading-tight w-[545px] text-base lg:text-base text-black lg:text-[#fff] mt-8">
                                 Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
                                 Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjual-nya sekitar
-                                Rp100.000. Dengan menjual hanya 2 undangan per hari, dengan margin keuntungan Rp100.000,
-                                Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.
-                                <b v-if="isMobile">Dengan menjual hanya 2 undangan per hari, dengan margin keuntungan
+                                Rp100.000. Dengan menjual hanya 2 undangan per hari, dengan margin keuntungan
+                                Rp100.000,<span v-if="!isMobile">
+                                    Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.</span>
+                                <b v-if="isMobile"> Dengan menjual hanya 2 undangan per hari, dengan margin keuntungan
                                     Rp100.000, Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.</b>
+                            </p>
+                            <p v-else
+                                class="leading-tight lg:leading-tight w-[360px] lg:w-full text-base lg:text-base text-black lg:text-[#fff] mt-8">
+                                Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
+                                Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjualnya sekitar
+                                Rp100.000. <span class="font-semibold">Dengan menjual hanya 2 undangan per hari, dengan
+                                    margin keuntungan Rp100.000,
+                                    Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.</span>
                             </p>
                         </div>
                     </div>
 
                     <!-- Phone Image for Desktop -->
-                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-25%] z-0" data-aos="fade-up">
+                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-30%] z-0"
+                        data-aos="fade-up">
                         <img src="/images/phone-join-desktop.png" alt="Card Image"
                             class="w-auto h-full object-cover rounded-3xl" />
                     </div>
@@ -300,22 +336,42 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section6"
             class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10 mt-20">
-            <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]" data-aos="fade">
-                <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span> Terbaik
-                    untuk Kamu</h2>
+            <div v-if="!isMobile">
+                <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]"
+                    data-aos="fade">
+                    <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                            Usaha</span> Terbaik
+                        untuk Kamu</h2>
+                </div>
+                <div class="px-2" data-aos="fade">
+                    <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
+                        Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
+                        Berapa
+                        biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. <b>Namun, di sini kami
+                            menyediakan
+                            semua itu dengan harga spesial yang jauh lebih terjangkau.</b>
+                    </h3>
+                </div>
             </div>
-            <div class="px-2" data-aos="fade">
-                <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
-                    Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website. Berapa
-                    biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. <b>Namun, di sini kami
-                        menyediakan
-                        semua itu dengan harga spesial yang jauh lebih terjangkau.</b>
-                </h3>
+            <div v-else class="px-3">
+                <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]"
+                    data-aos="fade">
+                    <h2 class="text-[29px] lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                            Usaha</span> Terbaik
+                        untuk Kamu</h2>
+                </div>
+                <div class="px-2" data-aos="fade">
+                    <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
+                        Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
+                        Berapa
+                        biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. <b>Namun, di sini kami
+                            menyediakan
+                            semua itu dengan harga spesial yang jauh lebih terjangkau.</b>
+                    </h3>
+                </div>
             </div>
-            <div
-                class="flex flex-col sm:flex-row justify-between items-center w-full mx-auto px-4 lg:px-24 gap-8">
-                <div
-                    class="flex flex-col sm:flex-row justify-between items-center w-full mx-auto lg:px-4 gap-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center w-full mx-auto px-4 lg:px-24 gap-8">
+                <div class="flex flex-col sm:flex-row justify-between items-center w-full mx-auto lg:px-4 gap-8">
                     <div class="flex flex-wrap justify-center gap-2 w-full">
                         <UtilsCardPackage />
                     </div>
@@ -331,12 +387,12 @@ const toggleAnswer = (index: number): void => {
                         memanfaatkan<br />kesempatan istimewa yang<br />tersedia?
                     </h2>
                     <div class="flex flex-row gap-4">
-                        <UButton
+                        <button
                             class="py-3 px-6 bg-[#fff] text-[#0191D8] hover:bg-transparent hover:border hover:text-white rounded-xl mt-8">
-                            Bergabung Sekarang</UButton>
-                        <UButton
+                            Bergabung Sekarang</button>
+                        <button
                             class="py-3 px-16 bg-transparent hover:bg-white hover:text-[#0191D8] border text-white rounded-xl mt-8">
-                            Free Trial</UButton>
+                            Free Trial</button>
                     </div>
                 </div>
             </div>
@@ -345,33 +401,34 @@ const toggleAnswer = (index: number): void => {
             class="flex-1 flex flex-col justify-center items-start min-h-[calc(100vh-100px)] mt-10">
             <div class="flex-1 flex flex-col justify-center items-center bg-[#0191D8]">
                 <div class="flex flex-col">
-                    <h2 class="text-xl font-semibold text-center text-white px-4">
+                    <h2 class="text-[29px] font-semibold text-center text-white px-4">
                         Hanya dengan bekerja dari rumah dan tanpa perlu melakukan kustomisasi website, kamu bisa bisnis
                         undangan digital
                     </h2>
                 </div>
-                <div class="flex flex-row items-center gap-2 px-4">
+                <div class="flex flex-row items-center gap-2">
                     <button
-                        class="p-3 bg-[#fff] text-[#0191D8] hover:bg-transparent hover:border hover:text-white rounded-xl mt-8">
+                        class="w-[150px] h-[46px] text-sm bg-[#fff] text-[#0191D8] hover:bg-transparent hover:border hover:text-white rounded-xl mt-8">
                         Bergabung Sekarang</button>
                     <button
-                        class="p-3 bg-transparent hover:bg-white hover:text-[#0191D8] border text-white rounded-xl mt-8">
+                        class="w-[150px] h-[46px] text-sm bg-transparent hover:bg-white hover:text-[#0191D8] border text-white rounded-xl mt-8">
                         Free Trial</button>
                 </div>
             </div>
         </section>
-         <section id="faq-section"
+        <section id="faq-section"
             class="py-10 bg-[#f8f9fd] flex-1 flex flex-col justify-start items-center min-h-[calc(100vh-68px)] lg:mt-[105px]">
-            <div class="w-full mx-auto px-4 lg:px-28 text-lg lg:text-base" data-aos="fade">
-                <h2 class="text-3xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
+            <div class="w-full mx-auto px-5 lg:px-28 text-lg lg:text-base" data-aos="fade">
+                <h2 class="text-[28px] lg:text-3xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1">
-                    <Ucard v-for="(faq, index) in faqs" :key="index"
-                        class="bg-white rounded-lg p-4">
+                    <Ucard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-lg p-4">
                         <div class="flex justify-between items-center">
-                            <h3 v-if="faq.showAnswer" class="lg:text-2xl font-semibold text-black">{{ faq.question
-                                }}
+                            <h3 v-if="faq.showAnswer" class="text-base lg:text-2xl font-semibold text-black">{{
+                                faq.question
+                            }}
                             </h3>
-                            <h3 v-else="faq.showAnswer" class="lg:text-lg font-semibold text-black">{{ faq.question }}
+                            <h3 v-else="faq.showAnswer" class="text-base lg:text-lg font-semibold text-black">{{
+                                faq.question }}
                             </h3>
                             <button @click="toggleAnswer(index)"
                                 class="p-4 w-4 h-4 lg:w-8 lg:h-8 flex items-center justify-center rounded-full bg-[#0191D8] focus:outline-none">
@@ -383,15 +440,17 @@ const toggleAnswer = (index: number): void => {
                                 </span>
                             </button>
                         </div>
-                        <p v-if="faq.showAnswer" class="leading-tight text-16 text-[#545454] mt-2" v-html="faq.answer"></p>
+                        <p v-if="faq.showAnswer" class="leading-tight text-base text-[#545454] mt-2"
+                            v-html="faq.answer"></p>
                     </Ucard>
                 </div>
             </div>
         </section>
-        <section id="reminder-section" class="py-10 bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:mb-32 lg:mt-[105px]">
-            <div class="flex-1 flex justify-center items-center px-4">
-                <div
-                    class="flex flex-col lg:flex-col lg:w-[84vw] lg:h-[40vh] justify-center items-center bg-[#0191D8] px-[7%] rounded-3xl py-[7%]" data-aos="fade">
+        <section id="reminder-section"
+            class="py-10 bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:mb-32 lg:mt-[105px]">
+            <div class="flex-1 flex justify-center items-center px-8 lg:px-4">
+                <div class="flex flex-col lg:flex-col lg:w-[84vw] lg:h-[40vh] justify-center items-center bg-[#0191D8] px-[7%] rounded-3xl py-[7%]"
+                    data-aos="fade">
                     <div class="flex-1 flex flex-col justify-center items-center">
                         <h2 class="text-white text-lg lg:text-40 text-center font-semibold mb-4">Informasi Penting</h2>
                         <p class="text-white text-sm lg:text-base text-center">Keberhasilan, testimonial, bonus, dan

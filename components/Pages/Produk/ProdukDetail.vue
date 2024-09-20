@@ -20,14 +20,14 @@ onMounted(() => {
         <div class="invitation-section flex flex-col lg:flex-row md:flex-row items-center my-12">
             <!-- Text Section -->
             <div class="text-section w-full" data-aos="fade-right">
-                <h2 class="text-4xl font-semibold">
+                <h2 class="text-[29px] lg:text-4xl font-semibold">
                     Undangan <span class="text-black lg:text-[#0191D8]">Digital</span>
                 </h2>
                 <p v-if="!isMobile" class="my-4">
                     Sebuah produk revolusioner yang mengubah cara kita mengundang dan merayakan
                     peristiwa-peristiwa istimewa.
                 </p>
-                <p v-else class="my-4">
+                <p v-else class="text-sm lg:text-base my-4">
                     Sebuah produk revolusioner yang mengubah cara kita mengundang dan merayakan peristiwa-peristiwa
                     istimewa. Undangan digital terdiri dari <span class="font-semibold">undangan pernikahan, undangan
                         khitanan, undangan aqiqah,
@@ -65,13 +65,14 @@ onMounted(() => {
         <!-- Undangan Video -->
         <div class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
             <div class="text-section lg:w-1/2 lg:px-4" data-aos="fade-left">
-                <h2 class="text-4xl font-semibold">
+                <h2 class="text-[29px] lg:text-4xl font-semibold">
                     Undangan <span class="text-black lg:text-[#0191D8]">Video</span>
                 </h2>
                 <p v-if="!isMobile" class="my-4">Era sosial media sekarang sudah sangat umum dengan yang namanya
                     "Undangan Video", yang
                     memberikan sentuhan modern pada undangan digital.</p>
-                <p v-else class="my-4">Era sosial media sekarang sudah sangat umum dengan yang namanya "Undangan Video",
+                <p v-else class="text-sm lg:text-base my-4">Era sosial media sekarang sudah sangat umum dengan yang
+                    namanya "Undangan Video",
                     yang memberikan sentuhan modern pada undangan digital. </p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
             </div>
@@ -90,10 +91,11 @@ onMounted(() => {
         <!-- Undangan Save The Date Mobile -->
         <div v-if="isMobile" class="invitation-section flex flex-col lg:flex-row-reverse items-center my-12">
             <div class="text-section lg:w-1/2">
-                <h2 class="text-4xl font-semibold">
+                <h2 class="text-[29px] lg:text-4xl font-semibold">
                     Undangan <span class="text-black">Save The Date</span>
                 </h2>
-                <p class="my-4">Bagi kamu yang terbiasa menyebarkan informasi event atau workshop melalui poster saja,
+                <p class="text-sm lg:text-base my-4">Bagi kamu yang terbiasa menyebarkan informasi event atau workshop
+                    melalui poster saja,
                     sudah saatnya kamu menggunakan website yang super simple, elegant dan modern melalui “Undangan Save
                     The Date”.</p>
                 <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
@@ -113,10 +115,15 @@ onMounted(() => {
         <!-- Filter Instagram -->
         <div class="invitation-section flex flex-col lg:flex-row items-center my-12">
             <div class="text-section lg:w-1/2 lg:max-w-[545px]" data-aos="fade-right">
-                <h2 class="text-4xl font-semibold">
+                <h2 class="text-[29px] lg:text-4xl font-semibold">
                     <span class="text-black lg:text-[#0191D8]">Filter Instagram</span>
                 </h2>
-                <p class="my-4">
+                <p v-if="isMobile" class="text-sm lg:text-base my-4">
+                    Momen spesial dapat diabadikan dalam video indah yang dapat dibagikan kepada semua
+                    orang, dan filter Instagram khusus menciptakan kesan yang tak terlupakan untuk memeriahkan momen
+                    tersebut.
+                </p>
+                <p v-else class="text-sm lg:text-base my-4">
                     Momen spesial dapat diabadikan dalam video indah yang dapat dibagikan kepada semua
                     orang, dan filter Instagram khusus menciptakan kesan yang tak terlupakan untuk memeriahkan momen
                     tersebut.
@@ -164,8 +171,12 @@ onMounted(() => {
 
         <div class="invitation-section flex flex-col lg:flex-row items-center md:my-12 my-12">
             <div class="text-section lg:w-1/2" data-aos="fade-right">
-                <h2 class="text-3xl font-bold text-black lg:text-[#0191D8]">Undangan 3D</h2>
-                <p class="my-4">Undangan pernikahan 3D dibuat dengan teknologi yang canggih, undangan ini memberikan
+                <h2 class="text-[29px] lg:text-3xl font-bold text-black lg:text-[#0191D8]">Undangan 3D</h2>
+                <p v-if="isMobile" class="text-sm lg:text-base my-4">Bagi kamu yang terbiasa menyebarkan informasi event
+                    atau workshop melalui poster saja, sudah saatnya kamu menggunakan website yang super simple, elegant
+                    dan modern melalui “Undangan Save The Date”.</p>
+                <p v-else class="my-4">Undangan pernikahan 3D dibuat dengan teknologi yang canggih, undangan ini
+                    memberikan
                     pengalaman visual yang menakjubkan kepada para undangan. Dengan dimensi tambahan, seperti tekstur,
                     kedalaman, dan pergerakan, undangan 3D menciptakan kesan yang lebih hidup dan berkesan daripada
                     undangan tradisional.</p>
@@ -180,7 +191,8 @@ onMounted(() => {
                     class="absolute w-[1000px] -bottom-[80%] scale-150 z-0" />
                 <!-- <img v-if="!isMobile" src="~/assets/img/image/hp3d2.png" alt="Undangan 3D 2"
                     class="phone-3d-image second-3d-phone" /> -->
-                <img v-else src="~/assets/img/image/undangan3d-mobile.png" alt="Undangan 3D" class="relative -bottom-24" />
+                <img v-else src="~/assets/img/image/undangan3d-mobile.png" alt="Undangan 3D"
+                    class="relative -bottom-24" />
             </div>
         </div>
     </section>

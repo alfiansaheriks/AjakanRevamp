@@ -74,9 +74,9 @@ const changePage = (page: number) => {
             <p>Loading...</p>
         </div>
         <div v-else class="flex flex-col">
-            <div class="mb-4 flex justify-between items-center">
+            <div class="mb-[42px] lg:mb-[64px] flex justify-between items-center">
                 <div>&#8203;</div>
-                <div class="flex overflow-x-auto space-x-2 w-64 lg:w-full lg:justify-center mx-4">
+                <div class="flex overflow-x-auto space-x-2 w-full lg:w-full justify-center lg:justify-center lg:mx-4">
                     <button
                         v-for="subTheme in subThemes" :key="subTheme.id"
                         @click="setActiveCategory(subTheme.id)"
@@ -96,8 +96,8 @@ const changePage = (page: number) => {
                         <NuxtImg :src="undangan.image" alt="Article Image"
                             class="w-full h-[310px] object-cover rounded-xl" />
                         <div class="py-2">
-                            <p class="text-md text-black">{{ undangan.category_name }}</p>
-                            <h3 class="text-xl font-semibold py-2">{{ undangan.title }}</h3>
+                            <p class="text-sm lg:text-base text-black">{{ undangan.category_name }}</p>
+                            <h3 class="text-base lg:text-lg font-semibold py-2">{{ undangan.title }}</h3>
                             <button
                                 class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />

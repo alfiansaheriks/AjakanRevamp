@@ -46,14 +46,14 @@ const changePage = (page: number) => {
             <p>Loading...</p>
         </div>
         <div v-else class="flex flex-col">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4 lg:px-28">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4 lg:px-28" data-aos="fade-up">
                 <div v-for="undangan in dataUndangan" :key="undangan.id" class="w-full mx-auto">
                     <NuxtLink to="/" class="block bg-transparent w-full rounded-none">
                         <NuxtImg :src="undangan.image" alt="Article Image"
                             class="w-full h-auto object-cover rounded-xl" />
                         <div class="py-2">
-                            <p class="text-base text-[#B7B7B7]">{{ undangan.category_name }}</p>
-                            <h3 class="text-xl font-semibold py-2">{{ undangan.name }}</h3>
+                            <p class="text-sm lg:text-base text-[#B7B7B7]">{{ undangan.category_name }}</p>
+                            <h3 class="text-base lg:text-lg font-semibold py-2">{{ undangan.name }}</h3>
                             <button
                                 class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-1 text-lg text-white" />
@@ -65,11 +65,11 @@ const changePage = (page: number) => {
             </div>
             <div class="flex justify-start items-center mt-8 px-24" v-if="totalPages > 1">
                 <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
-                    class="px-4 py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="lg:px-4 marker:py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:previous-outline" class="text-3xl" />
                 </button>
                 <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
-                    class="px-4 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="px-1 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>

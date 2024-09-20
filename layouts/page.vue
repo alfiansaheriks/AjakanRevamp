@@ -72,10 +72,10 @@ const menus = ref([
     <div>
       <header v-if="scrolled"
         class="z-30 fixed top-0 w-full bg-white shadow-lg h-16 flex items-center justify-between transition-colors duration-300">
-        <NuxtLink to="/" class="font-bold text-lg ml-32">
-          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 mt-2" />
+        <NuxtLink to="/" class="font-bold text-lg">
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 absolute top-0 left-[8%]" />
         </NuxtLink>
-        <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4 p-4">
+        <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4 flex">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
             <li v-for="(menu, i) in menus" :key="i" class="relative">
               <div class="flex items-center">
@@ -98,13 +98,13 @@ const menus = ref([
           </ul>
         </nav>
         <div>
-          <p class="text-transparent">&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;</p>
+          <p class="text-transparent">&#8709;</p>
         </div>
       </header>
       <header v-else
         class="z-30 fixed top-0 w-full bg-transparent h-24 flex items-center justify-between transition-colors duration-300">
-        <NuxtLink to="/" class="font-bold text-lg ml-32">
-          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75" />
+        <NuxtLink to="/" class="font-bold text-lg">
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 absolute top-0 left-[8%]" />
         </NuxtLink>
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
@@ -129,7 +129,7 @@ const menus = ref([
           </ul>
         </nav>
         <div>
-          <p class="text-transparent">&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;&#8709;</p>
+          <p class="text-transparent">&#8709;</p>
         </div>
       </header>
       <!-- Mobile Header -->
@@ -170,7 +170,7 @@ const menus = ref([
       <slot />
     </main>
 
-    <footer class="bg-[#F8F9FD]x` py-8 z-10">
+    <footer class="bg-[#F8F9FD]x` py-8 z-10 bg-white">
       <PagesContainer class="flex-1 flex flex-col gap-8">
         <!-- Mobile Layout -->
         <div class="flex flex-col gap-4 md:hidden">

@@ -93,14 +93,14 @@ const isMobileView = computed(() => isMobile.value);
       </div>
     </div>
   </div>
-  <div v-else class="relative overflow-hidden p-6">
+  <div v-else class="relative overflow-hidden">
   <!-- Carousel container (scrollable on mobile) -->
   <div class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory py-6" style="scrollbar-width: none;">
     <div v-for="(testimonial, index) in testimonials" :key="index"
-      class="flex-shrink-0 w-full sm:w-[calc(85%-16px)] md:w-[calc(50%-20px)] lg:w-[calc(33%-16px)] px-4 cursor-pointer snap-start"
+      class="flex-shrink-0 w-[calc(100vw-70px)] cursor-pointer snap-start"
       @click="setActiveSlide(index)">
       <!-- Testimonial card -->
-      <div class="relative p-5 rounded-3xl shadow-md bg-white min-w-full h-[50vh] transition-transform duration-300 mt-10"
+      <div class="relative p-5 rounded-3xl shadow-md bg-white w-[75vw] h-[50vh] transition-transform duration-300 mt-10"
         :class="{ 'active-card': isMobileView || currentSlide === index }">
         <!-- Logo -->
         <div
@@ -113,9 +113,9 @@ const isMobileView = computed(() => isMobile.value);
         <Icon v-else name="material-symbols:format-quote" class="absolute right-36 top-16 text-2xl text-[#0191D8]" />
         <!-- Quote Icon and Paragraph -->
         <div class="mt-20 text-center relative">
-          <h3 class="text-lg font-semibold">{{ testimonial.brand }}</h3>
-          <p class="text-sm text-gray-500">{{ testimonial.location }}</p>
-          <p class="text-sm text-gray-600">{{ testimonial.message }}</p>
+          <h3 class="text-xs font-semibold">{{ testimonial.brand }}</h3>
+          <p class="text-xs text-gray-500">{{ testimonial.location }}</p>
+          <p class="text-xs text-gray-600 mt-[12.5px]">{{ testimonial.message }}</p>
         </div>
       </div>
     </div>

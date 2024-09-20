@@ -42,6 +42,29 @@ const filterType = computed(() => {
   }
 });
 
+const paragraphContent = computed(() => {
+  switch (selectedFilter.value) {
+    case 'Pernikahan':
+      return ' Pilih desain sesuai tema pernikahanmu, tambahkan foto dan cerita cinta kamu, lalu kirim undangan dengan cepat melalui platform digital yang <span class="font-semibold text-black lg:text-[#0191d8]">Easy to Use.</span>';
+    case 'Khitanan':
+      return 'Berbagi kebahagiaan dengan teman-teman dan keluarga tanpa batas, sambil menjaga tradisi dan keintiman acara tersebut.';
+    case 'Aqiqah':
+      return 'Pilih desain sesuai tema aqiqahmu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    case 'Wisuda':
+      return 'Pilih desain sesuai tema wisudamu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    case 'Birthday':
+      return 'Pilih desain sesuai tema ulang tahunmu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    case 'Berbuka':
+      return 'Pilih desain sesuai tema berbukamu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    case 'Natal':
+      return 'Pilih desain sesuai tema Natalmu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    case 'Idul Fitri':
+      return 'Pilih desain sesuai tema Idul Fitri-mu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+    default:
+      return 'Pilih desain sesuai tema acara kamu, tambahkan foto dan cerita kamu, lalu kirim undangan dengan cepat melalui platform digital yang Easy to Use.';
+  }
+});
+
 const isMobile = ref(false);
 
 const updateIsMobile = () => {
@@ -61,13 +84,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="flex-1 flex flex-col bg-[#f8f9fd]">
-        <div class="flex-1 flex flex-col justify-start items-center py-20 lg:py-44">
-            <h1 class="text-4xl text-center">Undangan <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
-            <p class="text-center text-[#989898] max-w-[800px] py-4">Pilih desain sesuai tema pernikahanmu, tambahkan
-                foto dan cerita cinta kamu, lalu kirim undangan dengan cepat melalui platform digital yang <strong
-                    class="text-[#0191D8]">Easy to Use.</strong></p>
-            <div class="flex flex-row gap-2 py-10 px-4">
+    <div class="flex-1 flex flex-col bg-[#fff]">
+        <div class="flex-1 flex flex-col justify-start items-center py-20 mt-20 px-4 lg:px-0 lg:mt-32" data-aos="fade-up">
+            <h1 class="text-[25px] lg:text-4xl text-center">Undangan <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
+            <p v-if="!isMobile" class="text-xl text-center text-[#989898] w-[682px] py-4" v-html="paragraphContent"></p>
+            <p v-else class="text-[14.5px] text-center text-[#989898] w-[381px] px-5 py-4" v-html="paragraphContent"></p>
+            <div class="flex flex-row gap-2 py-4 lg:py-10 px-4">
                 <div class="relative w-full">
                     <i class="absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#545454">
@@ -80,17 +102,17 @@ onUnmounted(() => {
                         class="w-full h-12 pl-12 pr-24 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri atau Ketik URL" />
                     <input v-else type="text"
-                        class="w-full h-12 pl-12 pr-4 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
+                        class="w-full h-10 pl-12 pr-4 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri Tema" />
                 </div>
                 <button class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
             </div>
-            <div class="w-full lg:w-full px-4 lg:px-28">
+            <div class="w-full lg:w-full lg:px-28 mt-10 lg:mt-20" data-aos="fade" data-aos-delay="500">
                 <ClientOnly>
                 <UtilsUndanganDigitalFilterCarousel @filter-change="onFilterChange" />
                 </ClientOnly>
             </div>
-            <div class="py-10">
+            <div class="mt-20" >
                 <UtilsUndanganDigitalUndanganCarousel :filter="filterType"/>
             </div>
         </div>

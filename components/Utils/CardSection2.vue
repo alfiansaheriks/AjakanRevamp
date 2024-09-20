@@ -36,7 +36,7 @@ console.log('Total Visitor Formatted: ', totalVisitorFormatted);
 
 const cards = ref([
     {
-        cardStyle: "relative flex flex-col w-full h-96 lg:h-auto p-6 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
+        cardStyle: "relative flex flex-col w-full h-[336px] lg:h-96 lg:h-auto p-6 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
         iconName: "fluent:people-32-regular",
         bgIconStyle: "w-16 h-16 flex items-center justify-center bg-[#0191D8] rounded-xl mb-10 group-hover:bg-[white]",
         iconColor: "text-white group-hover:text-[#0191D8]",
@@ -48,7 +48,7 @@ const cards = ref([
         description: "sudah pernah menggunakan produk digital dari kami"
     },
     {
-        cardStyle: "relative flex flex-col w-full h-96 lg:h-auto p-6 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
+        cardStyle: "relative flex flex-col w-full h-[336px] lg:h-96 p-6 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
         iconName: "material-symbols:shopping-cart-outline",
         bgIconStyle: "w-16 h-16 flex items-center justify-center bg-[#0191D8] rounded-xl mb-10 group-hover:bg-[white]",
         iconColor: "text-white group-hover:text-[#0191D8]",
@@ -60,7 +60,7 @@ const cards = ref([
         description: "yang telah dibuat menjadi bukti bahwa client kami puas atas layanan yang kami berikan serta fitur menarik yang kami sediakan"
     },
     {
-        cardStyle: "relative flex flex-col w-full h-96 lg:h-auto p-6 bg-white text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
+        cardStyle: "relative flex flex-col w-full h-[336px] lg:h-96 p-6 bg-white text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
         iconName: "carbon:partnership",
         bgIconStyle: "w-16 h-16 flex items-center justify-center bg-[#0191D8] rounded-xl mb-10 group-hover:bg-[white]",
         iconColor: "text-white group-hover:text-[#0191D8]",
@@ -72,7 +72,7 @@ const cards = ref([
         description: "untuk berkolaborasi dengan kami, saling support dan meraih keuntungan bersama"
     },
     {
-        cardStyle: "relative flex flex-col p-6 w-full h-96 lg:h-auto bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
+        cardStyle: "relative flex flex-col p-6 w-full h-[336px] lg:h-96 bg-white text-black md:text-white shadow-md rounded-3xl overflow-hidden group hover:bg-[#0191D8]",
         iconName: "icon-park-outline:theme",
         bgIconStyle: "w-16 h-16 flex items-center justify-center bg-[#0191D8] rounded-xl mb-10 group-hover:bg-[white]",
         iconColor: "text-white group-hover:text-[#0191D8]",
@@ -108,7 +108,7 @@ onUnmounted(() => {
 <template>
     <div>
         <div v-if="isMobile" class="carousel-container flex overflow-x-auto gap-6 w-full overflow-hidden">
-            <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full max-w-xs">
+            <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full max-w-[263px] h-[400px]">
                 <UtilsCard
                     :cardStyle="card.cardStyle"
                     :iconName="card.iconName"

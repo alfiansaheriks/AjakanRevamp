@@ -29,11 +29,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="section1" class="hero-section flex flex-col min-h-[1000px] relative bg-[#F7FAFC]" data-aos="fade-left">
+    <section id="section1" class="hero-section flex flex-col min-h-[1000px] relative bg-[#F7FAFC]">
         <!-- Text Section -->
         <div class="text-container flex flex-col px-2 py-8 lg:py-28 md:px-8 lg:px-28 lg:min-w-[639px] lg:min-h-[168px]"
-            data-aos="fade-right" data-aos-delay="300">
-            <h1 class="text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-normal text-black">
+            data-aos="fade-right">
+            <h1 class="leading-tight mt-[50px] lg:mt-0 text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-normal text-black">
                 Tersedia Untuk Kamu dan
                 <span class="text-[#0191D8] font-bold">Kami Membuat Produk Khusus Untukmu</span>
             </h1>
@@ -44,7 +44,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Centered Arrow Icon -->
-        <div class="arrow-wrapper flex items-center justify-center flex-grow mb-5">
+        <div class="arrow-wrapper flex items-center justify-center flex-grow lg:mb-16">
             <div class="arrow-container flex items-center justify-center w-10 h-10 bg-[#dff4ff] rounded-full">
                 <Icon name="lets-icons:arrow-drop-down" class="text-[#0191d8] text-4xl cursor-pointer" />
             </div>
@@ -60,11 +60,11 @@ onUnmounted(() => {
                 <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
             </div>
         </div>
-        <div v-else class="w-full mt-auto md:px-8 lg:px-36 overflow-hidden">
+        <div v-else class="w-full mt-[124px] md:px-8 lg:px-36 overflow-hidden">
             <div class="flex flex-row gap-4 overflow-x-scroll sm:gap-4 sm:overflow-x-auto sm:scroll-snap-x-mandatory"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
                 <div v-for="(card, index) in cards" :key="index" :class="[
-                    'card flex-shrink-0 w-4/5 bg-[#0191D8] text-white rounded-3xl shadow-lg relative',
+                    'card flex-shrink-0 w-4/5 bg-[#0191D8] text-white rounded-3xl shadow-lg relative overflow-hidden',
                     card.class.includes('save-the-date') ? 'save-the-date-card' : '',
                     'sm:mr-4 sm:mt-20 sm:scroll-snap-start'
                 ]" style="scrollbar-width: none;" :data-aos="'fade-up'" :data-aos-delay="index * 100">
@@ -100,8 +100,8 @@ onUnmounted(() => {
         background-image: url('assets/img/image/HeroBg2-mobile.png');
         height: auto;
         padding: 1rem;
-        background-size: 100%;
-        background-position: center top;
+        background-size: cover;
+        background-position: center 100px;
         background-repeat: no-repeat;
     }
 }
@@ -124,7 +124,7 @@ onUnmounted(() => {
 .arrow-container {
 
     @media (max-width: 639px) {
-        margin-top: 37rem;
+        margin-top: 29rem;
     }
 }
 

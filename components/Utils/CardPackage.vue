@@ -30,7 +30,7 @@ const products = ref<Product[]>([]);
     <div class="absolute inset-0 bg-white" style="height: 50%"></div>
     <div class="absolute inset-0 bg-[#DFF4FF]" style="height: 50%; top: 50%"></div>
     <div class="relative flex-grow mb-4">
-      <h3 class="text-base font-semibold mb-2">{{ product.name }}</h3>
+      <h3 class="text-base font-medium mb-2">{{ product.name }}</h3>
       <h4 class="text-3xl font-semibold mb-4">{{ product.price_reformat }}</h4>
       <ul class="space-y-2">
         <li v-for="(feature, index) in product.benefit" :key="index" class="flex items-start text-sm">

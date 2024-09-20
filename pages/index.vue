@@ -167,22 +167,22 @@ const toggleAnswer = (index: number): void => {
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 py-10 mb-20">
-                <div class="min-w-[380px]" data-aos="fade-left" data-aos-delay="100">
-                    <h1 class="text-xl lg:text-4xl">
-                        Platform <b class="text-sky-400">B2B</b><span class="font-semibold"> Paket<h1
-                                class="text-xl lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
+                <div class="w-full lg:min-w-[390px]" data-aos="fade-left" data-aos-delay="100">
+                    <h1 class="text-[29px] w-[350px] lg:text-4xl">
+                        Platform <b class="text-sky-400">B2B</b><span class="text-[29px] font-semibold"> Paket<h1
+                                class="text-[29px] lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
                     </h1>
-                    <div class="text-md lg:text-lg lg:mt-2 mt-4">
+                    <div class="w-[340px] text-base lg:text-lg lg:mt-2 mt-4">
                         Mulai bisnis undangan digital dengan brand dan website milik kamu sendiri. Dengan dukungan
                         kami,
                         kamu dapat membangun bisnis sendiri dan menghasilkan pendapatan sampingan yang menjanjikan
                     </div>
                     <div class="flex justify-start gap-4 mt-4">
                         <button
-                            class="bg-[#0191D8] p-2 lg:p-3 w-[188px] text-white text-xs border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
+                            class="bg-[#0191D8] p-2 lg:p-3 w-[188px] text-white text-xs border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-lg">Bergabung
                             Sekarang</button>
                         <button
-                            class="bg-transparent lg:p-3 lg:w-[200px] w-[188px] border border-[#0191D8] text-[#0191D8] text-xs font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
+                            class="bg-transparent lg:p-3 lg:w-[200px] w-[188px] border border-[#0191D8] text-[#0191D8] text-xs font-normal hover:bg-[#0191D8] hover:text-white rounded-lg">Free
                             Trial</button>
                     </div>
                 </div>
@@ -231,11 +231,11 @@ const toggleAnswer = (index: number): void => {
                 </div>
 
                 <!-- Right Side: Text -->
-                <div class="w-full sm:w-5/12 px-5 py-10 mt-[91px]" data-aos="fade-left">
-                    <h2 class="text-xl lg:text-4xl font-semibold mb-4">Estimasi <span
+                <div class="w-full px-5 py-10 mt-[91px]" data-aos="fade-left">
+                    <h2 class="text-[32px] font-semibold mb-4">Estimasi <span
                             class="text-[#0191D8]">Keuntungan</span> yang
                         akan Kamu Dapatkan</h2>
-                    <p class="text-sm lg:text-lg">
+                    <p class="text-[15px]">
                         Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 - Rp300.000
                         tergantung
                         fiturnya. Namun, di Ajakan, mitra kami sering menjualnya sekitar Rp100.000. <span
@@ -250,14 +250,13 @@ const toggleAnswer = (index: number): void => {
 
         <section id="section5"
             class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)] mt-[99px] lg:mt-0">
-            <div class="text-center mb-[47px] lg:py-10">
-                <h2 v-if="isLargeScreen" class="text-[32px] lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+            <div class="text-center mb-[47px] lg:py-10 px-1">
+                <h2 v-if="isLargeScreen" class="lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
                         Usaha</span> Terbaik
                     <br />untuk Kamu
                 </h2>
-                <h2 v-else class="text-[32px] lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
-                        Usaha</span> Terbaik untuk
-                    <br /> Kamu
+                <h2 v-else class="text-[29px] lg:text-4xl font-bold max-w-[390px]">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                        Usaha</span> <span>Terbaik untuk</span> <br/>Kamu
                 </h2>
             </div>
             <div class="flex justify-center gap-2 w-full px-5 lg:px-28">
@@ -265,10 +264,9 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section id="section6"
-            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center lg:min-h-[550px] px-5 lg:px-0 lg:mt-32">
             <!-- Title -->
-            <div class="text-center mt-10 mb-10">
-                <h2 class="text-3xl md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
+            <div class="text-center mt-10 mb-10 w-[500px]">
+                <h2 class="text-[29px] md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
                         class="text-[#0191D8]">aset <br />berharga bagi kami</span>
                 </h2>
             </div>
@@ -296,7 +294,7 @@ const toggleAnswer = (index: number): void => {
                         </p>
                     </div>
                     <button
-                        class="bg-[#0191D8] border text-white hover:bg-transparent hover:text-[#0191D8] hover:border hover:border-[#0191D8] p-3 mt-8 rounded-xl">Bergabung
+                        class="w-[248px] h-[63px] bg-[#0191D8] border text-white hover:bg-transparent hover:text-[#0191D8] hover:border hover:border-[#0191D8] p-3 mt-8 rounded-xl">Bergabung
                         Sekarang</button>
                 </div>
             </div>
@@ -304,8 +302,8 @@ const toggleAnswer = (index: number): void => {
         <section v-else id="section7"
             class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center">
             <div class="flex flex-col lg:flex-row justify-between w-full lg:mt-10 px-5 lg:px-28">
-                <div class="text-center mb-8 py-12 ">
-                    <h2 class="text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span>
+                <div class="text-center">
+                    <h2 class="text-[32px] font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span>
                         Terbaik
                         untuk Kamu</h2>
                 </div>
@@ -314,7 +312,7 @@ const toggleAnswer = (index: number): void => {
                 </div>
                 <div class="mb-4 mt-4 max-w-[367px]" data-aos="fade-right">
                     <h1 class="text-3xl max-w-[600px]">Peluang yang Menjanjikan untuk <span
-                            class="text-[#0191D8]">Bisnis Kamu</span></h1>
+                            class="text-[#0191D8] font-semibold">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-2">
                         <p class="max-w-[600px]">
                             Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan

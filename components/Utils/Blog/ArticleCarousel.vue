@@ -27,6 +27,17 @@ const updateLimitBasedOnScreenSize = () => {
     }
 };
 
+const isMobile = ref(false);
+
+const checkIsMobile = () => {
+    isMobile.value = window.innerWidth <= 768;
+};
+
+onMounted(() => {
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+});
+
 // Fetch API
 const { data: response, error, refresh } = useFetch(() => {
     let apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit.value}&search=${props.searchQuery}`;
@@ -92,6 +103,7 @@ onBeforeUnmount(() => {
 const changePage = (page: number) => {
     if (page > 0 && page <= totalPages.value) {
         currentPage.value = page;
+        window.scrollTo(0, 0); // Scroll to the top of the page
     }
 };
 
@@ -112,12 +124,13 @@ const scrollRight = () => {
 </script>
 
 <template>
-    <div class="flex flex-row justify-start items-start mb-2 lg:px-24">
-        <button @click="scrollLeft" class="bg-transparent text-white px-1 py-4 shadow-none hover:bg-transparent">
-            <Icon name="carbon:previous-outline" class="text-3xl text-black" />
+    <div class="flex flex-row justify-start items-start mb-2 lg:px-24" data-aos="fade-up">
+        <button v-if="isMobile" @click="scrollLeft"
+            class="bg-transparent text-white mt-6 rounded-full shadow-none hover:bg-transparent border-2 border-black">
+            <Icon name="ic:round-navigate-before" class="flex text-3xl text-black" />
         </button>
 
-        <div ref="carousel" class="category-filter-container flex overflow-x-hidden items-center mx-4 text-sm">
+        <div v-if="isMobile" ref="carousel" class="category-filter-container flex overflow-x-hidden items-center mx-4 text-sm" data-aos="fade-up">
             <div v-for="category in categories" :key="category.id"
                 :class="['p-2 lg:p-3 mr-1 rounded-2xl border border-[#0191D8] shadow-md min-w-[calc(100vw-230px)] min-h-auto lg:min-w-[300px] text-center cursor-pointer', activeCategory === category.id ? 'bg-[#0191D8] text-white' : 'bg-white text-[#0191D8]']"
                 @click="setActiveCategory(category.id)">
@@ -128,14 +141,31 @@ const scrollRight = () => {
             </div>
         </div>
 
-        <button @click="scrollRight"
-            class="bg-transparent text-white py-4 rounded-full shadow-none hover:bg-transparent">
-            <Icon name="carbon:next-outline" class="text-3xl text-black" />
+        <div v-else ref="carousel"
+            class="category-filter-container flex no-scrollbar justify-center items-center text-sm" data-aos="fade-up">
+            <div v-for="category in categories" :key="category.id"
+                :class="['p-2 lg:p-3 mr-1 rounded-2xl border border-[#0191D8] shadow-none text-center cursor-pointer', activeCategory === category.id ? 'bg-[#0191D8] text-white' : 'bg-white text-[#0191D8]']"
+                @click="setActiveCategory(category.id)">
+                {{ category.title }}
+                <span
+                    :class="['inline-block w-6 h-6 rounded-full text-sm leading-6', activeCategory === category.id ? 'bg-white text-[#0191D8]' : 'bg-[#0191D8] text-white']">{{
+                    category.total }}</span>
+            </div>
+            <button @click="scrollRight"
+                class="bg-transparent text-white rounded-full shadow-none hover:bg-transparent border-2 border-black">
+                <Icon name="ic:round-navigate-next" class="flex text-3xl text-black" />
+            </button>
+        </div>
+
+
+        <button v-if="isMobile" @click="scrollRight"
+            class="bg-transparent text-white mt-6 rounded-full shadow-none hover:bg-transparent border-2 border-black">
+            <Icon name="ic:round-navigate-next" class="flex text-3xl text-black" />
         </button>
     </div>
     <div class="mx-auto px-1 lg:p-24">
         <div v-if="loading" class="text-center text-gray-500 mt-4">Loading...</div>
-        <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
             <NuxtLink v-for="blog in blogs" :key="blog.id" :to="'blog/' + blog.slug"
                 class="bg-transparent rounded-lg overflow-hidden">
                 <img :src="blog.image" alt="Random Image" class="w-full h-auto lg:h-64 object-cover rounded-xl">
@@ -148,13 +178,13 @@ const scrollRight = () => {
 
         <p v-if="!blogs.length && !loading" class="text-center text-gray-500 mt-4">No blogs available.</p>
 
-        <div class="flex justify-start items-center mt-8" v-if="totalPages > 1">
+        <div class="flex justify-start items-center mt-8" v-if="totalPages > 1" data-aos="fade-up">
             <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
-                class="lg:px-4 lg:py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
+                class="lg:py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
                 <Icon name="carbon:previous-outline" class="text-3xl" />
             </button>
             <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
-                class="lg:px-4 lg:px-2 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                class="lg:px-2 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
                 <Icon name="carbon:next-outline" class="text-3xl" />
             </button>
         </div>

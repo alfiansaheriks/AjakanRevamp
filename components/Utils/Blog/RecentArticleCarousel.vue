@@ -51,7 +51,7 @@ onUnmounted(() => {
 <template>
     <div class="relative">
         <!-- Desktop View -->
-        <div v-if="!isMobile" class="overflow-x-auto">
+        <div v-if="!isMobile" class="overflow-x-hidden">
             <div class="flex transition-transform duration-300 ease-in-out gap-2"
                 :style="{ transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)` }">
                 <div v-for="blog in blogs" :key="blog.id" class="flex-shrink-0 w-full sm:w-1/3">
@@ -83,11 +83,11 @@ onUnmounted(() => {
                     <h3 class="text-lg font-semibold mb-2">{{ blog.meta_title }}</h3>
                 </NuxtLink>
             </div>
-            <div class="flex justify-between mt-4 px-2">
-                <button @click="prev" class="px-4 py-2 bg-transparent text-black rounded-md" :disabled="currentIndex === 0">
+            <div class="flex mt-4">
+                <button @click="prev" class="py-2 bg-transparent text-black rounded-md" :disabled="currentIndex === 0">
                     <Icon name="carbon:previous-outline" class="text-3xl" />
                 </button>
-                <button @click="next" class="px-4 py-2 bg-transparent text-black rounded-md" :disabled="currentIndex + itemsToShow >= blogs.length">
+                <button @click="next" class="px-1 py-2 bg-transparent text-black rounded-md" :disabled="currentIndex + itemsToShow >= blogs.length">
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>
