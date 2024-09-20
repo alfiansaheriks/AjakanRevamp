@@ -263,9 +263,9 @@ const toggleAnswer = (index: number): void => {
                 <UtilsCardPackage />
             </div>
         </section>
-        <section id="section6"
+        <section id="section6" class="w-full mx-auto flex flex-col items-center">
             <!-- Title -->
-            <div class="text-center mt-10 mb-10 w-[500px]">
+            <div class="flex justify-center items-center text-center mt-10 mb-10 w-[500px]">
                 <h2 class="text-[29px] md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
                         class="text-[#0191D8]">aset <br />berharga bagi kami</span>
                 </h2>
@@ -282,7 +282,7 @@ const toggleAnswer = (index: number): void => {
                     <h1 class="text-3xl font-semibold max-w-[600px] lg:max-w-[545px]">Peluang yang Menjanjikan untuk
                         <span class="text-[#0191D8]">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-6">
-                        <p class="max-w-[600px] lg:max-w-[550px] leading-tight">
+                        <p class="max-w-[600px] lg:max-w-[525px] leading-tight">
                             Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan
                                 terintegrasi
                                 otomatis, termasuk sistem pembayaran E-Money & Virtual Account.</b> Tak perlu lagi

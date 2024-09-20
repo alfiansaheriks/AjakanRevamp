@@ -328,7 +328,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
 
-        <section id="section5" class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh)] relative mt-20">
+        <section id="section5" class="flex-1 flex flex-col justify-center relative mt-20">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-semibold">Yang Kami Sediakan untuk Kamu</h2>
             </div>
@@ -337,13 +337,13 @@ const toggleAnswer = (index: number): void => {
         <section id="section6"
             class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10 mt-20">
             <div v-if="!isMobile">
-                <div class="flex flex-col justify-center items-center text-center mb-8 lg:max-w-[600px]"
+                <div class="flex flex-col justify-center items-center text-center mb-8"
                     data-aos="fade">
                     <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
-                            Usaha</span> Terbaik
+                            Usaha</span> <br/>Terbaik
                         untuk Kamu</h2>
                 </div>
-                <div class="px-2" data-aos="fade">
+                <div class="px-[74px]" data-aos="fade">
                     <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
                         Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
                         Berapa

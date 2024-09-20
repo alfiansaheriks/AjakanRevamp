@@ -44,8 +44,8 @@ onUnmounted(() => {
         </div>
 
         <!-- Centered Arrow Icon -->
-        <div class="arrow-wrapper flex items-center justify-center flex-grow lg:mb-16">
-            <div class="arrow-container flex items-center justify-center w-10 h-10 bg-[#dff4ff] rounded-full">
+        <div class="arrow-wrapper flex items-center justify-center flex-grow lg:mb-[70px]">
+            <div class="arrow-container flex items-center justify-center w-10 h-10">
                 <Icon name="lets-icons:arrow-drop-down" class="text-[#0191d8] text-4xl cursor-pointer" />
             </div>
         </div>

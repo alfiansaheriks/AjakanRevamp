@@ -19,17 +19,17 @@ const products = ref<Product[]>([]);
 </script>
 
 <template>
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 overflow-x-hidden overflow-y-hidden">
   <div 
     v-for="(product, index) in products" 
     :key="index" 
-    class="relative p-6 rounded-2xl shadow-md w-full z-10 overflow-hidden flex flex-col h-full"
+    class="relative p-6 rounded-2xl shadow-md w-full z-10 overflow-x-hidden overflow-y-hidden flex flex-col h-full"
     :data-aos="'fade-up'"
     :data-aos-delay="index * 300"
   >
-    <div class="absolute inset-0 bg-white" style="height: 50%"></div>
-    <div class="absolute inset-0 bg-[#DFF4FF]" style="height: 50%; top: 50%"></div>
-    <div class="relative flex-grow mb-4">
+    <div class="absolute inset-0 bg-white overflow-x-hidden overflow-y-hidden" style="height: 50%"></div>
+    <div class="absolute inset-0 bg-[#DFF4FF] overflow-x-hidden overflow-y-hidden" style="height: 50%; top: 50%"></div>
+    <div class="relative flex-grow mb-4 overflow-x-hidden overflow-y-hidden">
       <h3 class="text-base font-medium mb-2">{{ product.name }}</h3>
       <h4 class="text-3xl font-semibold mb-4">{{ product.price_reformat }}</h4>
       <ul class="space-y-2">

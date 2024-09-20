@@ -90,7 +90,7 @@ const changePage = (page: number) => {
                 </div>
                 <div>&#8203;</div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-4 lg:px-28">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-4 lg:px-28" data-aos="fade-up">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full">
                     <NuxtLink to="/" class="block bg-transparent w-full rounded-none">
                         <NuxtImg :src="undangan.image" alt="Article Image"

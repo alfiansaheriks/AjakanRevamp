@@ -27,12 +27,12 @@ function formatToJutaPlus(value: string | number): string {
   return value.toLocaleString(); // Memformat angka kecil dengan koma
 }
 
-console.log('Total Visitor Unformatted: ', stat?.total_visitor);
+// console.log('Total Visitor Unformatted: ', stat?.total_visitor);
 
 // Memformat angka total visitor
 const totalVisitorFormatted = stat ? formatToJutaPlus(stat.total_visitor) : '0';
 
-console.log('Total Visitor Formatted: ', totalVisitorFormatted);
+// console.log('Total Visitor Formatted: ', totalVisitorFormatted);
 
 const cards = ref([
     {

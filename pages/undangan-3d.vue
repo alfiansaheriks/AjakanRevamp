@@ -35,7 +35,8 @@ onUnmounted(() => {
 </script>
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
-        <div class="flex-1 flex flex-col justify-start items-center py-20 mt-20 lg:mt-32" data-aos="fade-up">
+        <div class="flex-1 flex flex-col justify-start items-center py-20 mt-20 lg:mt-32">
+            <div data-aos="fade-up">
             <h1 class="text-[25px] lg:text-4xl text-center">Undangan <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
             <p v-if="!isMobile" class="text-xl text-center text-[#989898] w-[682px] py-4"> Dengan dimensi tambahan, seperti tekstur, kedalaman, dan pergerakan, undangan 3D menciptakan kesan yang lebih hidup dan berkesan daripada undangan tradisional.</p>
             <p v-else class="text-[14.5] px-5 text-center text-[#989898] w-[381px] py-4"> Dengan dimensi tambahan, seperti tekstur, kedalaman, dan pergerakan, undangan 3D menciptakan kesan yang lebih hidup dan berkesan daripada undangan tradisional.</p>
@@ -65,6 +66,7 @@ onUnmounted(() => {
                 <button v-if="!isMobile" class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
                 <button v-else class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10 h-10 mt-8">Cari</button>
             </div>
+        </div>
             <div class="mt-20">
                 <UtilsUndangan3DUndanganCarousel  />
             </div>

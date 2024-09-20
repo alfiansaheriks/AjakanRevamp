@@ -170,7 +170,7 @@ const menus = ref([
       <slot />
     </main>
 
-    <footer class="bg-[#F8F9FD]x` py-8 z-10 bg-white">
+    <footer class="py-8 z-10 bg-white">
       <PagesContainer class="flex-1 flex flex-col gap-8">
         <!-- Mobile Layout -->
         <div class="flex flex-col gap-4 md:hidden">
@@ -234,7 +234,7 @@ const menus = ref([
             <NuxtLink to="/" class="text-sm">Ticket Event</NuxtLink><br />
           </div>
         </div>
-        <div class="md:flex flex-col md:grid lg:grid-cols-3">
+        <div class="md:flex flex-col md:grid lg:grid-cols-4">
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Kontak</h1>
             <Icon name="mdi:instagram" class="bg-[#0191D8] mr-2" size="3vh" />
@@ -264,14 +264,14 @@ const menus = ref([
               <img src="/logos/bni.png" alt="bni logo" class="w-auto object-contain" />
               <img src="/logos/mandiri.png" alt="mandiri logo" class="w-auto object-contain" />
               <img src="/logos/bca.png" alt="bca logo" class="w-auto object-contain" />
-              <img src="/logos/bri.png" alt="bri logo" class="w-auto object-contain" />
-            </div>
-            <div class="flex gap-5 max-w-[350px]">
-              <img src="/logos/permatabank.png" alt="visa logo" class="w-auto object-contain" />
-              <img src="/logos/dana.png" alt="dana logo" class="w-auto object-contain" />
-              <img src="/logos/ovo.png" alt="ovo logo" class="w-auto object-contain" />
             </div>
             <div class="flex gap-1 max-w-[350px]">
+              <img src="/logos/bri.png" alt="bri logo" class="w-auto object-contain" />
+              <img src="/logos/permatabank.png" alt="visa logo" class="w-auto object-contain" />
+              <img src="/logos/dana.png" alt="dana logo" class="w-auto object-contain" />
+            </div>
+            <div class="flex gap-1 max-w-[350px]">
+              <img src="/logos/ovo.png" alt="ovo logo" class="w-auto object-contain" />
               <img src="/logos/gopay.png" alt="visa logo" class="w-auto object-contain" />
               <img src="/logos/linkaja.png" alt="bni logo" class="w-auto object-contain" />
               <img src="/logos/atmbersama.png" alt="mandiri logo" class="w-auto object-contain" />
