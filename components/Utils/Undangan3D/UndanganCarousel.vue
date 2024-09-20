@@ -110,11 +110,11 @@ const changePage = (page: number) => {
             <!-- Pagination -->
             <div class="flex justify-start items-center mt-8 px-4 lg:px-24" v-if="totalPages > 1">
                 <button @click="changePage(currentPage - 1)" :disabled="currentPage === 1"
-                    class="px-4 py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="lg:px-4 py-2 bg-transparent text-gray-700 rounded-l disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:previous-outline" class="text-3xl" />
                 </button>
                 <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
-                    class="py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="px-1 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>
