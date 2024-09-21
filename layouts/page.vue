@@ -73,13 +73,15 @@ const menus = ref([
       <header v-if="scrolled"
         class="z-30 fixed top-0 w-full bg-white shadow-lg h-16 flex items-center justify-between transition-colors duration-300">
         <NuxtLink to="/" class="font-bold text-lg">
-          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 absolute top-0 left-[8%]" />
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo"
+            class="scale-75 absolute top-0 left-[8%]" />
         </NuxtLink>
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4 flex">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
             <li v-for="(menu, i) in menus" :key="i" class="relative">
               <div class="flex items-center">
-                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500" @click="isMenuOpen = false">
+                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500"
+                  @click="isMenuOpen = false">
                   {{ menu.label }}
                 </NuxtLink>
                 <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
@@ -89,7 +91,8 @@ const menus = ref([
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
                 <li v-for="(subMenu, j) in menu.subMenu" :key="j"
                   class="py-1 px-3 min-w-[200px] hover:bg-gray-200 rounded-lg">
-                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block" @click="handleLinkClick">
+                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block"
+                    @click="handleLinkClick">
                     {{ subMenu.label }}
                   </NuxtLink>
                 </li>
@@ -104,13 +107,15 @@ const menus = ref([
       <header v-else
         class="z-30 fixed top-0 w-full bg-transparent h-24 flex items-center justify-between transition-colors duration-300">
         <NuxtLink to="/" class="font-bold text-lg">
-          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 absolute top-0 left-[8%]" />
+          <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo"
+            class="scale-75 absolute top-0 left-[8%]" />
         </NuxtLink>
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }" class="sm:flex sm:gap-4">
           <ul class="flex flex-col sm:flex-row gap-4 divide-y sm:divide-y-0 divide-gray-500/50">
             <li v-for="(menu, i) in menus" :key="i" class="relative">
               <div class="flex items-center">
-                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500" @click="isMenuOpen = false">
+                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500"
+                  @click="isMenuOpen = false">
                   {{ menu.label }}
                 </NuxtLink>
                 <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
@@ -120,7 +125,8 @@ const menus = ref([
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
                 <li v-for="(subMenu, j) in menu.subMenu" :key="j"
                   class="py-1 px-3 min-w-[200px] hover:bg-gray-200 rounded-lg">
-                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block" @click="handleLinkClick">
+                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block"
+                    @click="handleLinkClick">
                     {{ subMenu.label }}
                   </NuxtLink>
                 </li>
@@ -146,7 +152,8 @@ const menus = ref([
           <ul class="flex flex-col sm:flex-row sm:gap-4 gap-6 sm:divide-y-0 divide-gray-500/50">
             <li v-for="(menu, i) in menus" :key="i" class="relative">
               <div class="flex items-center">
-                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500" @click="handleLinkClick">
+                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500"
+                  @click="handleLinkClick">
                   {{ menu.label }}
                 </NuxtLink>
                 <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
@@ -155,7 +162,8 @@ const menus = ref([
               <ul v-if="menu.subMenu && isDropdownOpen === i"
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
                 <li v-for="(subMenu, j) in menu.subMenu" :key="j" class="py-1 px-3 hover:bg-gray-200 hover:rounded-md">
-                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" @click="handleLinkClick" class="block">
+                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }"
+                    @click="handleLinkClick" class="block">
                     {{ subMenu.label }}
                   </NuxtLink>
                 </li>
@@ -234,7 +242,7 @@ const menus = ref([
             <NuxtLink to="/" class="text-sm">Ticket Event</NuxtLink><br />
           </div>
         </div>
-        <div class="md:flex flex-col md:grid lg:grid-cols-4">
+        <div class="lg:grid lg:grid-cols-4 lg:gap-10">
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Kontak</h1>
             <Icon name="mdi:instagram" class="bg-[#0191D8] mr-2" size="3vh" />
@@ -260,21 +268,21 @@ const menus = ref([
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Pembayaran</h1>
             <div class="flex gap-1 max-w-[350px]">
-              <img src="/logos/visa.png" alt="visa logo" class="w-auto object-contain" />
-              <img src="/logos/bni.png" alt="bni logo" class="w-auto object-contain" />
-              <img src="/logos/mandiri.png" alt="mandiri logo" class="w-auto object-contain" />
-              <img src="/logos/bca.png" alt="bca logo" class="w-auto object-contain" />
+              <img src="/logos/visa.png" alt="visa logo" class="w-[50px] object-contain" />
+              <img src="/logos/bni.png" alt="bni logo" class="w-[50px] object-contain" />
+              <img src="/logos/mandiri.png" alt="mandiri logo" class="w-[50px] object-contain" />
+              <img src="/logos/bca.png" alt="bca logo" class="w-[50px] object-contain" />
             </div>
             <div class="flex gap-1 max-w-[350px]">
-              <img src="/logos/bri.png" alt="bri logo" class="w-auto object-contain" />
-              <img src="/logos/permatabank.png" alt="visa logo" class="w-auto object-contain" />
-              <img src="/logos/dana.png" alt="dana logo" class="w-auto object-contain" />
+              <img src="/logos/bri.png" alt="bri logo" class="w-[50px] object-contain" />
+              <img src="/logos/permatabank.png" alt="visa logo" class="w-[50px] object-contain" />
+              <img src="/logos/dana.png" alt="dana logo" class="w-[50px] object-contain" />
             </div>
             <div class="flex gap-1 max-w-[350px]">
-              <img src="/logos/ovo.png" alt="ovo logo" class="w-auto object-contain" />
-              <img src="/logos/gopay.png" alt="visa logo" class="w-auto object-contain" />
-              <img src="/logos/linkaja.png" alt="bni logo" class="w-auto object-contain" />
-              <img src="/logos/atmbersama.png" alt="mandiri logo" class="w-auto object-contain" />
+              <img src="/logos/ovo.png" alt="ovo logo" class="w-[50px] object-contain" />
+              <img src="/logos/gopay.png" alt="visa logo" class="w-[50px] object-contain" />
+              <img src="/logos/linkaja.png" alt="bni logo" class="w-[25px] object-contain" />
+              <img src="/logos/atmbersama.png" alt="mandiri logo" class="w-[50px] object-contain" />
             </div>
           </div>
           <div class="max-w-[350px] mt-4">
@@ -283,7 +291,6 @@ const menus = ref([
             <NuxtLink to="/" class="text-sm">Terms & Condition</NuxtLink><br />
             <NuxtLink to="/" class="text-sm">Privacy Policy</NuxtLink><br />
           </div>
-
         </div>
       </PagesContainer>
     </footer>

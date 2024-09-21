@@ -328,8 +328,8 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
 
-        <section id="section5" class="flex-1 flex flex-col justify-center relative mt-20">
-            <div class="text-center mb-8">
+        <section id="section5" class="flex-1 flex flex-col justify-center items-center relative mt-20 lg:mt-36">
+            <div class="text-center mb-11">
                 <h2 class="text-3xl font-semibold">Yang Kami Sediakan untuk Kamu</h2>
             </div>
             <UtilsJoinPartnerCardCarousel />
@@ -337,20 +337,18 @@ const toggleAnswer = (index: number): void => {
         <section id="section6"
             class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10 mt-20">
             <div v-if="!isMobile">
-                <div class="flex flex-col justify-center items-center text-center mb-8"
-                    data-aos="fade">
+                <div class="flex flex-col justify-center items-center text-center mb-8" data-aos="fade">
                     <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
-                            Usaha</span> <br/>Terbaik
+                            Usaha</span> <br />Terbaik
                         untuk Kamu</h2>
                 </div>
-                <div class="px-[74px]" data-aos="fade">
-                    <h3 class="leading-tight flex flex-col justify-center text-center text-sm mb-8">
+                <div class="max-w-[1110px] h-[69px] text-center mb-8 text-lg" data-aos="fade">
+                    <p>
                         Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
-                        Berapa
-                        biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. <b>Namun, di sini kami
-                            menyediakan
-                            semua itu dengan harga spesial yang jauh lebih terjangkau.</b>
-                    </h3>
+                        Berapa biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. Namun,
+                        <strong> di sini kami menyediakan semua itu dengan harga spesial yang jauh lebih
+                            terjangkau.</strong>
+                    </p>
                 </div>
             </div>
             <div v-else class="px-3">
@@ -425,7 +423,7 @@ const toggleAnswer = (index: number): void => {
                         <div class="flex justify-between items-center">
                             <h3 v-if="faq.showAnswer" class="text-base lg:text-2xl font-semibold text-black">{{
                                 faq.question
-                            }}
+                                }}
                             </h3>
                             <h3 v-else="faq.showAnswer" class="text-base lg:text-lg font-semibold text-black">{{
                                 faq.question }}

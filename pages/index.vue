@@ -265,9 +265,9 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section6" class="w-full mx-auto flex flex-col items-center">
             <!-- Title -->
-            <div class="flex justify-center items-center text-center mt-10 mb-10 w-[500px]">
-                <h2 class="text-[29px] md:text-3xl font-semibold">Kebahagiaan pelanggan merupakan <span
-                        class="text-[#0191D8]">aset <br />berharga bagi kami</span>
+            <div class="flex justify-center items-center text-center mt-10 mb-10 w-[782px]">
+                <h2 class="text-[29px] md:text-4xl font-semibold">Kebahagiaan pelanggan merupakan <span
+                        class="text-[#0191D8]">aset berharga bagi kami</span>
                 </h2>
             </div>
             <div class="flex flex-1 w-full gap-8 mx-auto">
