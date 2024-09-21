@@ -293,7 +293,7 @@ const toggleAnswer = (index: number): void => {
                                 Dapatkan
                             </h2>
                             <p v-if="!isMobile"
-                                class="leading-tight lg:leading-tight w-[545px] text-base lg:text-base text-black lg:text-[#fff] mt-8">
+                                class="leading-tight lg:leading-tight w-[500px] text-base lg:text-base text-black lg:text-[#fff] mt-8">
                                 Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
                                 Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjual-nya sekitar
                                 Rp100.000. Dengan menjual hanya 2 undangan per hari, dengan margin keuntungan
