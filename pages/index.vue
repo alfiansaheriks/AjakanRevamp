@@ -114,7 +114,7 @@ const faqs = ref<FAQ[]>([
     },
     {
         question: "Domain itu apa artinya?",
-        answer: "Domain adalah Domain adalah alamat unik yang memudahkan akses dan identifikasi situs web di internet. Karena untuk domain tidak bisa huruf kapital, juga tidak bisa menggunakan tanda titik atau simbol lainnya kecuali tanda strip (-) ya. Jadi pastikan domain yang dipilih sudah sesuai dengan keinginan kamu, karena selama 1 tahun kamu akan menggunakan nama domain tersebut.",
+        answer: "Domain adalah alamat unik yang memudahkan akses dan identifikasi situs web di internet. Karena untuk domain tidak bisa huruf kapital, juga tidak bisa menggunakan tanda titik atau simbol lainnya kecuali tanda strip (-) ya. Jadi pastikan domain yang dipilih sudah sesuai dengan keinginan kamu, karena selama 1 tahun kamu akan menggunakan nama domain tersebut.",
         showAnswer: false
     },
     {
