@@ -14,6 +14,7 @@ useSeoMeta({
 })
 
 const selectedFilter = ref('Save The Date'); // Default value
+const searchQuery = ref('');
 
 const isMobile = ref(false);
 
@@ -21,6 +22,11 @@ const updateIsMobile = () => {
     if (typeof window !== 'undefined') {
         isMobile.value = window.innerWidth <= 768;
     }
+};
+
+const onSearch = () => {
+    console.log('Search query:', searchQuery.value);
+    // Implement your search logic here if needed
 };
 
 onMounted(() => {
@@ -31,10 +37,10 @@ onMounted(() => {
 onUnmounted(() => {
     window.removeEventListener('resize', updateIsMobile);
 });
-
 </script>
+
 <template>
-    <div class="flex-1 flex flex-col bg-[#f8f9fd]">
+    <div class="flex-1 flex flex-col bg-[#fff]">
         <div class="flex-1 flex flex-col justify-start items-center py-20 mt-20 lg:mt-32" data-aos="fade-up">
             <h1 class="text-[25px] lg:text-4xl text-center">Undangan <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
             <p v-if="!isMobile" class="text-xl text-center text-[#989898] w-[682px] py-4"> Bagi yang biasanya menyebarkan informasi event/workshop menggunakan poster, saatnya gunakan website simple, elegant, modern.</p>
@@ -55,18 +61,18 @@ onUnmounted(() => {
                                 clip-rule="evenodd" />
                         </svg>
                     </i>
-                    <input v-if="!isMobile" type="text"
+                    <input v-model="searchQuery" v-if="!isMobile" type="text"
                         class="w-full h-12 pl-12 pr-24 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri atau Ketik URL" />
-                    <input v-else type="text"
+                    <input v-model="searchQuery" v-else type="text"
                         class="w-full h-10 pl-12 mt-8 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri Tema" />
                 </div>
-                <button v-if="!isMobile" class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
-                <button v-else class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10 h-10 mt-8">Cari</button>
+                <button @click="onSearch" v-if="!isMobile" class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
+                <button @click="onSearch" v-else class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10 h-10 mt-8">Cari</button>
             </div>
             <div class="mt-20">
-                <UtilsUndanganSaveTheDateCarousel />
+                <UtilsUndanganSaveTheDateCarousel :search-query="searchQuery" />
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
 
 const activeCategory = ref<number | null>(null);
 const loading = ref(true);
@@ -9,16 +9,21 @@ const scrollTarget = ref<HTMLElement | null>(null);
 
 const setActiveCategory = (categoryId: number) => {
     activeCategory.value = categoryId;
-    currentPage.value = 1; // Reset ke halaman pertama saat kategori diubah
+    currentPage.value = 1; // Reset to the first page when category is changed
     refresh();
 };
 
 const props = defineProps({
     filter: {
         type: String,
+    },
+    searchQuery: {
+        type: String,
+        default: ''
     }
 });
-// Fetch data dari API
+
+// Fetch data from API
 const { data: undangan, pending, refresh } = useFetch(() =>
     `https://ajakan.me/api/guest/themes?type=${props.filter}&limit=${limit}&page=${currentPage.value}`
 );
@@ -27,7 +32,7 @@ const dataUndangan = computed(() => (undangan.value as { data: { themes: { data:
 const subThemes = computed(() => (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes || []);
 const popularThemes = computed(() => (undangan.value as { data: { popular_themes_id: any[] } })?.data.popular_themes_id || []);
 
-// Watch untuk state pending
+// Watch for pending state
 watch(pending, (newPending) => {
     loading.value = newPending;
 });
@@ -38,19 +43,22 @@ watch(() => props.filter, () => {
     refresh();
 });
 
-// Function untuk mendapatkan nama sub theme berdasarkan id
+// Get sub-theme name by ID
 const getSubThemeName = (subThemeId: number) => {
     const subTheme = subThemes.value.find((sub) => sub.id === subThemeId);
     return subTheme ? subTheme.name : 'Unknown Sub Theme';
 };
 
-// Filtered data undangan berdasarkan activeCategory
+// Filtered invitation data based on activeCategory and searchQuery
 const filteredDataUndangan = computed(() => {
     let filteredData = dataUndangan.value;
     if (activeCategory.value) {
         filteredData = filteredData.filter(item => item.sub_theme === activeCategory.value);
     } else if (activeCategory.value === 0) {
         filteredData = filteredData.filter(item => popularThemes.value.includes(item.id));
+    }
+    if (props.searchQuery) {
+        filteredData = filteredData.filter(item => item.name.toLowerCase().includes(props.searchQuery.toLowerCase()));
     }
     return filteredData.slice(0, limit); // Apply limit after filtering
 });
@@ -62,11 +70,12 @@ watch(currentPage, () => {
     refresh();
 });
 
-const changePage = (page: number) => {
+const changePage = async (page: number) => {
     if (page > 0 && page <= totalPages.value) {
         currentPage.value = page;
+        await nextTick(); // Ensure DOM is updated
         if (scrollTarget.value) {
-            scrollTarget.value.scrollIntoView({ behavior: 'smooth' }); // Scroll to the target element
+            scrollTarget.value.scrollIntoView({ behavior: 'smooth' });
         }
     }
 };
@@ -82,6 +91,10 @@ const updateIsMobile = () => {
 onMounted(() => {
     updateIsMobile();
     window.addEventListener('resize', updateIsMobile);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('resize', updateIsMobile);
 });
 </script>
 
@@ -110,21 +123,21 @@ onMounted(() => {
             </div>
             <!-- End Category Filter -->
 
-            <!-- Undangan Cards -->
+            <!-- Invitation Cards -->
             <div ref="scrollTarget" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:px-24">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full" data-aos="fade-up">
-                    <NuxtLink :to="`https://ajakan.me/theme/preview/${undangan.url}`" class="block bg-transparent w-full rounded-none">
+                    <NuxtLink :to="`https://ajakan.me/theme/preview/${undangan.url}`" target="_blank" class="block bg-transparent w-full rounded-none">
                         <NuxtImg :src="undangan.image" alt="Article Image" class="w-full h-[308px] object-cover rounded-xl" />
                         <div class="mt-2">
                             <p class="text-sm lg:text-base text-black my-1">{{ getSubThemeName(undangan.sub_theme) }}</p>
                             <h3 class="text-base lg:text-lg font-semibold mb-2">{{ undangan.name }}</h3>
                             <button v-if="!isMobile" class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full p-2">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />
-                                Preview
+                                <a :href="`https://ajakan.me/theme/preview/${undangan.url}`" target="_blank">Preview</a>
                             </button>
                             <button v-else class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full p-1">
                                 <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />
-                                Preview
+                                <a :href="`https://ajakan.me/theme/preview/${undangan.url}`" target="_blank">Preview</a>
                             </button>
                         </div>
                     </NuxtLink>
@@ -141,7 +154,6 @@ onMounted(() => {
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>
-            
         </div>
     </div>
 </template>

@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
+
+const props = defineProps<{
+    searchQuery: string;
+}>();
 
 const activeCategory = ref<number | null>(null);
 const loading = ref(true);
@@ -18,7 +22,6 @@ const { data: undangan, pending, refresh } = useFetch(() =>
 );
 
 watch(pending, (newPending) => {
-    // console.log('pending:', newPending);
     loading.value = newPending;
 });
 
@@ -27,23 +30,22 @@ watch(undangan, (newUndangan) => {
 });
 
 const dataUndangan = computed(() => {
-    // console.log('undangan.value:', undangan.value);
     return (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || [];
 });
 
 const subThemes = computed(() => {
-    // console.log('subThemes:', (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes);
     return (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes || [];
 });
 
-// Filtered data undangan berdasarkan activeCategory
+// Filtered data undangan berdasarkan activeCategory dan searchQuery
 const filteredDataUndangan = computed(() => {
     let filteredData = dataUndangan.value;
-    // console.log('activeCategory:', activeCategory.value);
     if (activeCategory.value) {
         filteredData = filteredData.filter(item => item.category === activeCategory.value);
     }
-    // console.log('filteredData:', filteredData);
+    if (props.searchQuery) {
+        filteredData = filteredData.filter(item => item.title.toLowerCase().includes(props.searchQuery.toLowerCase()));
+    }
     return filteredData.slice(0, limit); // Apply limit after filtering
 });
 
@@ -95,20 +97,22 @@ onMounted(() => {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 px-4 lg:px-28" data-aos="fade-up">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full">
-                    <NuxtLink to="/" class="block bg-transparent min-w-full rounded-none">
+                    <NuxtLink :to="`https://ajakan.me/theme/preview/${undangan.url}`" target="_blank" class="block bg-transparent min-w-full rounded-none">
                         <NuxtImg :src="undangan.image" alt="Article Image"
                             class="w-full h-[350px] object-cover rounded-xl" />
                         <div class="py-2">
                             <p class="text-sm lg:text-base text-black">{{ undangan.category_name }}</p>
                             <h3 class="text-base lg:text-lg font-semibold py-2">{{ undangan.title }}</h3>
-                            <button
-                                class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
-                                <Icon name="icon-park-outline:preview-open" class="relative top-0.5 text-base text-white" />
-                                Preview
-                            </button>
+                            <a :href="undangan.url" target="_blank">
+                                <button
+                                    class="bg-[#0191D8] text-white font-normal rounded-lg focus:outline-none w-full py-2">
+                                    <Icon name="icon-park-outline:preview-open"
+                                        class="relative top-0.5 text-base text-white" />
+                                    Preview
+                                </button>
+                            </a>
                         </div>
                     </NuxtLink>
-
                 </div>
             </div>
             <div class="flex justify-start items-center mt-8 px-4 lg:px-24" v-if="totalPages > 1">

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, defineProps } from 'vue';
+
+// Accept searchQuery prop from parent component
+const props = defineProps<{
+    searchQuery: string; // Define the type of the searchQuery prop
+}>();
 
 const activeCategory = ref<number | null>(null);
 const loading = ref(true);
@@ -8,7 +13,7 @@ const limit = 12;
 
 const setActiveCategory = (categoryId: number) => {
     activeCategory.value = categoryId;
-    currentPage.value = 1; // Reset ke halaman pertama saat kategori diubah
+    currentPage.value = 1; // Reset to the first page when the category changes
     refresh();
 };
 
@@ -18,7 +23,6 @@ const { data: undangan, pending, refresh } = useFetch(() =>
 );
 
 watch(pending, (newPending) => {
-    // console.log('pending:', newPending);
     loading.value = newPending;
 });
 
@@ -27,14 +31,11 @@ watch(undangan, (newUndangan) => {
 });
 
 const dataUndangan = computed(() => {
-    // console.log('undangan.value:', undangan.value);
     return (undangan.value as { data: { themes: { data: any[] } } })?.data.themes.data || [];
 });
 
 const subThemes = computed(() => {
-    // console.log('subThemes:', (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes);
     return (undangan.value as { data: { sub_themes: any[] } })?.data.sub_themes.map(subTheme => {
-        // Replace "Undangan 3D " (note the space after 3D) with an empty string
         return {
             ...subTheme,
             name: subTheme.name.replace('Undangan 3D ', '')
@@ -42,15 +43,21 @@ const subThemes = computed(() => {
     }) || [];
 });
 
-
-// Filtered data undangan berdasarkan activeCategory
+// Filtered data undangan based on activeCategory and searchQuery
 const filteredDataUndangan = computed(() => {
     let filteredData = dataUndangan.value;
-    // console.log('activeCategory:', activeCategory.value);
+
+    // Filter by activeCategory
     if (activeCategory.value) {
         filteredData = filteredData.filter(item => item.category === activeCategory.value);
     }
-    // console.log('filteredData:', filteredData);
+
+    // Filter by searchQuery
+    if (props.searchQuery) {
+        const query = props.searchQuery.toLowerCase();
+        filteredData = filteredData.filter(item => item.title.toLowerCase().includes(query));
+    }
+
     return filteredData.slice(0, limit); // Apply limit after filtering
 });
 
@@ -92,7 +99,7 @@ const changePage = (page: number) => {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-4 lg:px-28" data-aos="fade-up">
                 <div v-for="undangan in filteredDataUndangan" :key="undangan.id" class="w-full">
-                    <NuxtLink to="/" class="block bg-transparent w-full rounded-none">
+                    <NuxtLink :to="undangan.url" target="_blank" class="block bg-transparent w-full rounded-none">
                         <NuxtImg :src="undangan.image" alt="Article Image"
                             class="w-full h-[310px] object-cover rounded-xl" />
                         <div class="py-2">
@@ -114,7 +121,7 @@ const changePage = (page: number) => {
                     <Icon name="carbon:previous-outline" class="text-3xl" />
                 </button>
                 <button @click="changePage(currentPage + 1)" :disabled="currentPage === totalPages"
-                    class="px-1 py-2  text-gray-700 rounded-r  disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="px-1 py-2 text-gray-700 rounded-r disabled:opacity-50 disabled:cursor-not-allowed">
                     <Icon name="carbon:next-outline" class="text-3xl" />
                 </button>
             </div>

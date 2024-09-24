@@ -112,6 +112,21 @@ const faqs = ref<FAQ[]>([
         answer: "Berikut contoh website partner kami yang sudah bergabung: <br> <a href='https://undigindo.com' target='_blank'>https://undigindo.com</a> <br> <a href='https://nuivah.com' target='_blank'>https://nuivah.com</a> <br> <a href='https://aisianwedding.com' target='_blank'>https://aisianwedding.com</a> <br> <a href='https://theparade.id' target='_blank'>https://theparade.id</a>",
         showAnswer: false
     },
+    {
+        question: "Domain itu apa artinya?",
+        answer: "Domain adalah Domain adalah alamat unik yang memudahkan akses dan identifikasi situs web di internet. Karena untuk domain tidak bisa huruf kapital, juga tidak bisa menggunakan tanda titik atau simbol lainnya kecuali tanda strip (-) ya. Jadi pastikan domain yang dipilih sudah sesuai dengan keinginan kamu, karena selama 1 tahun kamu akan menggunakan nama domain tersebut.",
+        showAnswer: false
+    },
+    {
+        question: "Apakah sudah disediakan konten untuk promosi?",
+        answer: "Konten promosi sudah kami sediakan dan bisa langsung digunakan. Di website partner Ajakan akan ada Marketing Kit yang didalamnya berisi Google Drive mengenai konten promosi yang bisa kamu edit dan atur sendiri.",
+        showAnswer: false
+    },
+    {
+        question: "Apakah music bisa dicostum?",
+        answer: "Backsound bisa menggunakan backsound yang tersedia pada website. Apabila ada request lagu Nanti bisa kita bantu tambahkan oleh tim Ajakan. Atau kamu bisa langsung drop link YouTube lagu nya, nanti kita bantu tambahkan di website.",
+        showAnswer: false
+    },
 ]);
 
 const toggleAnswer = (index: number): void => {

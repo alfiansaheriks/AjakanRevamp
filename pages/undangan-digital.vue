@@ -14,9 +14,15 @@ useSeoMeta({
 })
 
 const selectedFilter = ref('');
+const searchQuery = ref('');
 
 function onFilterChange(newFilter: string) {
     selectedFilter.value = newFilter;
+}
+
+function onSearch() {
+    console.log('Search query:', searchQuery.value);
+    // Implement your search logic here
 }
 
 const filterType = computed(() => {
@@ -98,14 +104,14 @@ onUnmounted(() => {
                                 clip-rule="evenodd" />
                         </svg>
                     </i>
-                    <input v-if="!isMobile" type="text"
+                    <input v-if="!isMobile" v-model="searchQuery" type="text"
                         class="w-full h-12 pl-12 pr-24 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri atau Ketik URL" />
-                    <input v-else type="text"
+                    <input v-else v-model="searchQuery" type="text"
                         class="w-full h-10 pl-12 pr-4 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                         placeholder="Telusuri Tema" />
                 </div>
-                <button class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
+                <button @click="onSearch" class="bg-[#0191D8] text-white font-normal rounded-2xl focus:outline-none px-10">Cari</button>
             </div>
             <div class="w-full lg:w-full lg:px-28 mt-10 lg:mt-20" data-aos="fade" data-aos-delay="500">
                 <ClientOnly>
@@ -113,7 +119,7 @@ onUnmounted(() => {
                 </ClientOnly>
             </div>
             <div class="mt-20" >
-                <UtilsUndanganDigitalUndanganCarousel :filter="filterType"/>
+                <UtilsUndanganDigitalUndanganCarousel :filter="filterType" :search-query="searchQuery"/>
             </div>
         </div>
     </div>
