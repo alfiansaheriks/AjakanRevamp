@@ -242,7 +242,7 @@ const toggleAnswer = (index: number): void => {
             data-aos="fade-right">
             <div class="flex flex-col sm:flex-row justify-between items-center w-full">
                 <div class="flex justify-center w-full sm:w-6/12 h-full">
-                    <NuxtImg src="/image/HpMobileSection4.png" alt="Hero Section 3" class="w-full h-full mt-2" />
+                    <img src="/images/HpMobileSection4.png" alt="Hero Section 3" class="w-full h-full mt-2" />
                 </div>
 
                 <!-- Right Side: Text -->
@@ -323,7 +323,7 @@ const toggleAnswer = (index: number): void => {
                         untuk Kamu</h2>
                 </div>
                 <div data-aos="fade-left">
-                    <NuxtImg src="/image/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
+                    <img src="/images/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
                 </div>
                 <div class="mb-4 mt-4 max-w-[367px]" data-aos="fade-right">
                     <h1 class="text-3xl max-w-[600px]">Peluang yang Menjanjikan untuk <span

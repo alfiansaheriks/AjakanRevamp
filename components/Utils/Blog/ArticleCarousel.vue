@@ -126,18 +126,18 @@ const scrollRight = () => {
 <template>
     <div class="flex flex-row justify-start items-start mb-2 lg:px-24" data-aos="fade-up">
         <button v-if="isMobile" @click="scrollLeft"
-            class="bg-transparent text-white mt-6 rounded-full shadow-none hover:bg-transparent border-2 border-black">
+            class="bg-transparent text-white mt-4 rounded-full shadow-none hover:bg-transparent border-2 border-black">
             <Icon name="ic:round-navigate-before" class="flex text-3xl text-black" />
         </button>
 
         <div v-if="isMobile" ref="carousel" class="category-filter-container flex overflow-x-hidden items-center mx-4 text-sm" data-aos="fade-up">
             <div v-for="category in categories" :key="category.id"
-                :class="['p-2 lg:p-3 mr-1 rounded-2xl border border-[#0191D8] shadow-md min-w-[calc(100vw-230px)] min-h-auto lg:min-w-[300px] text-center cursor-pointer', activeCategory === category.id ? 'bg-[#0191D8] text-white' : 'bg-white text-[#0191D8]']"
+                :class="['p-2 lg:p-3 mr-1 rounded-xl border border-[#0191D8] shadow-md min-w-[calc(100vw-230px)] min-h-auto lg:min-w-[300px] text-center cursor-pointer', activeCategory === category.id ? 'bg-[#0191D8] text-white' : 'bg-white text-[#0191D8]']"
                 @click="setActiveCategory(category.id)">
                 {{ category.title }}
                 <span
-                    :class="['inline-block w-6 h-6 rounded-full text-sm leading-6', activeCategory === category.id ? 'bg-white text-[#0191D8]' : 'bg-[#0191D8] text-white']">{{
-                        category.total }}</span>
+                    :class="['inline-block w-6 h-6 rounded-full text-sm', activeCategory === category.id ? 'bg-white text-[#0191D8]' : 'bg-[#0191D8] text-white']"><span class="relative top-0 text-[10px] ">{{
+                        category.total }}</span></span>
             </div>
         </div>
 
@@ -148,8 +148,8 @@ const scrollRight = () => {
                 @click="setActiveCategory(category.id)">
                 {{ category.title }}
                 <span
-                    :class="['inline-block w-6 h-6 rounded-full text-sm leading-6', activeCategory === category.id ? 'bg-white text-[#0191D8]' : 'bg-[#0191D8] text-white']">{{
-                    category.total }}</span>
+                    :class="['inline-block w-6 h-6 rounded-full text-sm', activeCategory === category.id ? 'bg-white text-[#0191D8]' : 'bg-[#0191D8] text-white']"><span class="relative top-0 text-[10px] ">{{
+                        category.total }}</span></span>
             </div>
             <button @click="scrollRight"
                 class="bg-transparent text-white rounded-full shadow-none hover:bg-transparent border-2 border-black">
@@ -159,7 +159,7 @@ const scrollRight = () => {
 
 
         <button v-if="isMobile" @click="scrollRight"
-            class="bg-transparent text-white mt-6 rounded-full shadow-none hover:bg-transparent border-2 border-black">
+            class="bg-transparent text-white mt-3 rounded-full shadow-none hover:bg-transparent border-2 border-black">
             <Icon name="ic:round-navigate-next" class="flex text-3xl text-black" />
         </button>
     </div>

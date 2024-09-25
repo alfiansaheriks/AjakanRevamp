@@ -127,10 +127,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="px-4">
+    <div class="w-full px-4">
         <div v-if="isMobile" class="carousel-container flex overflow-x-auto overflow-y-hidden space-x-4">
             <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-[80%]" :data-aos="'fade-up'"
-                :data-aos-delay="index * 100">
+            :data-aos-delay="index * 100">
+                <!--  -->
                 <UtilsJoinPartnerBaseCard :cardStyle="card.cardStyle" :iconName="card.iconName"
                     :bgIconStyle="card.bgIconStyle" :iconColor="card.iconColor" :titleStyle="card.titleStyle"
                     :title="card.title" :pStyle="card.pStyle" :subtitleStyle="card.subtitleStyle"

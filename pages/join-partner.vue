@@ -120,11 +120,16 @@ const toggleAnswer = (index: number): void => {
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
         <section id="section1"
-            class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-6 lg:px-4"
+            class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh-68px)] relative px-6 lg:px-4"
             data-aos="fade-up">
-            <div class="flex-1 flex flex-col justify-center items-end left-3/4">
+            <div v-if="!isMobile" class="flex-1 flex flex-col justify-center items-end left-3/4">
                 <div
-                    class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] lg:mt-96">
+                    class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] mt-96 lg:mt-96">
+                </div>
+            </div>
+            <div v-else class="flex-1 flex flex-col justify-center items-end left-3/4">
+                <div
+                    class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-lg absolute bg-gradient-to-r from-transparent to-[#84D2F9] mt-96 lg:mt-96 transform translate-x-1/3">
                 </div>
             </div>
             <div v-if="!isMobile" class="flex-1 flex flex-col justify-center items-center mt-20 lg:mt-52">
@@ -145,7 +150,7 @@ const toggleAnswer = (index: number): void => {
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
             </div>
-            <div v-else class="flex-1 flex flex-col justify-center items-center mt-32">
+            <div v-else class="z-50 flex-1 flex flex-col justify-center items-center mt-32">
                 <div class="flex flex-col items-center w-[350px]">
                     <h1 class="text-[29px] font-normal text-center text-[#1A1A1A]">Bergabunglah Bersama Kami,
                         <span class="font-semibold text-[#0191D8]">Jadikan Bisnis Kamu Lebih Mudah dan Sukses</span>
@@ -163,9 +168,14 @@ const toggleAnswer = (index: number): void => {
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
             </div>
-            <div class="flex-1 flex flex-col justify-end items-start">
+            <div v-if="!isMobile" class="flex-1 flex flex-col justify-end items-start">
                 <div
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-[#84D2F9] to-transparent">
+                </div>
+            </div>
+            <div v-else class="flex-1 flex flex-col justify-end items-start mt-72">
+                <div
+                    class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-2xl absolute bg-gradient-to-r from-transparent to-[#84D2F9] -translate-x-1/2">
                 </div>
             </div>
             <div v-if="isMobile" class="flex flex-col items-center max-w-[700px] mb-4">
@@ -215,27 +225,27 @@ const toggleAnswer = (index: number): void => {
             <!-- Mobile Section -->
             <div v-else class="flex-1 flex flex-col lg:flex-row justify-between gap-8">
                 <div
-                    class="flex flex-col lg:flex-row lg:h-1/2 items-center justify-center bg-[#0191D8] rounded-3xl min-w-screen py-4">
+                    class="flex flex-col lg:flex-row h-[950px] lg:h-1/2 items-center justify-center bg-[#0191D8] rounded-3xl min-w-screen">
                     <div class="w-full lg:w-full px-4 lg:px-8">
-                        <div class="flex flex-col items-start justify-center py-10 px-4">
-                            <h2 class="text-xl lg:text-4xl font-semibold text-[#fff]">Mau Sukses Hasilkan<br /> Jutaan
+                        <div class="flex flex-col items-start justify-center px-4">
+                            <h2 class="text-[29px] lg:text-4xl font-semibold text-[#fff]">Mau Sukses Hasilkan<br /> Jutaan
                                 Rupiah
-                                Dari Rumah Dengan Buka Bisnis <br />Undangan Digital?</h2>
-                            <p class="text-base lg:text-base text-[#fff] mt-8">Sekarang, memulai bisnis undangan digital
+                                Dari Rumah Dengan Buka Bisnis Undangan Digital?</h2>
+                            <p class="text-[15.3px] lg:text-base text-[#fff] mt-8">Sekarang, memulai bisnis undangan digital
                                 tak
-                                perlu ribet lagi. Kami hadir dengan platform yang akan membantumu memiliki website
+                                perlu ribet lagi. Kami hadir dengan platform yang akan <b>membantumu memiliki website
                                 undangan
-                                digital dengan brand, logo, dan domain sendiri. Semua template kami sediakan dan kami
+                                digital</b> dengan brand, logo, dan domain sendiri. <b>Semua template kami sediakan dan kami
                                 update
-                                bulanan. Semuanya kami yang atur! Hebat, bukan? Tertarik?</p>
+                                bulanan.</b> Semuanya kami yang atur! <b>Hebat, bukan? Tertarik?</b></p>
                         </div>
                     </div>
-                    <div class="w-full lg:w-full mt-4 lg:mt-0">
-                        <div class="relative aspect-w-4 aspect-h-3">
+                    <div class="w-full lg:w-full mt-20 lg:mt-0">
+                        <div class="relative right-5">
                             <img src="/images/woman-smartphone.png" alt="Card Image"
-                                class="w-full h-full object-cover rounded-xl" />
+                                class="w-full h-full scale-150" />
                             <div
-                                class="absolute h-[50%] top-[50%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
+                                class="absolute h-[50%] left-10 top-[80%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
                             </div>
                         </div>
                     </div>
@@ -280,7 +290,7 @@ const toggleAnswer = (index: number): void => {
         <section id="section4" class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh-68px)] relative">
             <div class="flex-1 flex justify-between items-center relative">
                 <div
-                    class="flex flex-col lg:flex-row lg:h-1/2 items-start justify-center md:bg-[#0191D8] w-full py-20 relative">
+                    class="flex flex-col lg:flex-row lg:h-1/2 items-start justify-center md:bg-[#0191D8] w-full lg:py-20 relative">
                     <!-- Dot Design on Desktop (Top Left) -->
                     <div v-if="!isMobile" class="absolute top-0 lg:left-5 lg:top-[10%]">
                         <img src="/images/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
@@ -289,7 +299,7 @@ const toggleAnswer = (index: number): void => {
                     <!-- Image for Mobile -->
                     <div class="w-full lg:w-1/2 lg:order-2" data-aos="fade-up">
                         <div v-if="isMobile" class="">
-                            <img src="/images/join-phone-1.png" alt="Phone Join Image"
+                            <img src="/images/Group 635.png" alt="Phone Join Image"
                                 class="w-full h-full object-cover rounded-3xl" />
                         </div>
                     </div>
@@ -303,8 +313,8 @@ const toggleAnswer = (index: number): void => {
                                 Dapatkan
                             </h2>
                             <h2 v-else
-                                class="text-[29px] w-[370px] h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px]">
-                                <span class="text-[#0191D8] lg:text-white">Estimasi</span> Keuntungan yang akan Kamu
+                                class="text-[29px] w-[370px] h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px] mt-10">
+                                Estimasi <span class="text-[#0191D8] lg:text-white">Keuntungan</span> yang akan Kamu
                                 Dapatkan
                             </h2>
                             <p v-if="!isMobile"
@@ -329,9 +339,10 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Phone Image for Desktop -->
-                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-30%] z-0"
-                        data-aos="fade-up">
-                        <img src="/images/phone-join-desktop.png" alt="Card Image"
+                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-40%] z-0" data-aos="fade-up"
+                        > 
+                        <!--  -->
+                        <img src="/images/HpSection4JoinPartner.png" alt="Card Image"
                             class="w-auto h-full object-cover rounded-3xl" />
                     </div>
 
@@ -411,7 +422,7 @@ const toggleAnswer = (index: number): void => {
             </div>
         </section>
         <section v-else id="section7"
-            class="flex-1 flex flex-col justify-center items-start min-h-[calc(100vh-100px)] mt-10">
+            class="flex-1 flex flex-col justify-center items-start min-h-[482px] mt-10">
             <div class="flex-1 flex flex-col justify-center items-center bg-[#0191D8]">
                 <div class="flex flex-col">
                     <h2 class="text-[29px] font-semibold text-center text-white px-4">
@@ -438,7 +449,7 @@ const toggleAnswer = (index: number): void => {
                         <div class="flex justify-between items-center">
                             <h3 v-if="faq.showAnswer" class="text-base lg:text-2xl font-semibold text-black">{{
                                 faq.question
-                                }}
+                            }}
                             </h3>
                             <h3 v-else="faq.showAnswer" class="text-base lg:text-lg font-semibold text-black">{{
                                 faq.question }}

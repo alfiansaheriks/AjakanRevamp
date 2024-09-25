@@ -44,7 +44,7 @@ onUnmounted(() => {
         <div class="flex-1 flex flex-col justify-start items-center py-20 mt-20 lg:mt-32" data-aos="fade-up">
             <h1 class="text-[25px] lg:text-4xl text-center">Undangan <strong class="text-[#0191D8]">{{ selectedFilter }}</strong></h1>
             <p v-if="!isMobile" class="text-xl text-center text-[#989898] w-[682px] py-4"> Bagi yang biasanya menyebarkan informasi event/workshop menggunakan poster, saatnya gunakan website simple, elegant, modern.</p>
-            <p v-else class="text-[14.5px] text-center text-[#989898] w-[381px] px-5 py-4"> Bagi yang biasanya menyebarkan informasi event/workshop menggunakan poster, saatnya gunakan website simple, elegant, modern.</p>
+            <p v-else class="text-[14.5px] text-center text-[black] w-[381px] px-5 py-4"> Bagi yang biasanya menyebarkan informasi event/workshop menggunakan poster, saatnya gunakan website simple, elegant, modern.</p>
             <div class="flex flex-row gap-2 px-4">
                 <div class="relative w-full">
                     <i v-if="!isMobile" class="absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">

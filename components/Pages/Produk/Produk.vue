@@ -29,26 +29,28 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="section1" class="hero-section flex flex-col min-h-[1000px] relative bg-[#F7FAFC]">
+    <section id="section1" class="hero-section flex flex-col min-h-[1500px] lg:min-h-[1000px] relative bg-[#F7FAFC]">
         <!-- Text Section -->
         <div class="text-container flex flex-col px-2 py-8 lg:py-28 md:px-8 lg:px-28 lg:min-w-[639px] lg:min-h-[168px]"
             data-aos="fade-right">
-            <h1 class="leading-tight mt-[50px] lg:mt-0 text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-normal text-black">
+            <h1
+                class="leading-tight mt-[84px] lg:mt-0 text-3xl sm:text-3xl md:text-3xl lg:text-5xl font-normal text-black">
                 Tersedia Untuk Kamu dan
                 <span class="text-[#0191D8] font-bold">Kami Membuat Produk Khusus Untukmu</span>
             </h1>
-            <p class="leading-tight lg:leading-tight text-sm sm:text-sm md:text-base lg:text-lg text-black mt-5">
+            <p class="leading-tight lg:leading-tight text-[15px] sm:text-sm md:text-base lg:text-lg text-black mt-5">
                 Tersedia berbagai macam produk yang memiliki beragam fitur dan keunggulan yang sesuai dengan kebutuhan
                 dan preferensi customer kamu.
             </p>
         </div>
 
         <!-- Centered Arrow Icon -->
-        <div class="arrow-wrapper flex items-center justify-center flex-grow lg:mb-[70px]">
-            <div class="arrow-container flex items-center justify-center w-10 h-10">
+        <div class="arrow-wrapper flex items-center justify-center flex-grow mb-[150px] lg:mb-[70px]">
+            <div class="arrow-container flex items-center justify-center w-10 h-10 rounded-full bg-[#DFF4FF]">
                 <Icon name="lets-icons:arrow-drop-down" class="text-[#0191d8] text-4xl cursor-pointer" />
             </div>
         </div>
+
 
         <!-- Cards Section -->
         <div v-if="!isMobile" class="cards-container mt-auto px-4 md:px-8 lg:px-28">
@@ -60,7 +62,7 @@ onUnmounted(() => {
                 <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
             </div>
         </div>
-        <div v-else class="w-full mt-[124px] md:px-8 lg:px-36 overflow-hidden">
+        <div v-else class="w-full md:px-8 lg:px-36 overflow-hidden">
             <div class="flex flex-row gap-4 overflow-x-scroll sm:gap-4 sm:overflow-x-auto sm:scroll-snap-x-mandatory"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
                 <div v-for="(card, index) in cards" :key="index" :class="[
@@ -98,10 +100,9 @@ onUnmounted(() => {
 
     @media (max-width: 639px) {
         background-image: url('assets/img/image/HeroBg2-mobile.png');
-        height: auto;
         padding: 1rem;
         background-size: cover;
-        background-position: center 100px;
+        background-position: center;
         background-repeat: no-repeat;
     }
 }

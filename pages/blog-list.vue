@@ -39,13 +39,13 @@ onMounted(() => {
                     Temukan berbagai <span class="text-[#0191D8] font-semibold">informasi yang kamu butuhkan</span> di
                     sini
                 </h1>
-                <h1 v-else class="text-[32px] lg:text-5xl font-normal text-center text-black max-w-[1110px] min-h-[112px]">
+                <h1 v-else class="text-[31px] lg:text-5xl font-normal text-center text-black w-[430px] min-h-[112px]">
                     Temukan berbagai <span class="text-[#0191D8] font-semibold">informasi yang kamu butuhkan</span> di
                     sini
                 </h1>
                 <div class="flex-1 flex flex-row justify-center items-start w-[100%] lg:w-[500px] gap-2 mt-4">
                     <div class="relative w-full flex items-center">
-                        <i class="absolute left-2 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">
+                        <i class="absolute left-10 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">
                             <!-- Replace with your icon, e.g., FontAwesome icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#545454">
                                 <path fill-rule="evenodd"
@@ -57,10 +57,10 @@ onMounted(() => {
                             class="w-full h-12 pl-12 pr-20 py-4 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                             placeholder="Telusuri atau Ketik URL" />
                         <input v-else v-model="searchQuery" type="text"
-                            class="w-full h-12 pl-12 pr-20 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-l-xl focus:outline-none focus:border-[#0191D8]"
+                            class="ml-7 w-[65%] pl-9 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
                             placeholder="Telusuri Tema" />
                         <button @click="handleSearchQuery"
-                            class="absolute right-0 lg:right-3 lg:w-[90px] lg:h-[40px] top-1 h-10 bg-[#0191D8] text-white text-16 font-normal rounded-xl focus:outline-none px-4">Cari</button>
+                            class="absolute right-10 lg:right-3 lg:w-[90px] lg:h-[40px] top-0 h-10 bg-[#0191D8] text-white text-16 font-normal rounded-xl focus:outline-none px-4">Cari</button>
                     </div>
                 </div>
 

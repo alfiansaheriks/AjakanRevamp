@@ -93,14 +93,14 @@ const isMobileView = computed(() => isMobile.value);
       </div>
     </div>
   </div>
-  <div v-else class="relative overflow-hidden">
+  <div v-else class="relative overflow-hidden px-4">
   <!-- Carousel container (scrollable on mobile) -->
   <div class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory py-6" style="scrollbar-width: none;">
     <div v-for="(testimonial, index) in testimonials" :key="index"
       class="flex-shrink-0 w-[calc(100vw-70px)] cursor-pointer snap-start"
       @click="setActiveSlide(index)">
       <!-- Testimonial card -->
-      <div class="relative p-5 rounded-3xl shadow-md bg-white w-[75vw] h-[50vh] transition-transform duration-300 mt-10"
+      <div class="relative p-5 rounded-3xl shadow-md bg-white w-[75vw] h-[300px] transition-transform duration-300 mt-10"
         :class="{ 'active-card': isMobileView || currentSlide === index }">
         <!-- Logo -->
         <div
