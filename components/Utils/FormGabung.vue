@@ -3,20 +3,20 @@ import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
 const schema = z.object({
-    domain: z.string().min(3, 'Domain must be selected'),
-    paket: z.string().min(3, 'Paket must be selected'),
-    namadomain: z.string().min(3, 'Nama domain must be at least 3 characters'),
-    domainutama: z.string().min(3, 'Domain utama must be selected'),
-    harga: z.string().min(3, 'Harga must be selected'),
-    nama_usaha: z.string().min(3, 'Nama usaha must be at least 3 characters'),
+    domain: z.string(),
+    paket: z.string(),
+    namadomain: z.string().min(6, 'Nama domain paling tidak harus 6 karakter'),
+    domainutama: z.string(),
+    harga: z.string(),
+    nama_usaha: z.string().min(3, 'Nama usaha paling tidak harus 3 karakter'),
     provinsi: z.string(),
-    nickname_usaha: z.string().min(3, 'Nickname usaha must be at least 3 characters'),
+    nickname_usaha: z.string().min(3, 'Nickname usaha paling tidak harus 3 karakter'),
     kota_usaha: z.string(),
     email: z.string().email('Invalid email address'),
     jenis_usaha: z.string().min(3, 'Jenis usaha must be at least 3 characters'),
-    no_wa: z.string().min(3, 'No. WA must be at least 3 characters'),
-    usia: z.string().min(3, 'Usia must be at least 3 characters'),
-    alamat_usaha: z.string().min(3, 'Alamat usaha must be at least 3 characters'),
+    no_wa: z.string().min(11, 'No. WhatsApp paling tidak harus 11 karakter'),
+    usia: z.string().min(1, 'Usia paling tidak harus 1 karakter'),
+    alamat_usaha: z.string().min(10, 'Alamat usaha paling tidak harus 10 karakter'),
     refferal: z.string(),
 })
 
