@@ -109,10 +109,12 @@ const cards = ref([
 ]);
 
 const isMobile = ref(false);
+const isTablet = ref(false);
 
 const updateIsMobile = () => {
     if (typeof window !== 'undefined') {
         isMobile.value = window.innerWidth <= 768;
+        isTablet.value = window.innerWidth <= 1024;
     }
 };
 
@@ -139,7 +141,7 @@ onUnmounted(() => {
             </div>
         </div>
         <div v-else
-            class="grid-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 lg:px-24 leading-tight overflow-hidden" >
+            class="grid-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-24 leading-tight overflow-hidden" >
             <UtilsJoinPartnerBaseCard v-for="(card, index) in cards" :key="index" :cardStyle="card.cardStyle"
                 :data-aos="'fade-up'"
                 :data-aos-delay="index * 100"

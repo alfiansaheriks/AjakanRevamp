@@ -14,9 +14,13 @@ useSeoMeta({
 })
 
 const isMobile = ref(false);
+const isTablet = ref(false);
+const isDesktop = ref(false);
 
 const checkIsMobile = () => {
     isMobile.value = window.innerWidth <= 768;
+    isTablet.value = window.innerWidth > 768 && window.innerWidth < 1024;
+    isDesktop.value = window.innerWidth >= 1024;
 };
 
 onMounted(() => {
@@ -114,17 +118,27 @@ const toggleAnswer = (index: number): void => {
     faqs.value[index].showAnswer = !faqs.value[index].showAnswer;
 };
 
+const isOpen = ref(false);
+const setModalOpen = (value: boolean) => {
+    isOpen.value = value;
+};
 
 </script>
 
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
+        <UtilsFormGabung :isOpen="isOpen" @update:isOpen="setModalOpen" />
         <section id="section1"
-            class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh-68px)] relative px-6 lg:px-4"
+            class="flex-1 flex flex-col justify-center relative px-6 lg:px-4"
             data-aos="fade-up">
-            <div v-if="!isMobile" class="flex-1 flex flex-col justify-center items-end left-3/4">
+            <div v-if="!isMobile && !isTablet" class="flex-1 flex flex-col justify-center items-end left-3/4">
                 <div
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] mt-96 lg:mt-96">
+                </div>
+            </div>
+            <div v-else-if="isTablet" class="flex-1 flex flex-col justify-center items-end left-3/4">
+                <div
+                    class="w-[70%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-transparent to-[#84D2F9] mt-96 lg:mt-96">
                 </div>
             </div>
             <div v-else class="flex-1 flex flex-col justify-center items-end left-3/4">
@@ -145,7 +159,7 @@ const toggleAnswer = (index: number): void => {
                             digital</span></p>
                 </div>
                 <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
-                    <button class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
+                    <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
                     <Icon name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
@@ -163,14 +177,19 @@ const toggleAnswer = (index: number): void => {
                             digital</span></p>
                 </div>
                 <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
-                    <button class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
+                    <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
                     <Icon name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
             </div>
-            <div v-if="!isMobile" class="flex-1 flex flex-col justify-end items-start">
+            <div v-if="!isMobile && !isTablet" class="flex-1 flex flex-col justify-end items-start">
                 <div
                     class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-80 absolute bg-gradient-to-r from-[#84D2F9] to-transparent">
+                </div>
+            </div>
+            <div v-else-if="isTablet" class="flex-1 flex flex-col justify-end items-start">
+                <div
+                    class="rounded-full z-0 blur-80 absolute bg-gradient-to-r from-[#84D2F9] to-transparent">
                 </div>
             </div>
             <div v-else class="flex-1 flex flex-col justify-end items-start mt-72">
@@ -185,12 +204,12 @@ const toggleAnswer = (index: number): void => {
         <section id="section2"
             class="flex-1 flex flex-col justify-center min-h-[calc(100vh-68px)] relative px-4 lg:mt-20"
             data-aos="fade-up">
-            <div v-if="!isMobile" class="flex-1 flex flex-col lg:flex-row justify-between gap-8 mt-8">
-                <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-start px-2">
+            <div v-if="!isMobile && !isTablet" class="flex-1 flex flex-col lg:flex-row justify-between gap-8 mt-8">
+                <div v-if="!isMobile && !isTablet" class="w-full lg:w-20 flex justify-center items-start px-2">
                     <img src="/images/titik-join1.png" alt="Dot Design" class="scale-100 w-10 h-auto object-contain" />
                 </div>
                 <div
-                    class="flex flex-col lg:flex-row items-center justify-center bg-[#0191D8] rounded-3xl w-[1113px] h-[576px] py-4">
+                    class="flex flex-col lg:flex-row items-center justify-center bg-[#0191D8] rounded-3xl w-[1113px] h-[576px] lg:h-[570px] md:w-full md:h-[1000px] py-4">
                     <div class="w-full lg:w-full px-4 lg:px-[74px]">
                         <div class="flex flex-col items-start justify-center py-10 min-h-auto">
                             <h2 class="text-xl lg:text-4xl font-semibold text-[#fff]">Mau Sukses Hasilkan<br /> Jutaan
@@ -216,7 +235,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                 </div>
-                <div v-if="!isMobile" class="w-full lg:w-20 flex justify-center items-center px-2">
+                <div v-if="!isMobile && !isTablet" class="w-full lg:w-20 flex justify-center items-center px-2">
                     <img src="/images/titik-join1.png" alt="Dot Design" class="scale-50 w-20 h-auto object-contain" />
                 </div>
             </div>
@@ -225,7 +244,7 @@ const toggleAnswer = (index: number): void => {
             <!-- Mobile Section -->
             <div v-else class="flex-1 flex flex-col lg:flex-row justify-between gap-8">
                 <div
-                    class="flex flex-col lg:flex-row h-[950px] lg:h-1/2 items-center justify-center bg-[#0191D8] rounded-3xl min-w-screen">
+                    class="flex flex-col lg:flex-row h-[1000px] lg:h-1/2 items-center justify-center bg-[#0191D8] rounded-3xl min-w-screen">
                     <div class="w-full lg:w-full px-4 lg:px-8">
                         <div class="flex flex-col items-start justify-center px-4">
                             <h2 class="text-[29px] lg:text-4xl font-semibold text-[#fff]">Mau Sukses Hasilkan<br /> Jutaan
@@ -243,9 +262,9 @@ const toggleAnswer = (index: number): void => {
                     <div class="w-full lg:w-full mt-20 lg:mt-0">
                         <div class="relative right-5">
                             <img src="/images/woman-smartphone.png" alt="Card Image"
-                                class="w-full h-full scale-150" />
+                                class="w-full h-full scale-150 md:scale-110" />
                             <div
-                                class="absolute h-[50%] left-10 top-[80%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
+                                class="absolute h-[50%] left-10 top-[80%] md:top-[60%] lg:top-[80%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
                             </div>
                         </div>
                     </div>
@@ -264,16 +283,19 @@ const toggleAnswer = (index: number): void => {
                     </div>
                     <div class="w-full lg:w-1/2 lg:px-20" data-aos="fade-left">
                         <div class="flex flex-col items-start justify-center">
-                            <h2 v-if="!isMobile" class="text-xl lg:text-4xl font-semibold text-[#000]">Manfaat Memiliki
+                            <h2 v-if="!isMobile && !isTablet" class="text-xl lg:text-4xl font-semibold text-[#000]">Manfaat Memiliki
                                 Bisnis
                                 <br />Undangan Digital?
+                            </h2>
+                            <h2 v-else-if="isTablet" class="text-[29px] w-full lg:text-4xl font-semibold text-[#000]">
+                                Manfaat Memiliki Bisnis Undangan Digital?
                             </h2>
                             <h2 v-else class="text-[29px] w-[350px] lg:text-4xl font-semibold text-[#000]"><span
                                     class="text-[#0191D8]">Manfaat</span> Memiliki Bisnis
                                 <br />Undangan Digital?
                             </h2>
                             <p
-                                class="leading-tight lg:leading-tight text-sm w-[350px] lg:w-full lg:text-base text-[#000] mt-8">
+                                class="leading-tight lg:leading-tight text-sm w-[340px] md:w-full lg:w-full lg:text-base text-[#000] mt-8">
                                 Kamu bisa
                                 mendapatkan penghasilan
                                 tambahan jutaan rupiah dengan menjadi penyedia undangan melalui media sosial seperti
@@ -290,34 +312,41 @@ const toggleAnswer = (index: number): void => {
         <section id="section4" class="flex-1 flex flex-col justify-center lg:min-h-[calc(100vh-68px)] relative">
             <div class="flex-1 flex justify-between items-center relative">
                 <div
-                    class="flex flex-col lg:flex-row lg:h-1/2 items-start justify-center md:bg-[#0191D8] w-full lg:py-20 relative">
+                    class="flex flex-col lg:h-1/2 items-start justify-center lg:bg-[#0191D8] w-full lg:py-20 relative">
                     <!-- Dot Design on Desktop (Top Left) -->
-                    <div v-if="!isMobile" class="absolute top-0 lg:left-5 lg:top-[10%]">
+                    <div v-if="!isMobile && !isTablet" class="absolute top-0 lg:left-5 lg:top-[10%]">
                         <img src="/images/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
                     </div>
 
                     <!-- Image for Mobile -->
-                    <div class="w-full lg:w-1/2 lg:order-2" data-aos="fade-up">
+                    <div class="w-full md:w-full" data-aos="fade-up">
                         <div v-if="isMobile" class="">
                             <img src="/images/Group 635.png" alt="Phone Join Image"
-                                class="w-full h-full object-cover rounded-3xl" />
+                                class="w-full h-full rounded-3xl " />
                         </div>
+                        <!-- <div v-else-if="isTablet" class="w-full" data-aos="fade-up">
+                            <img src="/images/Group 635.png" alt="Phone Join Image"
+                                class="w-full object-cover rounded-3xl h-full scale-75" />
+                        </div> -->
                     </div>
 
                     <!-- Text Content -->
-                    <div class="w-full lg:w-1/2 lg:px-24 px-4 z-10" data-aos="fade-right">
+                    <div class="w-full md:w-full lg:w-1/2 lg:px-24 px-4 z-10" data-aos="fade-right">
                         <div class="flex flex-col items-start justify-center lg:px-4">
-                            <h2 v-if="!isMobile"
+                            <h2 v-if="!isMobile && !isTablet"
                                 class="text-xl lg:text-4xl w-[545px] font-semibold text-black lg:text-[#fff] max-w-[500px]">
                                 <span class="text-[#0191D8] lg:text-white">Estimasi</span> Keuntungan yang akan Kamu
                                 Dapatkan
                             </h2>
+                            <h2 v-else-if="isTablet" class="text-[29px] w-full font-semibold text-black lg:text-[#fff]">
+                                Estimasi Keuntungan yang akan Kamu Dapatkan
+                                </h2>   
                             <h2 v-else
-                                class="text-[29px] w-[370px] h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px] mt-10">
+                                class="text-[29px] w-[370px] md:w-full h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px] mt-10">
                                 Estimasi <span class="text-[#0191D8] lg:text-white">Keuntungan</span> yang akan Kamu
                                 Dapatkan
                             </h2>
-                            <p v-if="!isMobile"
+                            <p v-if="!isMobile && !isTablet"
                                 class="leading-tight lg:leading-tight w-[500px] text-base lg:text-base text-black lg:text-[#fff] mt-8">
                                 Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
                                 Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjual-nya sekitar
@@ -328,7 +357,7 @@ const toggleAnswer = (index: number): void => {
                                     Rp100.000, Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.</b>
                             </p>
                             <p v-else
-                                class="leading-tight lg:leading-tight w-[360px] lg:w-full text-base lg:text-base text-black lg:text-[#fff] mt-8">
+                                class="leading-tight lg:leading-tight w-[350px] md:w-full text-base lg:text-base text-black lg:text-[#fff] mt-8">
                                 Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
                                 Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjualnya sekitar
                                 Rp100.000. <span class="font-semibold">Dengan menjual hanya 2 undangan per hari, dengan
@@ -339,7 +368,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Phone Image for Desktop -->
-                    <div v-if="!isMobile" class="absolute h-[700px] right-0 lg:right-[10%] top-[-40%] z-0" data-aos="fade-up"
+                    <div v-if="!isMobile && !isTablet" class="absolute h-[700px] right-0 lg:right-[10%] top-[-40%] z-0" data-aos="fade-up"
                         > 
                         <!--  -->
                         <img src="/images/HpSection4JoinPartner.png" alt="Card Image"
@@ -347,7 +376,7 @@ const toggleAnswer = (index: number): void => {
                     </div>
 
                     <!-- Bottom Dot Design on Desktop (Right of Phone Image) -->
-                    <div v-if="!isMobile" class="absolute right-[2%] bottom-[10%]">
+                    <div v-if="!isMobile && !isTablet" class="absolute right-[2%] bottom-[10%]">
                         <img src="/images/titik-join2.png" alt="Dot Design" class="w-auto h-auto" />
                     </div>
                 </div>
@@ -362,13 +391,28 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section6"
             class="bg-[#F8F9FD] flex-1 flex flex-col justify-center items-center lg:min-h-[calc(100vh-68px)] py-10 mt-20">
-            <div v-if="!isMobile">
+            <div v-if="!isMobile && !isTablet">
                 <div class="flex flex-col justify-center items-center text-center mb-8" data-aos="fade">
                     <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
                             Usaha</span> <br />Terbaik
                         untuk Kamu</h2>
                 </div>
                 <div class="max-w-[1110px] h-[69px] text-center mb-8 text-lg" data-aos="fade">
+                    <p>
+                        Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
+                        Berapa biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. Namun,
+                        <strong> di sini kami menyediakan semua itu dengan harga spesial yang jauh lebih
+                            terjangkau.</strong>
+                    </p>
+                </div>
+            </div>
+            <div v-else-if="isTablet">
+                <div class="flex flex-col justify-center items-center text-center mb-8" data-aos="fade">
+                    <h2 class="text-2xl lg:text-3xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                            Usaha</span> <br />Terbaik
+                        untuk Kamu</h2>
+                </div>
+                <div class="max-w-[1110px] h-[69px] text-center mb-20 text-lg" data-aos="fade">
                     <p>
                         Bayangkan harus membayar web developer, desainer, server, domain, dan pemeliharaan website.
                         Berapa biaya yang harus kamu keluarkan? Mungkin lebih dari Rp 10.000.000. Namun,
@@ -402,7 +446,7 @@ const toggleAnswer = (index: number): void => {
                 </div>
             </div>
         </section>
-        <section v-if="!isMobile" id="section7"
+        <section v-if="!isMobile && !isTablet" id="section7"
             class="bg-image flex-1 flex flex-col justify-center items-start min-h-[100vh]">
             <div class="flex-1 flex flex-col justify-center items-start">
                 <div class="flex flex-col items-start lg:w-full px-4 lg:px-28" data-aos="fade-right">
@@ -411,10 +455,10 @@ const toggleAnswer = (index: number): void => {
                         memanfaatkan<br />kesempatan istimewa yang<br />tersedia?
                     </h2>
                     <div class="flex flex-row gap-4">
-                        <button
+                        <button @click="setModalOpen(true)"
                             class="py-3 px-6 bg-[#fff] text-[#0191D8] hover:bg-transparent hover:border hover:text-white rounded-xl mt-8">
                             Bergabung Sekarang</button>
-                        <button
+                        <button @click="setModalOpen(true)"
                             class="py-3 px-16 bg-transparent hover:bg-white hover:text-[#0191D8] border text-white rounded-xl mt-8">
                             Free Trial</button>
                     </div>
@@ -431,10 +475,10 @@ const toggleAnswer = (index: number): void => {
                     </h2>
                 </div>
                 <div class="flex flex-row items-center gap-2">
-                    <button
+                    <button @click="setModalOpen(true)"
                         class="w-[150px] h-[46px] text-sm bg-[#fff] text-[#0191D8] hover:bg-transparent hover:border hover:text-white rounded-xl mt-8">
                         Bergabung Sekarang</button>
-                    <button
+                    <button @click="setModalOpen(true)"
                         class="w-[150px] h-[46px] text-sm bg-transparent hover:bg-white hover:text-[#0191D8] border text-white rounded-xl mt-8">
                         Free Trial</button>
                 </div>

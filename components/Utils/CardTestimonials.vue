@@ -40,10 +40,12 @@ const getTranslateStyle = () => {
 };
 
 const isMobile = ref(false);
+const isTablet = ref(false);
 
 const updateIsMobile = () => {
   if (typeof window !== 'undefined') {
     isMobile.value = window.innerWidth <= 768;
+    isTablet.value = window.innerWidth <= 1024;
   }
 };
 
@@ -58,14 +60,15 @@ onUnmounted(() => {
 
 // Computed property to determine if the current view is mobile
 const isMobileView = computed(() => isMobile.value);
+const isTabletView = computed(() => isTablet.value);
 </script>
 
 <template>
-  <div v-if="!isMobileView" class="relative overflow-hidden h-[500px]">
+  <div v-if="!isMobileView && !isTabletView" class="relative overflow-hidden h-[500px]">
     <!-- Carousel container -->
     <div class="flex flex-row transition-transform duration-300 ease-in-out gap-12" :style="getTranslateStyle()">
       <div v-for="(testimonial, index) in testimonials" :key="index"
-        class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 cursor-pointer" @click="setActiveSlide(index)"
+        class="flex-shrink-0 w-full md:w-1/3 lg:w-1/3 cursor-pointer" @click="setActiveSlide(index)"
         :class="{ 'scale-110': currentSlide === index }">
 
         <!-- Container to position logo outside the card -->
@@ -97,7 +100,7 @@ const isMobileView = computed(() => isMobile.value);
   <!-- Carousel container (scrollable on mobile) -->
   <div class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory py-6" style="scrollbar-width: none;">
     <div v-for="(testimonial, index) in testimonials" :key="index"
-      class="flex-shrink-0 w-[calc(100vw-70px)] cursor-pointer snap-start"
+      class="flex-shrink-0 w-[calc(100vw-70px)] md:w-[100vw-10px] cursor-pointer snap-start"
       @click="setActiveSlide(index)">
       <!-- Testimonial card -->
       <div class="relative p-5 rounded-3xl shadow-md bg-white w-[75vw] h-[300px] transition-transform duration-300 mt-10"

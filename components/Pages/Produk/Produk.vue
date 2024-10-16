@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 
 const cards = ref([
-    { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
-    { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4' },
-    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 rounded-md mb-4 lg:scale-125 mt-2' },
-    { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2' },
-    { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150  lg:scale-125 mt-2' }
+    { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-110 lg:scale-125 mt-2 p-4', link: '/undangan-digital' },
+    { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4', link: '/undangan-video' },
+    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 rounded-md mb-4 lg:scale-125 mt-2', link: '/undangan-save-the-date' },
+    { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2', link: '/filter-instagram' },
+    { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2', link: '/undangan-3d' }
 ]);
 
 const isMobile = ref(false);
@@ -59,7 +59,9 @@ onUnmounted(() => {
                 :data-aos="'fade-up'" :data-aos-delay="index * 100">
                 <h3 class="text-lg font-normal text-center max-w-[150px] md:max-w-[170px]" v-html="card.title"></h3>
                 <img :src="card.image" :alt="card.title" :class="card.class" />
-                <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
+                <NuxtLink :to="card.link">
+                    <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
+                </NuxtLink>
             </div>
         </div>
         <div v-else class="w-full md:px-8 lg:px-36 overflow-hidden">

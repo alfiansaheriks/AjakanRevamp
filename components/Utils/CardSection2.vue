@@ -86,10 +86,12 @@ const cards = ref([
 ]);
 
 const isMobile = ref(false);
+const isTablet = ref(false);
 
 const updateIsMobile = () => {
     if (typeof window !== 'undefined') {
         isMobile.value = window.innerWidth <= 768;
+        isTablet.value = window.innerWidth <= 1024;
     }
 };
 
@@ -107,7 +109,7 @@ onUnmounted(() => {
 
 <template>
     <div>
-        <div v-if="isMobile" class="carousel-container flex overflow-x-auto gap-6 w-full overflow-hidden">
+        <div v-if="isMobile && isTablet" class="carousel-container flex overflow-x-auto gap-6 w-full overflow-hidden">
             <div v-for="(card, index) in cards" :key="index" class="flex-shrink-0 w-full max-w-[263px] h-[400px]">
                 <UtilsCard
                     :cardStyle="card.cardStyle"
@@ -125,7 +127,7 @@ onUnmounted(() => {
                 />
             </div>
         </div>
-        <div v-else class="grid-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-8 overflow-hidden">
+        <div v-else class="grid-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 overflow-hidden">
             <UtilsCard
                 v-for="(card, index) in cards"
                 :key="index"

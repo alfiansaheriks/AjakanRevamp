@@ -45,7 +45,9 @@ onMounted(() => {
                     <li>Undangan Buka Bersama</li>
                     <li>Undangan Idul Fitri</li>
                 </ul>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/undangan-digital">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <!-- Image Section -->
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
@@ -74,7 +76,9 @@ onMounted(() => {
                 <p v-else class="text-sm lg:text-base my-4">Era sosial media sekarang sudah sangat umum dengan yang
                     namanya "Undangan Video",
                     yang memberikan sentuhan modern pada undangan digital. </p>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/undangan-video">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
@@ -98,7 +102,9 @@ onMounted(() => {
                     melalui poster saja,
                     sudah saatnya kamu menggunakan website yang super simple, elegant dan modern melalui “Undangan Save
                     The Date”.</p>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/undangan-std">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0">
                 <!-- Shape Circle -->
@@ -128,7 +134,9 @@ onMounted(() => {
                     orang, dan filter Instagram khusus menciptakan kesan yang tak terlupakan untuk memeriahkan momen
                     tersebut.
                 </p>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/filter-instagram">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <div class="shape-circle absolute"></div>
@@ -151,7 +159,9 @@ onMounted(() => {
                 <p class="my-4">Bagi kamu yang terbiasa menyebarkan informasi event atau workshop melalui poster saja,
                     sudah saatnya kamu menggunakan website yang super simple, elegant dan modern melalui “Undangan Save
                     The Date”.</p>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/undangan-std">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative mt-6 lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
@@ -180,7 +190,9 @@ onMounted(() => {
                     pengalaman visual yang menakjubkan kepada para undangan. Dengan dimensi tambahan, seperti tekstur,
                     kedalaman, dan pergerakan, undangan 3D menciptakan kesan yang lebih hidup dan berkesan daripada
                     undangan tradisional.</p>
-                <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                <NuxtLink to="/undangan-3d">
+                    <button class="bg-[#0191D8] text-white text-sm px-6 py-2 rounded-xl">Selengkapnya</button>
+                </NuxtLink>
             </div>
             <div class="image-section lg:w-1/2 flex justify-center relative lg:mt-0" data-aos="fade-up">
                 <!-- Shape Circle -->
@@ -205,7 +217,7 @@ onMounted(() => {
 }
 
 .invitation-section {
-    @apply w-full lg:px-24;
+    @apply w-full md:px-20 lg:px-14;
 }
 
 .text-section h2 {

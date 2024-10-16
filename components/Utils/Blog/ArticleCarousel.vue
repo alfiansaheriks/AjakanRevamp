@@ -38,11 +38,17 @@ onMounted(() => {
     window.addEventListener('resize', checkIsMobile);
 });
 
+// Compute the limit based on searchQuery
+const computedLimit = computed(() => {
+  return props.searchQuery ? 1 : limit.value;
+});
+
+
 // Fetch API
 const { data: response, error, refresh } = useFetch(() => {
-    let apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit.value}&search=${props.searchQuery}`;
+    let apiUrl = `https://admin-staging-big-product.ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${computedLimit.value}&search=${props.searchQuery}`;
     if (activeCategory.value && activeCategory.value !== 'All') {
-        apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit.value}&category=${activeCategory.value}`;
+        apiUrl = `https://admin-staging-big-product.ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${computedLimit.value}&category=${activeCategory.value}`;
     }
     return apiUrl;
 });
@@ -197,5 +203,7 @@ const scrollRight = () => {
 .category-filter-container {
     @apply w-full h-auto;
     scroll-behavior: smooth;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 </style>

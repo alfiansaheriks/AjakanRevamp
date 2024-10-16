@@ -16,9 +16,15 @@ const products = ref<Product[]>([]);
   const { data } = await useFetch('https://ajakan.me/api/guest/product');
   products.value = data.value?.data.product;
 
+const isOpen = ref(false);
+const setModalOpen = (value: boolean) => {
+    isOpen.value = value;
+};
+
 </script>
 
 <template>
+  <UtilsFormGabung :isOpen="isOpen" @update:isOpen="setModalOpen" />
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 overflow-x-hidden overflow-y-hidden">
   <div 
     v-for="(product, index) in products" 
@@ -40,8 +46,8 @@ const products = ref<Product[]>([]);
       </ul>
     </div>
     <div class="relative mt-auto">
-      <button class="bg-[#0191D8] text-white py-2 px-4 rounded-lg hover:bg-[#017bb5] transition-colors duration-300 w-full">
-        Bergabung Sekarang
+      <button @click="setModalOpen(true)" class="bg-[#0191D8] text-white py-2 px-4 rounded-lg hover:bg-[#017bb5] transition-colors duration-300 w-full">
+        Bergabung Sekarang <Icon name="material-symbols:play-circle-outline" class="w-5 h-5 relative top-1" />
       </button>
     </div>
   </div>

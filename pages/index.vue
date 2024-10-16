@@ -15,20 +15,27 @@ useSeoMeta({
 })
 
 const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId)
+    console.log(`Scrolling to section: ${sectionId}`);
+    const section = document.getElementById(sectionId);
     if (section) {
-        section.scrollIntoView({ behavior: 'smooth' })
-    }
-}
+        console.log(`Section found: ${section}`);
+        section.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        // console.log(`Section not found: ${sectionId}`);
 
+    }
+};
 // Define reactive variable to track screen size
+const isTablet = ref(false);
 const isLargeScreen = ref(false);
 // Function to update screen size based on window width
 const updateScreenSize = () => {
-    if (typeof window !== 'undefined') {
-        isLargeScreen.value = window.innerWidth >= 768;
-    }
-};
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        isLargeScreen.value = width >= 1024;
+        isTablet.value = width > 600 && width < 1024;
+      }
+    };
 // Set initial screen size and add event listener on mount
 onMounted(() => {
     updateScreenSize();
@@ -132,16 +139,23 @@ const faqs = ref<FAQ[]>([
 const toggleAnswer = (index: number): void => {
     faqs.value[index].showAnswer = !faqs.value[index].showAnswer;
 };
+
+const isOpen = ref(false);
+const setModalOpen = (value: boolean) => {
+    isOpen.value = value;
+};
+
 </script>
 
 <template>
     <div class="flex-1 flex flex-col bg-[#f8f9fd]">
         <!-- First Section with a transition background -->
+        <UtilsFormGabung :isOpen="isOpen" @update:isOpen="setModalOpen" />
         <section v-if="isLargeScreen" id="section1"
             class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1150px] animate__animated animate__fadeInRight"
             style="background-image: url('/images/HeroSection1.png');">
             <!-- Arrow icon -->
-            <div @click="scrollToSection('section2')"
+            <div @click="scrollToSection('section3')"
                 class="absolute top-[46%] z-20 flex items-center justify-center w-full">
                 <Icon name="mdi:arrow-down-drop-circle" class="text-sky-300 text-5xl cursor-pointer" />
             </div>
@@ -159,16 +173,16 @@ const toggleAnswer = (index: number): void => {
                         kamu dapat membangun bisnis sendiri dan menghasilkan pendapatan sampingan yang menjanjikan
                     </div>
                     <div class="flex justify-start gap-4 mt-12">
-                        <button
+                        <button @click="scrollToSection('section5')"
                             class="bg-[#0191D8] p-2 lg:p-3 lg:w-[248px] text-white text-md border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-md">Bergabung
                             Sekarang</button>
-                        <button
+                        <button @click="setModalOpen(true)"
                             class="bg-transparent lg:p-3 lg:w-[248px] w-[100px] border border-[#0191D8] text-[#0191D8] text-md font-normal hover:bg-[#0191D8] hover:text-white rounded-md">Free
                             Trial</button>
                     </div>
                 </div>
             </div>
-            <div class="flex-1 flex flex-col justify-center items-center relative w-full px-24">
+            <div id="notsection" class="flex-1 flex flex-col justify-center items-center relative w-full px-24">
                 <UtilsCardSection2 />
             </div>
         </section>
@@ -176,27 +190,27 @@ const toggleAnswer = (index: number): void => {
             class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-[76px] min-h-[1400px]"
             style="background-image: url('/images/HeroMobile1.png');" data-aos="fade-right" data-aos-delay="100">
             <!-- Arrow icon -->
-            <div @click="scrollToSection('section2')"
+            <div @click="scrollToSection('section3')"
                 class="absolute top-[60%] z-20 flex items-center justify-center w-full">
                 <Icon name="mdi:arrow-down-drop-circle" class="text-sky-300 text-3xl cursor-pointer" />
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28 py-10 mb-20">
                 <div class="w-full lg:min-w-[390px]" data-aos="fade-left" data-aos-delay="100">
-                    <h1 class="text-[29px] w-[350px] lg:text-4xl">
-                        Platform <b class="text-sky-400">B2B</b><span class="text-[29px] font-semibold"> Paket<h1
-                                class="text-[29px] lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
+                    <h1 class="text-[25px] w-full lg:text-4xl">
+                        Platform <b class="text-sky-400">B2B</b><span class="text-[25px] font-semibold"> Paket<h1
+                                class="text-[25px] lg:text-4xl font-semibold"> Bisnis Undangan Digital</h1></span>
                     </h1>
-                    <div class="w-[340px] text-base lg:text-lg lg:mt-2 mt-4">
+                    <div class="text-base lg:text-lg lg:mt-2 mt-4">
                         Mulai bisnis undangan digital dengan brand dan website milik kamu sendiri. Dengan dukungan
                         kami,
                         kamu dapat membangun bisnis sendiri dan menghasilkan pendapatan sampingan yang menjanjikan
                     </div>
                     <div class="flex justify-start gap-4 mt-4">
-                        <button
+                        <button @click="scrollToSection('section5')"
                             class="bg-[#0191D8] p-2 lg:p-3 w-[188px] text-white text-xs border border-transparent font-normal hover:bg-transparent hover:border hover:border-[#0191D8] hover:text-[#0191D8] rounded-lg">Bergabung
                             Sekarang</button>
-                        <button
+                        <button @click="setModalOpen(true)"
                             class="bg-transparent lg:p-3 lg:w-[200px] w-[188px] border border-[#0191D8] text-[#0191D8] text-xs font-normal hover:bg-[#0191D8] hover:text-white rounded-lg">Free
                             Trial</button>
                     </div>
@@ -208,13 +222,13 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section id="section3"
             class="bg-[#E7F7FF] lg:bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center py-4">
-            <div class="md:flex md:flex-row md:justify-between md:items-center w-full px-5 lg:px-28 min-h-[800px]">
+            <div class="lg:flex lg:flex-row lg:justify-between lg:items-center w-full px-5 lg:px-28 min-h-[800px]">
                 <UtilsCardSection3 />
             </div>
         </section>
         <section v-if="isLargeScreen" id="section4"
-            class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center"
-            style="background-image: url('/images/HeroSection3.png'); background-color: #F5F5F5;" data-aos="fade-right" data-aos-delay="300">
+            class="flex-1 flex flex-col justify-center items-center min-h-[100vh] md:min-h-[40vh] lg:min-h-[100vh] bg-cover bg-center"
+            style="background-image: url('/images/HeroSection3.png'); background-color: #F5F5F5;" data-aos="fade-right" data-aos-delay="300"> 
             <div class="flex flex-col sm:flex-row justify-between items-center w-full px-5 lg:px-28">
                 <div class="flex justify-center w-full sm:w-6/12 h-full">
                     <!-- Empty container, background image will fill the section -->
@@ -240,14 +254,14 @@ const toggleAnswer = (index: number): void => {
         </section>
         <section v-else id="section4" class="flex-1 flex flex-col justify-center items-center min-h-[100vh]"
             data-aos="fade-right">
-            <div class="flex flex-col sm:flex-row justify-between items-center w-full">
+            <div class="flex flex-col lg:flex-row justify-between items-center w-full">
                 <div class="flex justify-center w-full sm:w-6/12 h-full">
                     <img src="/images/HpMobileSection4.png" alt="Hero Section 3" class="w-full h-full mt-2" />
                 </div>
 
                 <!-- Right Side: Text -->
                 <div class="w-full px-5 py-10 mt-[91px]" data-aos="fade-left">
-                    <h2 class="text-[32px] font-semibold mb-4">Estimasi <span
+                    <h2 class="text-[25px] font-semibold mb-4">Estimasi <span
                             class="text-[#0191D8]">Keuntungan</span> yang
                         akan Kamu Dapatkan</h2>
                     <p class="text-[15px]">
@@ -264,13 +278,13 @@ const toggleAnswer = (index: number): void => {
         </section>
 
         <section id="section5"
-            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)] mt-[99px] lg:mt-0">
+            class="bg-[#f8f9fd] flex-1 flex flex-col justify-center items-center min-h-[calc(100vh-68px)] mt-[99px] md:mt-0 lg:mt-0">
             <div class="text-center mb-[47px] lg:py-10 px-1">
-                <h2 v-if="isLargeScreen" class="lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                <h2 v-if="isLargeScreen" class="md:text-2xl lg:text-4xl font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket
                         Usaha</span> Terbaik
                     <br />untuk Kamu
                 </h2>
-                <h2 v-else class="text-[29px] lg:text-4xl font-bold max-w-[390px]">Temukan <span class="text-[#0191D8]">Pilihan Paket
+                <h2 v-else class="text-[25px] lg:text-4xl font-bold max-w-[390px]">Temukan <span class="text-[#0191D8]">Pilihan Paket
                         Usaha</span> <span>Terbaik untuk</span> <br/>Kamu
                 </h2>
             </div>
@@ -278,10 +292,10 @@ const toggleAnswer = (index: number): void => {
                 <UtilsCardPackage />
             </div>
         </section>
-        <section id="section6" class="w-full mx-auto flex flex-col items-center">
+        <section id="section6" class="w-full mx-auto flex flex-col items-center mt-20">
             <!-- Title -->
-            <div class="flex justify-center items-center text-center mt-10 mb-10 w-full px-0 lg:px-0 lg:w-[782px]">
-                <h2 class="text-[29px] lg:text-4xl font-semibold">Kebahagiaan pelanggan merupakan <span
+            <div class="flex justify-center items-center text-center mt-10 mb-10 w-full px-1 lg:px-0 lg:w-[782px]">
+                <h2 class="text-[25px] md:text-2xl lg:text-4xl font-semibold">Kebahagiaan pelanggan merupakan <span
                         class="text-[#0191D8]">aset berharga bagi kami</span>
                 </h2>
             </div>
@@ -308,8 +322,40 @@ const toggleAnswer = (index: number): void => {
                                 setahun!</b>
                         </p>
                     </div>
-                    <button
+                    <button @click="setModalOpen(true)"
                         class="w-[248px] h-[63px] bg-[#0191D8] border text-white hover:bg-transparent hover:text-[#0191D8] hover:border hover:border-[#0191D8] p-3 mt-8 rounded-xl">Bergabung
+                        Sekarang</button>
+                </div>
+            </div>
+        </section>
+        <section v-else-if="isTablet" id="section7"
+            class="flex-1 flex flex-col justify-center items-center min-h-[100vh] bg-cover bg-center">
+            <div class="flex flex-col lg:flex-row justify-between w-full lg:mt-10 px-5 lg:px-28">
+                <div class="text-center">
+                    <h2 class="text-[32px] font-bold">Temukan <span class="text-[#0191D8]">Pilihan Paket Usaha</span>
+                        Terbaik
+                        untuk Kamu</h2>
+                </div>
+                <div data-aos="fade-left">
+                    <img src="/images/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
+                </div>
+                <div class="mb-4 mt-4 max-w-[367px] md:max-w-full" data-aos="fade-right">
+                    <h1 class="text-3xl max-w-[600px] md:max-w-full">Peluang yang Menjanjikan untuk <span
+                            class="text-[#0191D8] font-semibold">Bisnis Kamu</span></h1>
+                    <div class="text-lg mt-2">
+                        <p class="max-w-[600px] md:max-w-full">
+                            Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan
+                                terintegrasi
+                                otomatis, termasuk sistem pembayaran E-Money & Virtual Account.</b> Tak perlu lagi
+                            konfirmasi manual
+                            atau biaya transfer antar bank, semuanya otomatis! Mulai fokus pada bisnis atau gunakan
+                            sebagai
+                            sampingan untuk penghasilan tambahan. <b>Coba sekarang dengan pembayaran satu kali untuk
+                                setahun!</b>
+                        </p>
+                    </div>
+                    <button @click="setModalOpen(true)"
+                        class="bg-[#0191D8] border text-white hover:bg-transparent hover:text-[#0191D8] hover:border hover:border-[#0191D8] p-3 mt-6 rounded-xl">Bergabung
                         Sekarang</button>
                 </div>
             </div>
@@ -340,7 +386,7 @@ const toggleAnswer = (index: number): void => {
                                 setahun!</b>
                         </p>
                     </div>
-                    <button
+                    <button @click="setModalOpen(true)"
                         class="bg-[#0191D8] border text-white hover:bg-transparent hover:text-[#0191D8] hover:border hover:border-[#0191D8] p-3 mt-6 rounded-xl">Bergabung
                         Sekarang</button>
                 </div>
@@ -397,7 +443,7 @@ const toggleAnswer = (index: number): void => {
             <div class="w-full mx-auto px-5 lg:px-28 text-lg lg:text-base" data-aos="fade-in">
                 <h2 class="text-[32px] lg:text-4xl font-semibold text-center mb-8">Pertanyaan yang Sering Diajukan</h2>
                 <div class="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 mt-8">
-                    <Ucard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-2xl px-4 lg:px-12 py-4">
+                    <UCard v-for="(faq, index) in faqs" :key="index" class="bg-white rounded-2xl px-4 lg:px-0">
                         <div class="flex justify-between items-center">
                             <h3 v-if="faq.showAnswer" class="text-base lg:text-xl font-semibold text-black">{{ faq.question
                                 }}
@@ -416,7 +462,7 @@ const toggleAnswer = (index: number): void => {
                         </div>
                         <p v-if="faq.showAnswer" class="leading-tight text-16 text-[#545454] mt-2" v-html="faq.answer">
                         </p>
-                    </Ucard>
+                    </UCard>
                 </div>
             </div>
         </section>
@@ -435,7 +481,7 @@ const toggleAnswer = (index: number): void => {
                 <UtilsHero />
             </div>
         </section>
-        <section v-else>
+        <section v-else id="HeroSection">
             <div>
                 <UtilsHeroMobile />
             </div>

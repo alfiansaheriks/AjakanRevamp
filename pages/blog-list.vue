@@ -45,7 +45,7 @@ onMounted(() => {
                 </h1>
                 <div class="flex-1 flex flex-row justify-center items-start w-[100%] lg:w-[500px] gap-2 mt-4">
                     <div class="relative w-full flex items-center">
-                        <i class="absolute left-10 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">
+                        <i class="absolute left-10 md:left-3 lg:left-4 top-1/2 transform -translate-y-1/2 text-[#0191D8]">
                             <!-- Replace with your icon, e.g., FontAwesome icon -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="#545454">
                                 <path fill-rule="evenodd"
@@ -54,13 +54,13 @@ onMounted(() => {
                             </svg>
                         </i>
                         <input v-if="!isMobile" v-model="searchQuery" type="text"
-                            class="w-full h-12 pl-12 pr-20 py-4 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
-                            placeholder="Telusuri atau Ketik URL" />
+                            class="w-full h-12 md:pl-10 lg:pl-12 pr-20 py-4 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
+                            placeholder="Telusuri Informasi" />
                         <input v-else v-model="searchQuery" type="text"
                             class="ml-7 w-[65%] pl-9 py-2 text-16 text-black border border-none bg-[#F5F5F5] rounded-xl focus:outline-none focus:border-[#0191D8]"
-                            placeholder="Telusuri Tema" />
+                            placeholder="Telusuri Informasi" />
                         <button @click="handleSearchQuery"
-                            class="absolute right-10 lg:right-3 lg:w-[90px] lg:h-[40px] top-0 h-10 bg-[#0191D8] text-white text-16 font-normal rounded-xl focus:outline-none px-4">Cari</button>
+                            class="absolute right-10 md:right-1 md:top-0.5 lg:top-1 lg:right-3 lg:w-[90px] lg:h-[40px] top-0 h-10 bg-[#0191D8] text-white text-16 font-normal rounded-xl focus:outline-none px-4">Cari</button>
                     </div>
                 </div>
 

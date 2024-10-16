@@ -33,20 +33,24 @@ onUnmounted(() => {
 });
 
 const isMobile = ref(false);
+const isTablet = ref(false);
+const isDesktop = ref(false);
 
-const updateIsMobile = () => {
+const updateDeviceType = () => {
   if (typeof window !== 'undefined') {
     isMobile.value = window.innerWidth <= 768;
+    isTablet.value = window.innerWidth > 768 && window.innerWidth < 1024;
+    isDesktop.value = window.innerWidth >= 1024;
   }
 };
 
 onMounted(() => {
-  updateIsMobile();
-  window.addEventListener('resize', updateIsMobile);
+  updateDeviceType();
+  window.addEventListener('resize', updateDeviceType);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('resize', updateIsMobile);
+  window.removeEventListener('resize', updateDeviceType);
 });
 
 const menus = ref([
@@ -61,16 +65,17 @@ const menus = ref([
     ]
   },
   { label: 'Paket', to: '/join-partner' },
-  { label: 'Kontak', to: '/kontak' },
   { label: 'Blog', to: '/blog-list' },
 ]);
+
+
 
 </script>
 
 <template>
   <div class="text-gray-800 min-h-screen flex flex-col">
     <div>
-      <header v-if="scrolled"
+      <header v-if="scrolled && !isMobile"
         class="z-30 fixed top-0 w-full bg-white shadow-lg h-16 flex items-center justify-between transition-colors duration-300">
         <NuxtLink to="/" class="font-bold text-lg">
           <img v-if="!isMobile" src="/images/LogoAjakan.png" alt="Ajakan Logo"
@@ -138,8 +143,43 @@ const menus = ref([
           <p class="text-transparent">&#8709;</p>
         </div>
       </header>
-      <!-- Mobile Header -->
-      <header v-if="isMobile" class="z-30 fixed top-0 w-full bg-white h-16 flex items-center justify-between px-4">
+      <!-- Desktop Header -->
+      <header v-if="scrolled && isDesktop"
+        class="z-30 fixed top-0 w-full bg-white shadow-lg h-16 flex items-center justify-between transition-colors duration-300">
+        <NuxtLink to="/" class="font-bold text-lg">
+          <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75 absolute top-0 left-[8%]" />
+        </NuxtLink>
+        <nav class="flex gap-4">
+          <ul class="flex flex-row gap-4 divide-y-0">
+            <li v-for="(menu, i) in menus" :key="i" class="relative">
+              <div class="flex items-center">
+                <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500">
+                  {{ menu.label }}
+                </NuxtLink>
+                <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
+                  class="text-[#0191D8] cursor-pointer text-lg ml-1" />
+              </div>
+              <ul v-if="menu.subMenu && isDropdownOpen === i"
+                class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
+                <li v-for="(subMenu, j) in menu.subMenu" :key="j"
+                  class="py-1 px-3 min-w-[200px] hover:bg-gray-200 rounded-lg">
+                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block"
+                    @click="handleLinkClick">
+                    {{ subMenu.label }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <p class="text-transparent">&#8709;</p>
+        </div>
+      </header>
+
+      <!-- Mobile/Tablet Header -->
+      <header v-if="isMobile || isTablet"
+        class="z-30 fixed top-0 w-full bg-white h-16 flex items-center justify-between px-4">
         <NuxtLink to="/" class="font-bold text-lg">
           <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75" />
         </NuxtLink>
@@ -148,8 +188,8 @@ const menus = ref([
         </button>
         <!-- Navigation menu -->
         <nav :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }"
-          class="sm:flex flex-col sm:flex-row sm:items-center sm:gap-4 absolute sm:relative left-0 px-4 py-4 top-[64px] lg:top-0 w-full sm:w-auto bg-white sm:bg-transparent transition-transform duration-300 ease-in-out">
-          <ul class="flex flex-col sm:flex-row sm:gap-4 gap-6 sm:divide-y-0 divide-gray-500/50">
+          class="absolute left-0 px-4 py-4 top-[64px] w-full bg-white transition-transform duration-300 ease-in-out">
+          <ul class="flex flex-col gap-6 divide-gray-500/50">
             <li v-for="(menu, i) in menus" :key="i" class="relative">
               <div class="flex items-center">
                 <NuxtLink :to="menu.to" :class="{ 'font-bold': route.path === menu.to }" class="hover:text-primary-500"
@@ -161,9 +201,9 @@ const menus = ref([
               </div>
               <ul v-if="menu.subMenu && isDropdownOpen === i"
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
-                <li v-for="(subMenu, j) in menu.subMenu" :key="j" class="py-1 px-3 hover:bg-gray-200 hover:rounded-md">
-                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }"
-                    @click="handleLinkClick" class="block">
+                <li v-for="(subMenu, j) in menu.subMenu" :key="j" class="py-1 px-3 hover:bg-gray-200 rounded-md">
+                  <NuxtLink :to="subMenu.to" :class="{ 'font-bold': route.path === subMenu.to }" class="block"
+                    @click="handleLinkClick">
                     {{ subMenu.label }}
                   </NuxtLink>
                 </li>
@@ -176,6 +216,13 @@ const menus = ref([
 
     <main class="font-sans flex-1 flex flex-col z-10">
       <slot />
+      <div class="fixed bottom-5 right-5 z-30">
+        <a href="https://ajakan.me/link" target="_blank">
+          <Icon name="logos:whatsapp-icon"
+            class="bg-[#25D366] text-white rounded-full transition-transform transform hover:scale-110 hover:shadow-lg"
+            size="10vh" />
+        </a>
+      </div>
     </main>
 
     <footer class="py-8 z-10 bg-white">
@@ -245,19 +292,31 @@ const menus = ref([
         <div class="lg:grid lg:grid-cols-4 lg:gap-10">
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Kontak</h1>
-            <Icon name="mdi:instagram" class="bg-[#0191D8] mr-2" size="3vh" />
-            <Icon name="bxl:facebook" class="bg-[#0191D8] mr-2" size="3vh" />
-            <Icon name="mingcute:youtube-line" class="bg-[#0191D8] mr-2" size="3vh" />
-            <Icon name="mage:x" class="bg-[#0191D8] mr-2" size="3vh" />
-            <Icon name="ic:baseline-tiktok" class="bg-[#0191D8] mr-2" size="3vh" />
+            <NuxtLink to="https://www.instagram.com/ajakan.me/" target="_blank">
+              <Icon name="mdi:instagram" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
+            <NuxtLink to="https://www.facebook.com/ajakan.me/" target="_blank">
+              <Icon name="bxl:facebook" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
+            <NuxtLink to="https://www.youtube.com/channel/UCNAWu06W9Wg3xYe9eqpX0ug" target="_blank">
+              <Icon name="mingcute:youtube-line" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
+            <NuxtLink to="https://x.com/AjakanMe" target="_blank">
+              <Icon name="mage:x" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
+            <NuxtLink to="https://www.tiktok.com/@ajakan.me" target="_blank">
+              <Icon name="ic:baseline-tiktok" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
+            <NuxtLink to="https://www.linkedin.com/company/ajakan" target="_blank">
             <Icon name="mdi:linkedin" class="bg-[#0191D8] mr-2" size="3vh" />
+            </NuxtLink>
             <div class="flex items-center mt-4">
               <Icon name="ion:call-outline" class="bg-[#545454] mr-2" size="3vh" />
               <span class="text-sm text-gray-700">+628 522 497 310</span>
             </div>
             <div class="flex items-center mt-4">
               <Icon name="ic:outline-email" class="bg-[#545454] mr-2" size="3vh" />
-              <span class="text-sm text-gray-700">Ajakan@gmail.com</span>
+              <span class="text-sm text-gray-700">admin@ajakan.me</span>
             </div>
             <div class="flex items-center mt-4">
               <Icon name="bx:map" class="bg-[#545454] mr-2" size="5vh" />
@@ -287,9 +346,11 @@ const menus = ref([
           </div>
           <div class="max-w-[350px] mt-4">
             <h1 class="font-bold mb-2">Informasi</h1>
-            <NuxtLink to="/" class="text-sm">FAQ</NuxtLink><br />
-            <NuxtLink to="/" class="text-sm">Terms & Condition</NuxtLink><br />
-            <NuxtLink to="/" class="text-sm">Privacy Policy</NuxtLink><br />
+            <NuxtLink to="https://ajakan.me/#faq" target="_blank" class="text-sm">FAQ</NuxtLink><br />
+            <NuxtLink to="https://ajakan.me/term-condition" target="_blank" class="text-sm">Terms & Condition</NuxtLink>
+            <br />
+            <NuxtLink to="https://ajakan.me/privacy-policy" target="_blank" class="text-sm">Privacy Policy</NuxtLink>
+            <br />
           </div>
         </div>
       </PagesContainer>
