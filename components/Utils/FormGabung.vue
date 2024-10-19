@@ -1,23 +1,85 @@
 <script setup lang="ts">
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
+import { ref, computed, watch, reactive } from 'vue'
+
+interface Province {
+    prov_id: number
+    prov_name: string
+}
+
+interface City {
+    city_id: number
+    city_name: string
+}
+
+// Reactive state for selected province and city
+const selectedProvince = ref<Province | undefined>(undefined)
+const selectedCity = ref<City | undefined>(undefined)
+
+// Reactive state for provinces and cities
+const provincesOption = ref<Province[]>([])
+const citiesOption = ref<City[]>([])
+
+// Fetch provinces data using $fetch
+const fetchProvinces = async () => {
+    try {
+        const { data } = await $fetch<{ data: Province[] }>('https://admin-staging-big-product.ajakan.me/api/guest/fetch/province/rajaongkir')
+        provincesOption.value = data
+    } catch (error) {
+        console.error('Error fetching provinces:', error)
+    }
+}
+
+// Call fetchProvinces when the component is mounted
+fetchProvinces()
+
+// Compute province options for the dropdown
+const selectProvince = computed(() => {
+    return provincesOption.value.map((province) => ({
+        label: province.prov_name,
+        value: province.prov_id
+    }))
+})
+
+// Watch for changes in selectedProvince and fetch cities based on the selected province
+watch(selectedProvince, async (newProvinceId) => {
+    if (newProvinceId !== null) {
+        try {
+            const { data } = await $fetch<{ data: City[] }>(`https://admin-staging-big-product.ajakan.me/api/guest/fetch/city/rajaongkir/${newProvinceId}`)
+            citiesOption.value = data
+        } catch (error) {
+            console.error('Error fetching cities:', error)
+            citiesOption.value = [] // Reset cities if there's an error
+        }
+    } else {
+        citiesOption.value = [] // Reset cities if no province is selected
+    }
+})
+
+// Compute city options for the dropdown
+const selectCity = computed(() => {
+    return citiesOption.value.map((city) => ({
+        label: city.city_name,
+        value: city.city_id
+    }))
+})
 
 const schema = z.object({
     domain: z.string(),
-    paket: z.string(),
-    namadomain: z.string().min(6, 'Nama domain paling tidak harus 6 karakter'),
+    type_package: z.string(),
     domainutama: z.string(),
     harga: z.string(),
-    nama_usaha: z.string().min(3, 'Nama usaha paling tidak harus 3 karakter'),
-    provinsi: z.string(),
-    nickname_usaha: z.string().min(3, 'Nickname usaha paling tidak harus 3 karakter'),
-    kota_usaha: z.string(),
+    fullname: z.string().min(3, 'Nama usaha paling tidak harus 3 karakter'),
+    province: z.string(),
+    nickname: z.string().min(3, 'Nickname usaha paling tidak harus 3 karakter'),
+    city: z.string(),
     email: z.string().email('Invalid email address'),
-    jenis_usaha: z.string().min(3, 'Jenis usaha must be at least 3 characters'),
-    no_wa: z.string().min(11, 'No. WhatsApp paling tidak harus 11 karakter'),
-    usia: z.string().min(1, 'Usia paling tidak harus 1 karakter'),
-    alamat_usaha: z.string().min(10, 'Alamat usaha paling tidak harus 10 karakter'),
-    refferal: z.string(),
+    current_job: z.string().min(3, 'Jenis usaha must be at least 3 characters'),
+    phone: z.string().min(11, 'No. WhatsApp paling tidak harus 11 karakter'),
+    age: z.string().min(1, 'age paling tidak harus 1 karakter'),
+    address: z.string().min(10, 'Alamat usaha paling tidak harus 10 karakter'),
+    source: z.string(),
 })
 
 type Schema = z.output<typeof schema>
@@ -28,17 +90,17 @@ const state = reactive({
     namadomain: '',
     domainutama: '',
     domain: '',
-    paket: '',
+    type_package: '',
     harga: '',
-    nama_usaha: '',
-    provinsi: '',
-    nickname_usaha: '',
-    kota_usaha: '',
-    jenis_usaha: '',
-    no_wa: '',
-    usia: '',
-    alamat_usaha: '',
-    refferal: '',
+    fullname: '',
+    province: selectedProvince.value,
+    nickname: '',
+    city: selectedCity.value,
+    current_job: '',
+    phone: '',
+    age: '',
+    address: '',
+    source: '',
 })
 
 const referral = [
@@ -60,25 +122,30 @@ const pilihanDomain = [
 
 const pilihanPaket = [
     { label: 'Pilih Paket', disabled: true },
-    { label: 'Paket Trial (3 Hari)', value: 'Paket Trial (3 Hari)' },
-    { label: 'Paket 1', value: 'Paket 1' },
-    { label: 'Paket 2', value: 'Paket 2' },
-    { label: 'Paket 3', value: 'Paket 3' }
+    { label: 'Paket Trial (3 Hari)', value: 'package_trial' },
+    { label: 'Paket 1', value: 'package_1' },
+    { label: 'Paket 2', value: 'package_2' },
+    { label: 'Paket 3', value: 'package_3' }
 ];
 
-watch(() => state.paket, (newPaket) => {
+// Computed property to check if the selected package is package_2 or package_3
+const isSingleDomainInput = computed(() => {
+    return state.type_package === 'package_2' || state.type_package === 'package_3';
+});
+
+watch(() => state.type_package, (newPaket) => {
     switch (newPaket) {
-        case 'Paket Trial (3 Hari)':
+        case 'package_trial':
             state.harga = 'FREE'; // Harga gratis untuk trial
             break;
-        case 'Paket 1':
-            state.harga = 'Rp 100.000'; // Harga Paket 1
+        case 'package_1':
+            state.harga = 'IDR 189.000'; // Harga Paket 1
             break;
-        case 'Paket 2':
-            state.harga = 'Rp 200.000'; // Harga Paket 2
+        case 'package_2':
+            state.harga = 'IDR 329.000'; // Harga Paket 2
             break;
-        case 'Paket 3':
-            state.harga = 'Rp 300.000'; // Harga Paket 3
+        case 'package_3':
+            state.harga = 'IDR 629.000'; // Harga Paket 3
             break;
         default:
             state.harga = ''; // Kosong jika tidak ada paket yang dipilih
@@ -98,9 +165,48 @@ watch(() => state.domainutama, (newDomainUtama) => {
     }
 })
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-    // Do something with data
-    console.log(event.data)
+watch(selectedProvince, (newProvince) => {
+    state.province = newProvince
+})
+
+watch(selectedCity, (newCity) => {
+    state.city = newCity
+})
+
+async function onSubmit(event: Event) {
+  event.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(event.target as HTMLFormElement);
+  const data = Object.fromEntries(formData.entries());
+
+  // Exclude specific fields
+  const fieldsToExclude = ['domain_utama']; // Replace with actual field names
+  fieldsToExclude.forEach(field => delete data[field]);
+
+  console.log('Form data:', data);
+
+  try {
+    const { data: result, error } = await useFetch('https://admin-staging-big-product.ajakan.me/api/guest/mitra/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (error.value) {
+      const errorMessage = error.value.data?.error || error.value.message;
+      throw new Error(errorMessage);
+    }
+
+    console.log('Success:', result.value);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error:', error.message);
+    } else {
+      console.error('Unexpected error:', error);
+    }
+  }
 }
 const props = defineProps<{
     isOpen: boolean
@@ -111,7 +217,6 @@ const emit = defineEmits(['update:isOpen'])
 const closeModal = () => {
     emit('update:isOpen', false)
 }
-
 
 </script>
 
@@ -132,10 +237,11 @@ const closeModal = () => {
                         <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
                             <div class="border border-[#D6D7D9] rounded-2xl p-4">
                                 <h1 class="mb-4">Data Diri</h1>
-                                <div class="w-full flex flex-col md:flex-row md:gap-2 lg:flex-row lg:gap-2 justify-center items-center">
+                                <div
+                                    class="w-full flex flex-col md:flex-row md:gap-2 lg:flex-row lg:gap-2 justify-center items-center">
                                     <div class="w-full space-y-4">
-                                        <UFormGroup label="Paket" name="domain">
-                                            <USelect v-model="state.paket" color="primary" variant="outline"
+                                        <UFormGroup label="Paket" name="type_package">
+                                            <USelect v-model="state.type_package" color="primary" variant="outline"
                                                 :options="pilihanPaket" size="xl" :ui="{
                                                     rounded: 'rounded-xl',
                                                 }" />
@@ -147,7 +253,7 @@ const closeModal = () => {
                                             }" disabled />
                                         </UFormGroup>
                                     </div>
-                                    <div class="w-full space-y-4 mt-4 md:mt-0 lg:mt-0">
+                                    <div v-if="!isSingleDomainInput" class="w-full space-y-4 mt-4 md:mt-0 lg:mt-0">
                                         <UFormGroup label="Domain Utama" name="domain_utama">
                                             <USelect v-model="state.domainutama" color="primary" variant="outline"
                                                 :options="pilihanDomain" size="xl" :ui="{
@@ -155,63 +261,86 @@ const closeModal = () => {
                                                 }" />
                                         </UFormGroup>
 
-                                        <UFormGroup label="Domain" name="namadomain">
+                                        <!-- Conditionally render domain input fields -->
+                                        <UFormGroup label="Domain" name="domain">
                                             <div class="domain-container">
-                                                <UInput v-model="state.namadomain" size="xl" :ui="{
+                                                <UInput v-model="state.domain" size="xl" :ui="{
                                                     rounded: 'rounded-xl',
                                                 }" type="text" />
-                                                <UInput v-model="state.domain" size="xl" :ui="{
+                                                <UInput v-model="state.domainutama" size="xl" :ui="{
                                                     rounded: 'rounded-xl',
                                                 }" disabled />
                                             </div>
                                         </UFormGroup>
                                     </div>
+                                    <div v-else class="w-full space-y-4 mt-4 md:mb-24 lg:mb-24">
+                                        <UFormGroup label="Domain" name="domain">
+                                            <UInput v-model="state.domain" size="xl" :ui="{
+                                                rounded: 'rounded-xl',
+                                            }" type="text" placeholder="contoh: ajakan.com" />
+                                            <p class="text-transparent">    </p>
+                                        </UFormGroup>
+                                    </div>
                                 </div>
                             </div>
                             <div class="border border-[#D6D7D9] rounded-2xl p-4">
-                                <div class="w-full flex flex-col md:flex-row md:gap-2 lg:flex-row lg:gap-2 justify-center items-center">
+                                <div
+                                    class="w-full flex flex-col md:flex-row md:gap-2 lg:flex-row lg:gap-2 justify-center items-center">
                                     <div class="w-full space-y-4">
-                                        <UFormGroup label="Nama Usaha" name="nama_usaha">
-                                            <UInput v-model="state.nama_usaha" size="xl" :ui="{
+                                        <UFormGroup label="Nama Usaha" name="fullname">
+                                            <UInput v-model="state.fullname" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
-                                            }" placeholder="Usaha Maju Jaya"/>
+                                            }" placeholder="Usaha Maju Jaya" />
                                         </UFormGroup>
 
-                                        <UFormGroup label="Nickname Usaha" name="nickname_usaha">
-                                            <UInput v-model="state.nickname_usaha" size="xl" :ui="{
+                                        <UFormGroup label="Nickname Usaha" name="nickname">
+                                            <UInput v-model="state.nickname" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
-                                            }" placeholder="Ajakan"/>
+                                            }" placeholder="Ajakan" />
                                         </UFormGroup>
                                         <UFormGroup label="Email" name="email">
                                             <UInput v-model="state.email" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
                                             }" type="email" placeholder="admin@ajakan.me" />
                                         </UFormGroup>
-                                        <UFormGroup label="No. Whatsapp" name="no_wa">
-                                            <UInput v-model="state.no_wa" size="xl" :ui="{
+                                        <UFormGroup label="No. Whatsapp" name="phone">
+                                            <UInput v-model="state.phone" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
                                             }" placeholder="081234567890" />
                                         </UFormGroup>
-                                        <UFormGroup label="Alamat Usaha" name="alamat_usaha">
-                                            <UInput v-model="state.alamat_usaha" size="xl" :ui="{
+                                        <UFormGroup label="Alamat Usaha" name="address">
+                                            <UInput v-model="state.address" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
-                                            }" placeholder="Jl.Perintis Kemerdekaan No. 12, Jakarta Pusat, DKI Jakarta" />
+                                            }"
+                                                placeholder="Jl.Perintis Kemerdekaan No. 12, Jakarta Pusat, DKI Jakarta" />
                                         </UFormGroup>
                                     </div>
                                     <div class="w-full space-y-4 mt-4 md:mt-0 lg:mt-0">
-                                        <UtilsLocationSelector v-model:provinsi="state.provinsi" v-model:kota_usaha="state.kota_usaha" />
-                                        <UFormGroup label="Usaha / Pekerjaan" name="jenis_usaha">
-                                            <UInput v-model="state.jenis_usaha" size="xl" :ui="{
+                                        <!-- Province Selector -->
+                                        <UFormGroup label="Provinsi" name="province">
+                                            <USelect v-model="selectedProvince" :options="selectProvince"
+                                                color="primary" variant="outline" size="xl"
+                                                :ui="{ rounded: 'rounded-xl' }" />
+                                        </UFormGroup>
+
+                                        <!-- City Selector -->
+                                        <UFormGroup label="Kota" name="city">
+                                            <USelect v-model="selectedCity" :options="selectCity" color="primary"
+                                                variant="outline" size="xl" :ui="{ rounded: 'rounded-xl' }"
+                                                :disabled="!selectCity.length" />
+                                        </UFormGroup>
+                                        <UFormGroup label="Usaha / Pekerjaan" name="current_job">
+                                            <UInput v-model="state.current_job" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
                                             }" type="text" placeholder="Memiliki usaha percetakan" />
                                         </UFormGroup>
-                                        <UFormGroup label="Usia" name="usia">
-                                            <UInput v-model="state.usia" size="xl" :ui="{
+                                        <UFormGroup label="Usia" name="age">
+                                            <UInput v-model="state.age" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
                                             }" type="text" placeholder="35" />
                                         </UFormGroup>
                                         <UFormGroup label="Dari Mana Kamu Mengetahui Ajakan?" name="referral">
-                                            <USelect v-model="state.refferal" color="primary" variant="outline"
+                                            <USelect v-model="state.source" color="primary" variant="outline"
                                                 :options="referral" size="xl" :ui="{
                                                     rounded: 'rounded-xl',
                                                 }" />
@@ -219,7 +348,8 @@ const closeModal = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="w-full bg-[#0191D8] text-white px-4 py-2 rounded-xl">Daftar</button>
+                            <button type="submit"
+                                class="w-full bg-[#0191D8] text-white px-4 py-2 rounded-xl">Daftar</button>
                         </UForm>
                     </slot>
                 </div>
@@ -238,22 +368,25 @@ const closeModal = () => {
     width: 100%;
 }
 
-.domain-container > *:first-child {
-  flex: 6; /* 60% width on mobile */
+.domain-container>*:first-child {
+    flex: 6;
+    /* 60% width on mobile */
 }
 
-.domain-container > *:last-child {
-  flex: 4; /* 40% width on mobile */
+.domain-container>*:last-child {
+    flex: 4;
+    /* 40% width on mobile */
 }
 
 @media (min-width: 768px) {
-  .domain-container > *:first-child {
-    flex: 7; /* 70% width on larger screens */
-  }
+    .domain-container>*:first-child {
+        flex: 7;
+        /* 70% width on larger screens */
+    }
 
-  .domain-container > *:last-child {
-    flex: 3; /* 30% width on larger screens */
-  }
+    .domain-container>*:last-child {
+        flex: 3;
+        /* 30% width on larger screens */
+    }
 }
-
 </style>

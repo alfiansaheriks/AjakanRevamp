@@ -7,13 +7,14 @@
     "start": "nuxt start",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "nuxt preview --port=3002",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/image": "^1.7.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
+    "dotenv": "^16.4.5",
     "intersection-observer": "^0.12.2",
     "nuxt": "^3.13.2",
     "swiper": "^11.1.9",
