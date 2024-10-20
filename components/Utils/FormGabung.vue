@@ -174,40 +174,63 @@ watch(selectedCity, (newCity) => {
 })
 
 async function onSubmit(event: Event) {
-  event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); // Prevent default form submission
 
-  const formData = new FormData(event.target as HTMLFormElement);
-  const data = Object.fromEntries(formData.entries());
+    const formData = new FormData(event.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
 
-  // Exclude specific fields
-  const fieldsToExclude = ['domain_utama']; // Replace with actual field names
-  fieldsToExclude.forEach(field => delete data[field]);
+    // Exclude specific fields
+    const fieldsToExclude = ['domain_utama']; // Replace with actual field names
+    fieldsToExclude.forEach(field => delete data[field]);
 
-  console.log('Form data:', data);
+    console.log('Form data:', data);
 
-  try {
-    const { data: result, error } = await useFetch('https://admin-staging-big-product.ajakan.me/api/guest/mitra/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+        const { data: result, error } = await useFetch('https://admin-staging-big-product.ajakan.me/api/guest/mitra/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
-    if (error.value) {
-      const errorMessage = error.value.data?.error || error.value.message;
-      throw new Error(errorMessage);
+        if (error.value) {
+            const errorMessage = error.value.data?.error || error.value.message;
+            throw new Error(errorMessage);
+        }
+
+        console.log('Success:', result.value);
+        showNotification('Success', 'Form submitted successfully!');
+    } catch (error) {
+        if (error instanceof Error) {
+            console.error('Error:', error.message);
+            showNotification('Error', 'Unexpected error occurred.');
+        } else {
+            console.error('Unexpected error:', error);
+            showNotification('Error', 'Unexpected error occurred.');
+        }
     }
-
-    console.log('Success:', result.value);
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error('Error:', error.message);
-    } else {
-      console.error('Unexpected error:', error);
-    }
-  }
 }
+
+const notification = ref({
+    isVisible: false,
+    title: '',
+    description: '',
+});
+
+// Function to show the notification
+function showNotification(title: string, description: string) {
+    notification.value.title = title;
+    notification.value.description = description;
+    notification.value.isVisible = true;
+
+    // Auto-hide notification after 3 seconds
+    setTimeout(() => {
+        notification.value.isVisible = false;
+    }, 3000);
+}
+
+
 const props = defineProps<{
     isOpen: boolean
 }>()
@@ -278,7 +301,7 @@ const closeModal = () => {
                                             <UInput v-model="state.domain" size="xl" :ui="{
                                                 rounded: 'rounded-xl',
                                             }" type="text" placeholder="contoh: ajakan.com" />
-                                            <p class="text-transparent">    </p>
+                                            <p class="text-transparent"> </p>
                                         </UFormGroup>
                                     </div>
                                 </div>
@@ -351,6 +374,15 @@ const closeModal = () => {
                             <button type="submit"
                                 class="w-full bg-[#0191D8] text-white px-4 py-2 rounded-xl">Daftar</button>
                         </UForm>
+                        <div v-if="notification.isVisible" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 px-4 lg:px-32">
+                            <UNotification
+                                :id="9"
+                                :title="notification.title"
+                                :description="notification.description"
+                                :timeout="0"
+                                class="z-50"
+                            />
+                        </div>
                     </slot>
                 </div>
             </div>
