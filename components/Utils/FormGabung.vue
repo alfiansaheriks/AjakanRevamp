@@ -209,7 +209,7 @@ async function onSubmit(event: Event) {
         showNotification('Success', 'Form submitted successfully!');
 
         // Format message for WhatsApp
-        const whatsappNumber = '6282284508995';
+        const whatsappNumber = '6282173938863';
         const message = `Halo kak, saya sudah daftar paket usaha dengan pilihan [${data['type_package']}] di Ajakan.me ya. Berikut detail data saya:
 Nama usaha: [${data['fullname']}]
 Email: [${data['email']}]
