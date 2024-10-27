@@ -68,7 +68,9 @@ const menus = ref([
   { label: 'Blog', to: '/blog-list' },
 ]);
 
-
+const scrollToTop = () => {
+  window.scrollTo({ top: 1, behavior: 'smooth' });
+}
 
 </script>
 
@@ -220,6 +222,13 @@ const menus = ref([
         <a href="https://ajakan.me/link" target="_blank">
           <Icon name="logos:whatsapp-icon"
             class="bg-[#25D366] text-white rounded-full transition-transform transform hover:scale-110 hover:shadow-lg"
+            size="10vh" />
+        </a>
+      </div>
+      <div v-if="!isDesktop" class="fixed bottom-5 left-5 z-50">
+        <a @click.prevent="scrollToTop" target="_blank">
+          <Icon name="material-symbols:arrow-circle-up-outline"
+            class="bg-[#0191D8] text-white transition-transform transform hover:scale-110 hover:shadow-lg"
             size="10vh" />
         </a>
       </div>
