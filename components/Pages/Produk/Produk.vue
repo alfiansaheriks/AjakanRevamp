@@ -2,11 +2,11 @@
 import { ref } from 'vue';
 
 const cards = ref([
-    { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-110 lg:scale-125 mt-2 p-4', link: '/undangan-digital' },
-    { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2 p-4', link: '/undangan-video' },
-    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 rounded-md mb-4 lg:scale-125 mt-2', link: '/undangan-save-the-date' },
-    { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2', link: '/filter-instagram' },
-    { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 lg:scale-125 mt-2', link: '/undangan-3d' }
+    { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2 p-4', link: '/undangan-digital' },
+    { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2 p-4', link: '/undangan-video' },
+    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 md:scale-75 rounded-md mb-4 lg:scale-125 mt-2', link: '/undangan-save-the-date' },
+    { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2', link: '/filter-instagram' },
+    { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2', link: '/undangan-3d' }
 ]);
 
 const isMobile = ref(false);
@@ -45,7 +45,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Centered Arrow Icon -->
-        <div class="arrow-wrapper flex items-center justify-center flex-grow mb-[150px] lg:mb-[70px]">
+        <div class="arrow-wrapper flex items-center justify-center flex-grow mb-[150px] md:mb-0 lg:mb-[70px]">
             <div class="arrow-container flex items-center justify-center w-10 h-10 rounded-full bg-[#DFF4FF]">
                 <Icon name="lets-icons:arrow-drop-down" class="text-[#0191d8] text-4xl cursor-pointer" />
             </div>
@@ -68,7 +68,7 @@ onUnmounted(() => {
             <div class="flex flex-row gap-4 overflow-x-scroll sm:gap-4 sm:overflow-x-auto sm:scroll-snap-x-mandatory"
                 style="scrollbar-width: none; -ms-overflow-style: none;">
                 <div v-for="(card, index) in cards" :key="index" :class="[
-                    'card flex-shrink-0 w-4/5 bg-[#0191D8] text-white rounded-3xl shadow-lg relative overflow-hidden',
+                    'card flex-shrink-0 w-[50%] bg-[#0191D8] text-white rounded-3xl shadow-lg relative overflow-hidden',
                     card.class.includes('save-the-date') ? 'save-the-date-card' : '',
                     'sm:mr-4 sm:mt-20 sm:scroll-snap-start'
                 ]" style="scrollbar-width: none;" :data-aos="'fade-up'" :data-aos-delay="index * 100">
@@ -78,7 +78,9 @@ onUnmounted(() => {
                     ]" v-html="card.title"></h3>
 
                     <img :src="card.image" :alt="card.title" :class="card.class" />
-                    <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
+                    <NuxtLink :to="card.link">
+                        <Icon name="carbon:next-outline" class="absolute bottom-7 right-2 text-white text-3xl" />
+                    </NuxtLink>
                 </div>
             </div>
         </div>

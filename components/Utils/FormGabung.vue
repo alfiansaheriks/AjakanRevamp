@@ -180,12 +180,17 @@ async function onSubmit(event: Event) {
     const data = Object.fromEntries(formData.entries());
 
     // Exclude specific fields
-    const fieldsToExclude = ['domain_utama']; // Replace with actual field names
+    const fieldsToExclude = ['domain_utama'];
     fieldsToExclude.forEach(field => delete data[field]);
 
-    console.log('Form data:', data);
+    // console.log('Form data:', data);
 
     try {
+        // Update button text to "On Process"
+        const submitButton = document.querySelector('#submit-button') as HTMLButtonElement;
+        submitButton.textContent = 'On Process';
+        submitButton.disabled = true;
+
         const { data: result, error } = await useFetch('https://admin-staging-big-product.ajakan.me/api/guest/mitra/register', {
             method: 'POST',
             headers: {
@@ -195,22 +200,42 @@ async function onSubmit(event: Event) {
         });
 
         if (error.value) {
-            const errorMessage = error.value.data?.error || error.value.message;
+            const errorMessage = error.value.data.message || 'An error occurred while submitting the form.';
+            // console.log(error.value);
             throw new Error(errorMessage);
         }
 
-        console.log('Success:', result.value);
+        // console.log('Success:', result.value);
         showNotification('Success', 'Form submitted successfully!');
+
+        // Format message for WhatsApp
+        const whatsappNumber = '6282284508995';
+        const message = `Halo kak, saya sudah daftar paket usaha dengan pilihan [${data['type_package']}] di Ajakan.me ya. Berikut detail data saya:
+Nama usaha: [${data['fullname']}]
+Email: [${data['email']}]
+Domain: [${data['domain']}]
+HP: [${data['phone']}] 
+Terimaksih kak!`;
+
+        // Redirect to WhatsApp with the formatted message
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappUrl;
+
     } catch (error) {
         if (error instanceof Error) {
             console.error('Error:', error.message);
-            showNotification('Error', 'Unexpected error occurred.');
+            showNotification('Error', error.message);
         } else {
             console.error('Unexpected error:', error);
             showNotification('Error', 'Unexpected error occurred.');
         }
+        // Reset button text if an error occurs
+        const submitButton = document.querySelector('#submit-button') as HTMLButtonElement;
+        submitButton.textContent = 'Daftar';
+        submitButton.disabled = false;
     }
 }
+
 
 const notification = ref({
     isVisible: false,
@@ -371,17 +396,13 @@ const closeModal = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit"
+                            <button type="submit" id="submit-button"
                                 class="w-full bg-[#0191D8] text-white px-4 py-2 rounded-xl">Daftar</button>
                         </UForm>
-                        <div v-if="notification.isVisible" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 px-4 lg:px-32">
-                            <UNotification
-                                :id="9"
-                                :title="notification.title"
-                                :description="notification.description"
-                                :timeout="0"
-                                class="z-50"
-                            />
+                        <div v-if="notification.isVisible"
+                            class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 px-4 lg:px-32">
+                            <UNotification :id="9" :title="notification.title" :description="notification.description"
+                                :timeout="0" class="z-50" />
                         </div>
                     </slot>
                 </div>

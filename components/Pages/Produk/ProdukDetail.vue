@@ -2,11 +2,14 @@
 import { ref, onMounted } from 'vue';
 
 const isMobile = ref(false);
+const isTablet = ref(false);
+const isDesktop = ref(false);
 
 const checkIsMobile = () => {
     isMobile.value = window.innerWidth <= 768;
+    isTablet.value = window.innerWidth > 768 && window.innerWidth < 1024;
+    isDesktop.value = window.innerWidth >= 1024;
 };
-
 onMounted(() => {
     checkIsMobile();
     window.addEventListener('resize', checkIsMobile);
@@ -17,7 +20,7 @@ onMounted(() => {
 <template>
     <section class="main-container">
         <!-- Undangan Digital -->
-        <div class="invitation-section flex flex-col lg:flex-row md:flex-row items-center my-12">
+        <div class="invitation-section flex flex-col lg:flex-row md:flex-col xl:flex-col items-center my-12">
             <!-- Text Section -->
             <div class="text-section w-full" data-aos="fade-right">
                 <h2 class="text-[29px] lg:text-4xl font-semibold">
@@ -55,9 +58,11 @@ onMounted(() => {
                 <div v-if="!isMobile" class="shape-circle absolute bg-gradient-to-r from-transparent to-[#84D2F9]">
                 </div>
                 <!-- Images -->
-                <img v-if="!isMobile" src="~/assets/img/image/group-633.png" alt="Undangan Digital 1"
+                <img v-if="isDesktop" src="~/assets/img/image/group-633.png" alt="Undangan Digital 1"
                     class="w-full scale-150 mt-10 object-cover" />
-                <img v-else src="~/assets/img/image/undangandigital-mobile.png" alt="Undangan Digital"
+                <img v-if="isMobile" src="~/assets/img/image/undangandigital-mobile.png" alt="Undangan Digital"
+                    class="" />
+                <img v-if="isTablet" src="~/assets/img/image/undangandigital-mobile.png" alt="Undangan Digital"
                     class="phone-image-mobile" />
                 <img v-if="!isMobile" src="~/assets/img/image/titikbirudetailproduk.png" alt="Undangan Digital 2"
                     class="titik-biru" />

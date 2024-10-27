@@ -84,7 +84,7 @@ onMounted(() => {
         <div v-else class="flex flex-col">
             <div class="mb-[42px] lg:mb-[64px] flex justify-between items-center mt-[50px] lg:mt-[80px]">
                 <div>&#8203;</div>
-                <div class="flex overflow-x-auto space-x-2 w-full md:w-full md:justify-center lg:w-full lg:justify-center mx-4">
+                <div class="flex overflow-x-auto space-x-2 w-full justify-center md:w-full md:justify-center lg:w-full lg:justify-center xl:w-full xl:justify-center mx-4">
                     <button v-for="subTheme in subThemes" :key="subTheme.id" @click="setActiveCategory(subTheme.id)"
                         :class="{
                             'bg-[#0191D8] text-white text-xs': activeCategory === subTheme.id,

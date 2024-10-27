@@ -18,9 +18,9 @@ const setActiveCategory = (category: string) => {
 
 // Fetch API
 const { data: response, error, refresh } = useFetch(() => {
-    let apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit}`;
+    let apiUrl = `https://admin-staging-big-product.ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit}`;
     if (activeCategory.value && activeCategory.value !== 'All') {
-        apiUrl = `https://ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit}&category=${activeCategory.value}`;
+        apiUrl = `https://admin-staging-big-product.ajakan.me/api/guest/blog/index?page=${currentPage.value}&limit=${limit}&category=${activeCategory.value}`;
     }
     // console.log('Fetching data from:', apiUrl); // Debugging
     return apiUrl;

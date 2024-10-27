@@ -181,6 +181,11 @@ const setModalOpen = (value: boolean) => {
                     <Icon name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
+                <div v-else class="flex flex-col items-center max-w-[700px] mt-44">
+                    <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
+                    <Icon name="mdi:arrow-down-drop-circle"
+                        class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
+                </div>
             </div>
             <div v-if="!isMobile && !isTablet" class="flex-1 flex flex-col justify-end items-start">
                 <div
@@ -295,7 +300,7 @@ const setModalOpen = (value: boolean) => {
                                 <br />Undangan Digital?
                             </h2>
                             <p
-                                class="leading-tight lg:leading-tight text-sm w-[340px] md:w-full lg:w-full lg:text-base text-[#000] mt-8">
+                                class="leading-tight lg:leading-tight text-sm w-full sm:w-full md:w-full lg:w-full lg:text-base text-[#000] mt-8">
                                 Kamu bisa
                                 mendapatkan penghasilan
                                 tambahan jutaan rupiah dengan menjadi penyedia undangan melalui media sosial seperti
@@ -342,7 +347,7 @@ const setModalOpen = (value: boolean) => {
                                 Estimasi Keuntungan yang akan Kamu Dapatkan
                                 </h2>   
                             <h2 v-else
-                                class="text-[29px] w-[370px] md:w-full h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px] mt-10">
+                                class="text-[29px] w-full md:w-full h-[114px] font-semibold text-black lg:text-[#fff] max-w-[500px] mt-10">
                                 Estimasi <span class="text-[#0191D8] lg:text-white">Keuntungan</span> yang akan Kamu
                                 Dapatkan
                             </h2>
@@ -357,7 +362,7 @@ const setModalOpen = (value: boolean) => {
                                     Rp100.000, Anda bisa menghasilkan Rp6.000.000 dalam 30 hari.</b>
                             </p>
                             <p v-else
-                                class="leading-tight lg:leading-tight w-[350px] md:w-full text-base lg:text-base text-black lg:text-[#fff] mt-8">
+                                class="leading-tight lg:leading-tight w-full md:w-full text-base lg:text-base text-black lg:text-[#fff] mt-2">
                                 Di pasaran, paket website undangan digital biasanya dihargai sekitar Rp100.000 -
                                 Rp300.000 tergantung fiturnya. Namun, di Ajakan, mitra kami sering menjualnya sekitar
                                 Rp100.000. <span class="font-semibold">Dengan menjual hanya 2 undangan per hari, dengan

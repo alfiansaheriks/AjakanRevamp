@@ -92,7 +92,7 @@ const menus = ref([
                 <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
                   class="text-[#0191D8] cursor-pointer text-lg ml-1" />
               </div>
-              <ul v-if="menu.subMenu && isDropdownOpen"
+              <ul v-if="menu.subMenu && isDropdownOpen && isDesktop && !isTablet && !isMobile"
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
                 <li v-for="(subMenu, j) in menu.subMenu" :key="j"
                   class="py-1 px-3 min-w-[200px] hover:bg-gray-200 rounded-lg">
@@ -126,7 +126,7 @@ const menus = ref([
                 <Icon v-if="menu.subMenu" name="mdi:arrow-down-drop-circle" @click="toggleDropdown(i)"
                   class="text-[#0191D8] cursor-pointer text-lg ml-1" />
               </div>
-              <ul v-if="menu.subMenu && isDropdownOpen"
+              <ul v-if="menu.subMenu && isDropdownOpen && isDesktop && !isTablet && !isMobile"
                 class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-2 z-10">
                 <li v-for="(subMenu, j) in menu.subMenu" :key="j"
                   class="py-1 px-3 min-w-[200px] hover:bg-gray-200 rounded-lg">

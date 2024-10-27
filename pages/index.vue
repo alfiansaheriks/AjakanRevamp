@@ -155,7 +155,7 @@ const setModalOpen = (value: boolean) => {
             class="bg-gradient-to-br from-white to-sky-100 flex-1 flex flex-col justify-center items-center relative bg-cover bg-center mt-20 min-h-[1150px] animate__animated animate__fadeInRight"
             style="background-image: url('/images/HeroSection1.png');">
             <!-- Arrow icon -->
-            <div @click="scrollToSection('section3')"
+            <div @click="scrollToSection('section5')"
                 class="absolute top-[46%] z-20 flex items-center justify-center w-full">
                 <Icon name="mdi:arrow-down-drop-circle" class="text-sky-300 text-5xl cursor-pointer" />
             </div>
@@ -339,11 +339,11 @@ const setModalOpen = (value: boolean) => {
                 <div data-aos="fade-left">
                     <img src="/images/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
                 </div>
-                <div class="mb-4 mt-4 max-w-[367px] md:max-w-full" data-aos="fade-right">
+                <div class="mb-4 mt-4" data-aos="fade-right">
                     <h1 class="text-3xl max-w-[600px] md:max-w-full">Peluang yang Menjanjikan untuk <span
                             class="text-[#0191D8] font-semibold">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-2">
-                        <p class="max-w-[600px] md:max-w-full">
+                        <p class="mw-full">
                             Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan
                                 terintegrasi
                                 otomatis, termasuk sistem pembayaran E-Money & Virtual Account.</b> Tak perlu lagi
@@ -371,11 +371,11 @@ const setModalOpen = (value: boolean) => {
                 <div data-aos="fade-left">
                     <img src="/images/LaptopSection7.png" alt="Hero Section 7" class="w-full h-full" />
                 </div>
-                <div class="mb-4 mt-4 max-w-[367px]" data-aos="fade-right">
+                <div class="mb-4 mt-4 w-full" data-aos="fade-right">
                     <h1 class="text-3xl max-w-[600px]">Peluang yang Menjanjikan untuk <span
                             class="text-[#0191D8] font-semibold">Bisnis Kamu</span></h1>
                     <div class="text-lg mt-2">
-                        <p class="max-w-[600px]">
+                        <p class="w-full">
                             Bersama kami, bisnis undangan digitalmu akan lebih mudah. <b>Kami menyediakan layanan
                                 terintegrasi
                                 otomatis, termasuk sistem pembayaran E-Money & Virtual Account.</b> Tak perlu lagi
