@@ -183,9 +183,9 @@ const scrollToTop = () => {
       <header v-if="isMobile || isTablet"
         class="z-30 fixed top-0 w-full bg-white h-16 flex items-center justify-between px-4">
         <NuxtLink to="/" class="font-bold text-lg">
-          <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-75" />
+          <img src="/images/LogoAjakan.png" alt="Ajakan Logo" class="scale-100 mt-2" />
         </NuxtLink>
-        <button @click="toggleMenu" class="text-xl">
+        <button @click="toggleMenu" class="text-2xl">
           <Icon :name="isMenuOpen ? 'mdi:close' : 'ion:menu'" />
         </button>
         <!-- Navigation menu -->
@@ -229,12 +229,12 @@ const scrollToTop = () => {
         <a @click.prevent="scrollToTop" target="_blank">
           <Icon name="material-symbols:arrow-circle-up-outline"
             class="bg-[#0191D8] text-white transition-transform transform hover:scale-110 hover:shadow-lg"
-            size="10vh" />
+            size="5vh" />
         </a>
       </div>
     </main>
 
-    <footer class="py-8 z-10 bg-white">
+    <footer class="py-8 bg-white">
       <PagesContainer class="flex-1 flex flex-col gap-8">
         <!-- Mobile Layout -->
         <div class="flex flex-col gap-4 md:hidden">

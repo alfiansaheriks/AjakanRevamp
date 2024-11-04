@@ -4,7 +4,7 @@ import { ref } from 'vue';
 const cards = ref([
     { title: 'Undangan<br/>Digital', image: '/images/undangandigital.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2 p-4', link: '/undangan-digital' },
     { title: 'Undangan<br/>Video', image: '/images/undanganvideo.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2 p-4', link: '/undangan-video' },
-    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 md:scale-75 rounded-md mb-4 lg:scale-125 mt-2', link: '/undangan-save-the-date' },
+    { title: 'Undangan Save The Date', image: '/images/undangansavethedate.png', class: 'save-the-date md:mt-5 w-[40%] object-cover scale-110 md:scale-75 rounded-md mb-4 lg:scale-125 mt-2', link: '/undangan-std' },
     { title: 'Filter<br/>Instagram', image: '/images/filterinstagram.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2', link: '/filter-instagram' },
     { title: 'Undangan<br/>3D', image: '/images/undangan3d.png', class: 'save-the-date w-full h-auto object-cover rounded-md mb-4 scale-150 md:scale-75 lg:scale-125 mt-2', link: '/undangan-3d' }
 ]);

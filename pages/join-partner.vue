@@ -123,6 +123,13 @@ const setModalOpen = (value: boolean) => {
     isOpen.value = value;
 };
 
+const scrollToSection = (section: string) => {
+    const el = document.getElementById(section);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 </script>
 
 <template>
@@ -160,8 +167,8 @@ const setModalOpen = (value: boolean) => {
                 </div>
                 <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
                     <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
-                    <Icon name="mdi:arrow-down-drop-circle"
-                        class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
+                    <Icon @click="scrollToSection('section2')" name="mdi:arrow-down-drop-circle"
+                        class="bg-[#0191D8] text-black text-3xl cursor-pointer mt-20" />
                 </div>
             </div>
             <div v-else class="z-50 flex-1 flex flex-col justify-center items-center mt-32">
@@ -178,12 +185,12 @@ const setModalOpen = (value: boolean) => {
                 </div>
                 <div v-if="!isMobile" class="flex flex-col items-center max-w-[700px] mt-12">
                     <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
-                    <Icon name="mdi:arrow-down-drop-circle"
+                    <Icon @click="scrollToSection('section2')" name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
-                <div v-else class="flex flex-col items-center max-w-[700px] mt-44">
+                <div v-else-if="isTablet" class="flex flex-col items-center max-w-[700px] mt-44">
                     <button @click="setModalOpen(true)" class="py-3 px-4 bg-[#0191D8] text-white rounded-xl">Bergabung Sekarang</button>
-                    <Icon name="mdi:arrow-down-drop-circle"
+                    <Icon @click="scrollToSection('section2')" name="mdi:arrow-down-drop-circle"
                         class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
                 </div>
             </div>
@@ -199,11 +206,11 @@ const setModalOpen = (value: boolean) => {
             </div>
             <div v-else class="flex-1 flex flex-col justify-end items-start mt-72">
                 <div
-                    class="w-[70%] lg:w-[30%] h-[30%] rounded-full z-0 blur-2xl absolute bg-gradient-to-r from-transparent to-[#84D2F9] -translate-x-1/2">
+                    class="w-[70%] lg:w-[30%] h-[20%] rounded-full z-0 blur-2xl absolute bottom-32 bg-gradient-to-r from-transparent to-[#84D2F9] -translate-x-1/2">
                 </div>
             </div>
-            <div v-if="isMobile" class="flex flex-col items-center max-w-[700px] mb-4">
-                <Icon name="mdi:arrow-down-drop-circle" class="bg-[#DFF4FF] text-black text-3xl cursor-pointer mt-20" />
+            <div v-if="isMobile" class="flex flex-col items-center max-w-[700px] mb-10">
+                <Icon @click="scrollToSection('section2')" name="mdi:arrow-down-drop-circle" class="bg-[#0191D8] text-black text-3xl cursor-pointer mt-20" />
             </div>
         </section>
         <section id="section2"
@@ -269,7 +276,7 @@ const setModalOpen = (value: boolean) => {
                             <img src="/images/woman-smartphone.png" alt="Card Image"
                                 class="w-full h-full scale-150 md:scale-110" />
                             <div
-                                class="absolute h-[50%] left-10 top-[80%] md:top-[60%] lg:top-[80%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
+                                class="absolute h-[50%] left-10 top-[80%] md:top-[55.5%] lg:top-[80%] inset-0 bg-gradient-to-b from-transparent to-[#0191D8] rounded-3xl z-10">
                             </div>
                         </div>
                     </div>
